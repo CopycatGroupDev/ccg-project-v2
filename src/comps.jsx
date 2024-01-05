@@ -5,8 +5,9 @@ import { For } from "./functions";
 import { Carousel } from 'flowbite-react';
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { icons } from './utilities';
 
-export const Header = ({cover, logo, textLine, color, textBtn}) => {
+export const Header = ({cover, logo, textLine, color, textBtn, fullText = false, title}) => {
     const [navOpened, setNavOpened] = useState(false);
 
     return <>
@@ -15,61 +16,80 @@ export const Header = ({cover, logo, textLine, color, textBtn}) => {
             <img src={"/banner-bg"+cover+".png"} className='w-full h-full object-cover'/>
             <div className="absolute w-full h-full flex flex-col [&>*]:h-full gap-4 p-8 lg:p-4">
                 <Nav setNavOpened={setNavOpened} navOpened={navOpened} />
-                <div className='w-full flex justify-center header_Plate'>
-                    <img src={logo} className={'w-[35vh] lg:w-[350px] aspect-square h-fit rounded-full md:mt-16 object-contain'}/>
-                </div>
-                <div className='w-full text-white text-center flex flex-col justify-center text-base md:text-2xl lg:text-3xl gap-[1.5vh] lg:gap-[18px] items-center header_Plate'>
-                    <h2 className='max-w-[1000px]'>{textLine[0]}</h2>
-                    <h2 className=''>{textLine[1]}</h2>
-                    {textBtn && <button className={`md:text-2xl bg-white px-4 py-2 md:px-7 md:py-3.5 rounded-full`}style={{color: `${color}`}}>{textBtn}</button>}
-                </div>
+                {!fullText ? <>
+                    <div className='w-full flex justify-center header_Plate'>
+                        <img src={logo} className={'w-[35vh] lg:w-[350px] aspect-square h-fit rounded-full md:mt-16 object-contain'} style={{opacity: (logo) ? "1" : "0"}}/>
+                    </div>
+                    <div className='w-full text-white text-center flex flex-col justify-center text-base md:text-2xl lg:text-3xl gap-[1.5vh] lg:gap-[18px] items-center header_Plate'>
+                        <h2 className='max-w-[1000px]'>{textLine[0]}</h2>
+                        <h2 className=''>{textLine[1]}</h2>
+                        {textBtn && <button className={`md:text-2xl bg-white px-4 py-2 md:px-7 md:py-3.5 rounded-full`}style={{color: `${color}`}}>{textBtn}</button>}
+                    </div>
+                </> : <>
+                    <div className='lg:px-24 text-white flex flex-col justify-center gap-4 h-full [div:has(&)>#nav]:h-fit text-lg md:text-xl max-w-[800px] leading-loose'>
+                        <h2 className='text-4xl md:text-5xl my-2 md:my-8'>{title}</h2>
+                        <For obj={textLine} render={(value, i) => <p>{value}</p>} />
+                    </div>
+                </>}
             </div>
         </div>
-        {textLine[2] && <div className={`-mt-12 text-white w-full flex justify-center p-16 pt-8 text-xl md:text-3xl lg:text-4xl text-center snap-end`} style={{background: `${color}`}}>
+        {(textLine[2] && !fullText) && <div className={`-mt-12 text-white w-full flex justify-center p-16 pt-8 text-base md:text-2xl lg:text-3xl text-center snap-end`} style={{background: `${color}`}}>
             {`${textLine[2]}`}
         </div>}
     </>
 }
 
-export const Footer = () => <div id='footer' className="bg-[#0061ad] gap-8 w-full grid grid-cols-1 lg:grid-cols-4 snap-always snap-end text-white p-8 [&_h2]:text-3xl [&_input]:rounded-lg [&>div]:grid [&>div]:grid-rows-[min-content] [&>div]:gap-4 snap-center max-sm:gap-[2.5vh] max-sm:h-screen">
-    <div>
-        <h2>Contactez nous</h2>
-        <ul>
-            <li><a href="/contact">01 45 07 98 00</a></li>
-            <li><a href="/contact">hello@copycatgroup.fr</a></li>
-            <li><a href="/contact">Trouver un Magasin :</a></li>
-            <li><a href="/contact">2 rue de ville d’Avray</a></li>
-            <li><a href="/contact">92310 SÈVRES</a></li>
-        </ul>
-    </div>
-    <div>
-        <h2>A propos</h2>
-        <ul>
-            <li><a href="/mentions-legales">Mentions légales</a></li>
-            <li><a href="/confidentialit%C3%A9">Politique de confidentialité</a></li>
-            <li><a href="https://copycatgroup.fr/#service_1">Les Services</a></li>
-        </ul>
-    </div>
-    <div>
-        <h2>Nos autres services</h2>
-        <ul>
-            <li><a href="https://copycat-shop.fr" target="_blank" rel="noreferrer">Copycat Shop</a></li>
-            <li><a href="http://www.copycatprint.fr/accueil/" target="_blank" rel="noreferrer">Copycat Print</a></li>
-            <li><a href="https://www.copycat.vous-livre.com/" target="_blank" rel="noreferrer">Copycat vous livre</a></li>
-            <li><a href="https://copycat-group.mydigitalcorner.fr/" target="_blank" rel="noreferrer">Copycat Group mydigitalcorner</a></li>
-            <li><a href="https://www.exalink.fr/profil/copycat-group" target="_blank" rel="noreferrer">Exalink Copycat Group</a></li>
-        </ul>
-    </div>
-    <div>
-        <form className='contents'>
-            <h2>Newsletter</h2>
-            <div className='grid gap-2 grid-rows-[min-content]'>
-                <input type="email" id="email" pattern=".+@globex\.com" className='w-full text-black h-fit' placeholder='Votre email'/>
-                <button className='border rounded-full w-full h-fit p-2'>{`S'inscrire`}</button>
+export const Footer = ({refF}) => {
+    return (<div id='footer' ref={refF} className="bg-[#0061ad] w-full flex flex-col text-white">
+        <div className='gap-8 grid grid-cols-1 lg:grid-cols-4 snap-always snap-start p-8 [&_h2]:text-3xl [&_input]:rounded-lg [&>div]:grid [&>div]:grid-rows-[min-content] [&>div]:gap-4 snap-center max-sm:gap-[2.5vh] max-sm:h-screen'>
+            <div>
+                <h2>Contactez nous</h2>
+                <ul>
+                    <li><a href="/contact">01 45 07 98 00</a></li>
+                    <li><a href="/contact">hello@copycatgroup.fr</a></li>
+                    <li><a href="/contact">Trouver un Magasin :</a></li>
+                    <li><a href="/contact">2 rue de ville d’Avray</a></li>
+                    <li><a href="/contact">92310 SÈVRES</a></li>
+                </ul>
             </div>
-        </form>
-    </div>
-</div>
+            <div>
+                <h2>A propos</h2>
+                <ul>
+                    <li><a href="/mentions-legales">Mentions légales</a></li>
+                    <li><a href="/confidentialit%C3%A9">Politique de confidentialité</a></li>
+                    <li><a href="https://copycatgroup.fr/#service_1">Les Services</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Nos autres services</h2>
+                <ul>
+                    <li><a href="https://copycat-shop.fr" target="_blank" rel="noreferrer">Copycat Shop</a></li>
+                    <li><a href="http://www.copycatprint.fr/accueil/" target="_blank" rel="noreferrer">Copycat Print</a></li>
+                    <li><a href="https://www.copycat.vous-livre.com/" target="_blank" rel="noreferrer">Copycat vous livre</a></li>
+                    <li><a href="https://copycat-group.mydigitalcorner.fr/" target="_blank" rel="noreferrer">Copycat Group mydigitalcorner</a></li>
+                    <li><a href="https://www.exalink.fr/profil/copycat-group" target="_blank" rel="noreferrer">Exalink Copycat Group</a></li>
+                </ul>
+            </div>
+            <div>
+                <form className='contents'>
+                    <h2>Newsletter</h2>
+                    <div className='grid gap-2 grid-rows-[min-content]'>
+                        <input type="email" id="email" pattern=".+@globex\.com" className='w-full text-black h-fit' placeholder='Votre email'/>
+                        <button className='border rounded-full w-full h-fit p-2'>{`S'inscrire`}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div className='flex justify-between px-8 pb-4 snap-always snap-end items-center'>
+            <span>Copyright - Copycat Group</span>
+            <div className='grid grid-rows-1 grid-cols-3 gap-2'>
+                <Link to={"https://www.facebook.com/copycat.groupe/"} style={{display: "contents"}}><icons.Facebook size={32} /></Link>
+                <Link to={"https://www.instagram.com/copycat_group/"} style={{display: "contents"}}><icons.Instagram size={32} /></Link>
+                <Link to={"https://fr.linkedin.com/company/copycat-group"} style={{display: "contents"}}><icons.Linkedin size={32} /></Link>
+            </div>
+        </div>
+    </div>)
+}
 
 export const ContactUs = () => {
     const form = useRef();
@@ -144,7 +164,7 @@ export const Timeline = ({color = "#000", list}) => {
                     </div>
                     <img src={element.image} className='bg-white rounded-full w-full z-10 relative justify-self-center' alt=""></img>
                 </div>
-                <p className='text-gray-400'>{element.text}</p>
+                <div className='text-gray-400'>{element.text}</div>
                 <button style={{background: color}} className={`p-4 drop-shadow-xl rounded-full text-white`}>{element.button}</button>
             </div>
         </div>)}
@@ -190,7 +210,7 @@ export const Nav = ({setNavOpened, navOpened}) => {
     });
 
     return (<div className='flex flex-col justify-start items-center' id="nav">
-        <div className='flex justify-between lg:justify-center relative max-w-[1340px] w-full max-lg:items-center max-lg:gap-2 items-start'>
+        <div className='flex justify-between lg:justify-center relative max-w-[1500px] w-full max-lg:items-center max-lg:gap-2 items-start lg:max-xl:flex-col lg:max-xl:items-center'>
             <Link to="/" className='contents'>
                 <img src="/logo.png" alt="" className="w-[20vh] max-h-[120px] aspect-[163/120] object-contain h-fit left-0 lg:mx-18 xl:absolute" />
             </Link>
@@ -220,7 +240,7 @@ export const NavMobile = ({setNavOpened, navOpened}) => {
         </button>
         <div className='flex flex-col items-center text-xl'>
             <For obj={archi.filter(route => route.nav)} render={(route, i) => <div key={i} className='text-[#0061ad] flex flex-col items-center' style={dropdown === route.path ? pillStyleHover(i) : pillStyle} onClick={() => { setDropdown(dropdown === route.path ? null : route.path); }}>
-                {dropdown !== route.path ? <Link className={'p-2'}>{route.title}</Link> : <Link to={route.path} reloadDocument={true} className={'p-2 flex flex-col items-center'}>{route.title} <small>Cliquez pour accéder</small></Link>}
+                {dropdown !== route.path ? <span className={'p-2'}>{route.title}</span> : <Link to={route.path} reloadDocument={true} className={'p-2 flex flex-col items-center'}>{route.title} <small>Cliquez pour accéder</small></Link>}
                 {dropdown === route.path && <Dropdown obj={route.dropdown} color={colors[i]} callback={() => setNavOpened(false)} className={"max-w-[100%]"} close={() => setDropdown(null)} closeBtn={true} />}
             </div>} />
         </div>

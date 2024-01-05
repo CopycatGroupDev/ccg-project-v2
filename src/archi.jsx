@@ -87,18 +87,41 @@ export const archi = [
 	},
 	{ 
 		nav: true, 
-		path: "/more", 
+		path: "/boutiques", 
+		title: "Boutiques", 
+		element: <Body.Boutiques.Menu title={"Boutiques Copycat"} header={{ 
+			cover:"-boutique", 
+			logo: null,
+			textLine:[], 
+			color:'#0061ad',
+		}} />,
+		dropdown: [
+			{path : "/sevres", title : "Copycat Sèvres", icon: 'icone boutique.png'},
+			{path : "/boulogne", title : "Copycat DPS Boulogne", icon: 'icone boutique.png'},
+		]
+	},
+	{ 
+		nav: true, 
+		path: "/about", 
 		title: "En savoir plus", 
-		element: <Page title={"A propos"} header={{ 
-			cover:"", 
-			logo:'', 
-			textLine:['« Document as a Service »', 'Votre interlocuteur privilégié au service du document !', 'Demandez une expertise'], 
+		element: <Page title={"A propos"} Body={Body.APropos} header={{ 
+			cover:"-ccg", 
+			logo: null,
+			textLine:[<>
+				{`Avec des valeurs hautes en couleurs, Copycat Group se démarque sur le marché du document
+				grace à un soin tout particulier apporté à notre relationnel ou encore au respect des valeurs
+				importantes telles que la reforestation. Vous servir de la meilleure des façons reste notre
+				objectif numéro un ! Nous développons constamment de nouveaux projets, suivons l'évolution
+				des solutions digitales et de l'innovation du print.... Nous vous guidons pas à pas, toujours
+				dans le respect de notre crédo :`}<br />{` " Document as a Service " `}
+			</>], 
 			color:'#0061ad', 
-			textBtn:'Demandez une expertise' 
+			textBtn:'Demandez une expertise' ,
+			fullText: true,
+			title: "A propos de Copycat Group"
 		}}  />, 
 		dropdown: [
-			{path : "/about", title : "A propos", icon: 'icone a  propos.png', disabled: true},
-			{path : "/sevres", title : "Boutique Sèvres", icon: 'icone boutique.png'},
+			{path : "/about", title : "A propos", icon: 'icone a  propos.png'},
 			{path : "/contact", title : "Contact", icon: 'icone formulaire.png', disabled: true},
 			{path : "/rse", title : "Politique RSE", icon: 'icone RSE.png', disabled: true},
 		] 
@@ -107,24 +130,31 @@ export const archi = [
 		nav: false, 
 		path: "/about", 
 		title: "A propos", 
-		element: <Page title={"A propos"} header={{ 
-			cover:"", 
-			logo:'', 
-			textLine:['« Document as a Service »', 'Votre interlocuteur privilégié au service du document !', 'Demandez une expertise'], 
-			color:'#0061ad', 
-			textBtn:'Demandez une expertise' 
-		}} /> 
+		element: <Page title={"A propos"} /> 
 	},
 	{ 
 		nav: false, 
 		path: "/sevres", 
-		title: "Boutique Sèvres", 
-		element: <Page title={"Copycat Sèvres"} Body={Body.BoutiqueSevres} header={{ 
+		title: "Copycat Sèvres", 
+		element: <Page title={"Copycat Sèvres"} Body={Body.Boutiques.Sevres} header={{ 
 			cover:"-boutique", 
-			logo:'', 
+			logo: null, 
 			textLine:['Retrouvez notre boutique COPYCAT Sèvres avec un service de photocopie, reprographie et impression numérique', <svg key={1} xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" className="h-8 lg:h-14"> <path fillRule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1" /> </svg>], 
 			color:'#ed01b5',
-		}} /> 
+		}} />,
+		dropdown: []
+	},
+	{ 
+		nav: false, 
+		path: "/boulogne", 
+		title: "Copycat DPS Boulogne", 
+		element: <Page title={"Copycat DPS Boulogne"} Body={Body.Boutiques.Boulogne} header={{ 
+			cover:"-boutique", 
+			logo: null, 
+			textLine:['Retrouvez notre boutique COPYCAT DPS pour l\'achat de vos fournitures informatique, un service de Photocopie - reprographie et impression numérique. ', <svg key={1} xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" className="h-8 lg:h-14"> <path fillRule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1" /> </svg>], 
+			color:'#f39113',
+		}} />,
+		dropdown: []
 	},
 	{ 
 		nav: false, 
@@ -139,7 +169,7 @@ export const Map = () => <Routes> { archi.map((route, id) => <Route key={id} pat
 
 
 	{ nav: true, path: "", element: <Page title={""} header={{
-		cover:"", logo:'', textLine:['', '', ''], color:'', textBtn:''
+		cover:"", logo: null,textLine:['', '', ''], color:'', textBtn:''
 	}} /> },
 
 */
