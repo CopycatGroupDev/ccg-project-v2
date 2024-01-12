@@ -28,7 +28,7 @@ export const Header = ({cover, logo, textLine, color, textBtn, fullText = false,
                 </> : <>
                     <div className='lg:px-24 text-white flex flex-col justify-center gap-4 h-full [div:has(&)>#nav]:h-fit text-lg md:text-xl max-w-[800px] leading-loose'>
                         <h2 className='text-4xl md:text-5xl my-2 md:my-8'>{title}</h2>
-                        <For obj={textLine} render={(value, i) => <p>{value}</p>} />
+                        <For obj={textLine} render={(value, i) => <p key={i}>{value}</p>} />
                     </div>
                 </>}
             </div>
@@ -214,7 +214,7 @@ export const Nav = ({setNavOpened, navOpened}) => {
             <Link to="/" className='contents'>
                 <img src="/logo.png" alt="" className="w-[20vh] max-h-[120px] aspect-[163/120] object-contain h-fit left-0 lg:mx-18 xl:absolute" />
             </Link>
-            <div className='justify-center items-center text-xl xl:text-2xl hidden lg:flex gap-[.5vw] md:[&_li]:cursor-pointer [&>a]:text-[#0061ad] items-start [&_li]:p-2 z-50 p-2'>
+            <div className='justify-center items-center text-xl xl:text-2xl hidden lg:flex gap-[.5vw] md:[&_li]:cursor-pointer [&>a]:text-[#0061ad] items-start [&_li]:p-2 z-50 px-2 py-4'>
                 <For obj={archi.filter(route => route.nav)} render={(route, i) => <div key={i} className='text-[#0061ad]' style={dropdown === route.path ? pillStyleHover(i) : pillStyle} onMouseOver={() => { setDropdown(route.path); }} onMouseLeave={() => { setDropdown(null); }}>
                     <Link to={route.path} className={'p-2'}>{route.title}</Link>
                     {dropdown === route.path && <Dropdown obj={route.dropdown} color={colors[i]} className={"absolute"} />}

@@ -39,7 +39,7 @@ export const Page = ({header, title, Body}) => {
 
     return <>
         {<style>{`body{background:rgba(0,0,0,0.025);--thickness: 6px; --page-color: ${header.color};} .colorPage{background-color: var(--page-color);}`}</style>}
-        <Header {...header} />
+        {/* <Header {...header} /> */}
         {Body && <Body color={header.color} />}
         <Footer refF={footer} />
         {scroll > 100 && <button className="fixed z-[999] shadow-md shadow-black/30 bottom-0 right-0 rounded-md py-3 px-4 bg-[#0061ad] hover:bg-white text-white hover:text-[#0061ad] m-6 flex items-center gap-2 justify-center" onClick={() => scrollTo(0,0)} style={{bottom: bottomBtnScrTop}}>
@@ -556,6 +556,7 @@ const Boutiques = {
 
 const APropos = ({color}) => {
     const [activeTab, setActiveTab] = useState(0);
+    const [activeTestimony, setActiveTestimony] = useState(0);
 
     let tabs = [ "solutions", "shop", "print", "labs", ];
     let values = [
@@ -564,15 +565,45 @@ const APropos = ({color}) => {
         {img:null, color:"#5892C4", title: "Bon sens", text: "Nous oeuvrons méthodiquement au traitement de vos documents"},
         {img:null, color:"#60C280", title: "Bonne foi", text: "Nous vous accompagnons avec intégrité et honnêteté"},
     ];
+    let testimonies = [
+        {text: <>{`1. Nous travaillons avec CopycatGroup depuis plusieurs années sur plusieurs entreprises du groupe.`}<br />{`Au-delà de nos exigences de performance de service et de compétitivité des prix, parfaitement répondu par CCG, nous avons été toujours agréablement surpris par la disponibilité des équipes et leur grande capacité à gérer des projets non standards.`}<br />{`Je ne peux que me réjouir de les savoir notre fournisseur.`}</>},
+        {text: <>{`2. Nous travaillons avec CopycatGroup depuis plusieurs années sur plusieurs entreprises du groupe.`}<br />{`Au-delà de nos exigences de performance de service et de compétitivité des prix, parfaitement répondu par CCG, nous avons été toujours agréablement surpris par la disponibilité des équipes et leur grande capacité à gérer des projets non standards.`}<br />{`Je ne peux que me réjouir de les savoir notre fournisseur.`}</>},
+        {text: <>{`3. Nous travaillons avec CopycatGroup depuis plusieurs années sur plusieurs entreprises du groupe.`}<br />{`Au-delà de nos exigences de performance de service et de compétitivité des prix, parfaitement répondu par CCG,`}<br />{`Je ne peux que me réjouir de les savoir notre fournisseur.`}</>},
+        {text: <>{`4. Nous travaillons avec CopycatGroup depuis plusieurs années sur plusieurs entreprises du groupe.`}<br />{`Au-delà de nos exigences de performance de service et de compétitivité des prix, parfaitement répondu par CCG, nous avons été toujours agréablement surpris par la disponibilité des équipes et leur grande capacité à gérer des projets non standards.`}<br />{`Je ne peux que me réjouir de les savoir notre fournisseur.`}</>},
+    ];
+    
+    var card = {
+        boxShadow: "0 0 #0000, 0 0 #0000, 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+        padding: "1.5rem",
+        backgroundColor: "rgb(255 255 255 / 1)",
+        gap: "1rem",
+        gridTemplateColumns: "repeat(1, minmax(0, 1fr))",
+        width: "24rem",
+        display: "grid",
+        overflow: "hidden",
+        height: "100%"
+    }
+
+    const sideTsLeft = useRef(null);
+    const sideTsRight = useRef(null);
+    const centerTsRef = useRef(null);
 
     return (<>
+    {/*
         <div className="w-full flex flex-col gap-8 items-center text-base md:text-xl text-gray-400 max-w-[1340px] text-center px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-min gap-2 text-left [&_span]:text-[#0061ad]" style={{color: "#737070"}}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-min gap-y-2 gap-x-8 text-left [&_span]:text-[#0061ad]" style={{color: "#737070"}}>
                 <div className="flex gap-8 lg:col-start-1 lg:row-start-1" style={{height: "100px", color: "#0061ad"}}>
-                    <div className={"grid grid-cols-1 grid-rows-3"}>
+                    <div className={"grid grid-cols-1 grid-rows-3"} style={{textWrap: "nowrap"}}>
                         <div></div>
                         <h1 className="text-4xl">Edito CopycatGroup</h1>
-                        <div></div>
+                        <div className="flex items-end">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22.909" height="17.523" viewBox="0 0 22.909 17.523">
+                                <g id="Groupe_68" data-name="Groupe 68" transform="translate(0)">
+                                    <path id="Tracé_73" data-name="Tracé 73" d="M3.552,8.928a4.926,4.926,0,0,1,5.071.9,4.447,4.447,0,0,1,.267,6.344,4.608,4.608,0,0,1-6.528.144C-.308,13.732-.451,10.57.637,7.306,1.807,3.857,4.394,1.619,7.781.1c.39.554.739,1.068,1.17,1.7C6.18,3.405,4.065,5.5,3.552,8.928Z" transform="translate(0 -0.079)"/>
+                                    <path id="Tracé_74" data-name="Tracé 74" d="M70.375,0,71.5,1.724c-2.833,1.6-4.865,3.736-5.42,7.062.554-.082,1.068-.205,1.6-.246a4.489,4.489,0,0,1,2.669,8.376,4.734,4.734,0,0,1-5.789-1.047c-2.238-2.443-2.607-6.487-.924-9.793A13.543,13.543,0,0,1,70.375,0Z" transform="translate(-49.743)"/>
+                                </g>
+                            </svg>
+                        </div>
                     </div>
                 </div>
 
@@ -580,13 +611,19 @@ const APropos = ({color}) => {
                     <p>La volonté de <span>COPYCAT GROUP</span> est de rassembler toute l'expertise documentaire. Nous avons à coeur de vous proposer une analyse et une solution documentaire complètes.</p>
                     <p>Face à une offre de plus en plus importante, comment choisir son matériel et vers qui se tourner ? Quels noms doivent se trouver en premier dans votre carnet d'adresses?</p>
                     <p><span>LE DOCUMENT</span> n'est pas qu'une question de matériel. C'est aussi un service et tout ce qui touche à son environnement : le digital, du matériel d'appoint, des fournitures, de l'équipement personnalisé.</p>
+                    <div className="flex justify-end -mt-6">
+                        <svg id="Groupe_69" data-name="Groupe 69" xmlns="http://www.w3.org/2000/svg" width="22.909" height="17.523" viewBox="0 0 22.909 17.523">
+                            <path id="Tracé_73" data-name="Tracé 73" d="M6.54,8.775a4.926,4.926,0,0,1-5.071-.9A4.447,4.447,0,0,1,1.2,1.528,4.608,4.608,0,0,1,7.73,1.385C10.4,3.971,10.543,7.133,9.455,10.4,8.285,13.846,5.7,16.084,2.311,17.6c-.39-.554-.739-1.068-1.17-1.7C3.912,14.3,6.026,12.2,6.54,8.775Z" transform="translate(12.818 -0.1)"/>
+                            <path id="Tracé_74" data-name="Tracé 74" d="M64.87,17.484l-1.129-1.724c2.833-1.6,4.866-3.736,5.42-7.062-.554.082-1.068.205-1.6.246A4.489,4.489,0,0,1,64.891.568,4.734,4.734,0,0,1,70.68,1.615c2.238,2.443,2.607,6.487.924,9.793A13.543,13.543,0,0,1,64.87,17.484Z" transform="translate(-62.593 0.04)"/>
+                        </svg>
+                    </div>
                 </div>
 
                 <hr className="my-4 block lg:hidden" />
 
                 <div className="flex gap-8  lg:col-start-2 lg:row-start-1" style={{height: "100px", color: "#0061ad"}}>
                     <img src="/pdg.svg" className="h-full aspect-square w-fit" />
-                    <div className={"grid grid-cols-1 grid-rows-3"}>
+                    <div className={"grid grid-cols-1 grid-rows-3"} style={{textWrap: "nowrap"}}>
                         <div></div>
                         <h1 className="text-4xl">Erwan HECAEN</h1>
                         <div></div>
@@ -602,35 +639,190 @@ const APropos = ({color}) => {
             </div>
         </div>
 
-        {/* Tabs */}
         <div className="w-full flex flex-col gap-6 items-center text-base md:text-xl text-gray-400 max-w-[1340px] text-center px-12">
             <div className="bg-[#F2F2F2] w-full p-1 gap-1 flex max-lg:flex-col">
                 <For obj={tabs} render={(value, i) => {
                     return <button key={i} className="w-full flex rounded-lg p-2 items-center" style={{color: archi.find(arc => "/"+value === arc.path).element.props.header.color, background: i === activeTab && "white"}} onClick={() => setActiveTab(i)}>
-                        <img src={"icone "+value+".png"} className="h-[50px] aspect-square w-fit rounded-full" />
+                        <img src={value.replace(value[0], value[0].toUpperCase())+".svg"} className="h-[50px] aspect-square w-fit rounded-full" />
                         <div className="w-full">{archi.find(arc => "/"+value === arc.path).title}</div>
                     </button>
                 }} />
             </div>
             <For obj={tabs} render={(value, i) => {
-                return <>{i === activeTab && <div key={i} className="grid grid-cols-1 lg:grid-cols-2 w-full gap-8">
+                return (i === activeTab && <div key={i} className="grid grid-cols-1 lg:grid-cols-2 w-full gap-8">
                     <div className="aspect-[625/418] bg-black"></div>
                     <div className="flex flex-col justify-center gap-4">
                         <button className="w-full flex rounded-lg p-2 items-center gap-4" style={{color: archi.find(arc => "/"+value === arc.path).element.props.header.color}} onClick={() => setActiveTab(i)}>
-                            <img src={"icone "+value+".png"} className="h-[50px] aspect-square w-fit rounded-full" />
+                            <img src={value.replace(value[0], value[0].toUpperCase())+".svg"} className="h-[50px] aspect-square w-fit rounded-full" />
                             <div className="">{archi.find(arc => "/"+value === arc.path).title}</div>
                         </button>
                         <p className="text-left">Nous mettons à votre disposition notre savoir et notre regard expert pour vous aider à voir plus loin qu'une marque de renom. En effet. nous vous aidons à trouver les services qui répondent le plus à vos attentes. Pour cela. nous nous appuyons sur nos partenaires méticuleusement sélectionnés.</p>
                         <div className="flex flex-wrap text-sm gap-2 uppercase">
-                            <For obj={archi.find(arc => "/"+value === arc.path).dropdown} render={(tag, i) => <span className="px-16 py-2 border rounded-full" style={{color: archi.find(arc => "/"+value === arc.path).element.props.header.color, borderColor: archi.find(arc => "/"+value === arc.path).element.props.header.color}}>{tag.title}</span>} />
+                            <For obj={archi.find(arc => "/"+value === arc.path).dropdown} render={(tag, i) => <span key={i} className="px-16 py-2 border rounded-full" style={{color: archi.find(arc => "/"+value === arc.path).element.props.header.color, borderColor: archi.find(arc => "/"+value === arc.path).element.props.header.color}}>{tag.title}</span>} />
                         </div>
                     </div>
-                </div>}</>
+                </div>)
             }} />
+        </div>
+    */}
+        <div className="w-full flex flex-col gap-6 items-center text-sm sm:text-base text-gray-400 max-w-[1340px] text-center px-12">
+            <div className='flex flex-col gap-8 snap-always snap-center toFade [&>p]:text-left w-full justify-center' style={{color: "#737070"}}>
+                <h1 className="text-4xl text-[#0061ad]">Ils nous font confiance</h1>
+                <div className="flex w-full justify-center items-center relative gap-8 h-fit" style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(2, minmax(0,1fr))",
+                    gridTemplateRows: "repeat(1, minmax(0,1fr))",
+                    maxWidth: "800px",
+                    position: "relative",
+                    margin: "0 auto",
+                }}>
+                    <For obj={testimonies} render={(value, i) => {
+                        const minHeight = (4.5/6*100) + "%"
+                        return <div key={i} data-side={[
+                            (value === (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])) && "left",
+                            (value === testimonies[activeTestimony])  && "center",
+                            (value === (testimonies[activeTestimony+1] ?? testimonies[0]))  && "right"
+                        ].filter(Boolean)} style={{
+                            ...card,
+                            alignContent: "space-between",
+                            position: [
+                                (value === (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])) && "static",
+                                (value === testimonies[activeTestimony]) && "absolute",
+                                (value === (testimonies[activeTestimony+1] ?? testimonies[0])) && "static",
+                                (value !== (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])) && (value !== testimonies[activeTestimony]) && (value !== (testimonies[activeTestimony+1] ?? testimonies[0])) && "fixed"
+                            ].filter(Boolean)[0],
+                            display: [
+                                (value === (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])) && "grid",
+                                (value === testimonies[activeTestimony]) && "grid",
+                                (value === (testimonies[activeTestimony+1] ?? testimonies[0])) && "grid",
+                                (value !== (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])) && (value !== testimonies[activeTestimony]) && (value !== (testimonies[activeTestimony+1] ?? testimonies[0])) && "none"
+                            ].filter(Boolean)[0],
+                            zIndex: i === activeTestimony && 100,
+                            gridColumnStart : [
+                                (value === (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])) && "1",
+                                (value === testimonies[activeTestimony]) && "0",
+                                (value === (testimonies[activeTestimony+1] ?? testimonies[0])) && "2",
+                                (value !== (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])) && (value !== testimonies[activeTestimony]) && (value !== (testimonies[activeTestimony+1] ?? testimonies[0])) && "0"
+                            ].filter(Boolean)[0],
+                            gridRowStart : 1,
+                            opacity: [
+                                (value === (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])) && "0.4",
+                                (value === testimonies[activeTestimony]) && "1",
+                                (value === (testimonies[activeTestimony+1] ?? testimonies[0])) && "0.4",
+                                (value !== (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])) && (value !== testimonies[activeTestimony]) && (value !== (testimonies[activeTestimony+1] ?? testimonies[0])) && "0"
+                            ].filter(Boolean)[0],
+
+                            [value === (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1]) && 'gridColumnStart'] : "1",
+                            [value === (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1]) && 'margin'] : "0 0%",
+                            [value === (testimonies[activeTestimony+1] ?? testimonies[0]) && 'gridColumnStart'] : "3",
+                            [value === (testimonies[activeTestimony+1] ?? testimonies[0]) && 'margin'] : "0 0%",
+                            [value === testimonies[activeTestimony] && 'gridColumnStart'] : "2",
+
+                            height: (value === (testimonies[activeTestimony])) ? "100%" : minHeight,
+                            textOverflow: "ellipsis",
+                            whiteSpace: "nowrap",
+                        }} onClick={() => {
+                            const duration = 750;
+                            const anim = {
+                                duration: duration,
+                                iterations: 1,
+                                easing: "cubic-bezier(0.68, -0.55, 0.27, 1.55)",
+                            };
+                            
+                            let move = {
+                                l2C : document.querySelector('div[data-side="center"]').getBoundingClientRect().x - document.querySelector('div[data-side="left"]').getBoundingClientRect().x,
+                                l2r : document.querySelector('div[data-side="right"]').getBoundingClientRect().x - document.querySelector('div[data-side="left"]').getBoundingClientRect().x,
+                            };
+                            move = {
+                                l2C : move.l2C+"px",
+                                l2r : move.l2r+"px",
+                            };
+
+                            if (value === (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])) {
+                                document.querySelector('div[data-side="left"]').animate([ {transform: 'translateX(0%)', height: minHeight, zIndex: "0", opacity: "0.6"}, {transform: 'translateX('+move.l2C+')', height: "100%", zIndex: "100", opacity: "1"}, ], anim);
+                                document.querySelector('div[data-side="center"]').animate([ {transform: 'translateX(0%)', height: "100%", zIndex: "100", opacity: "1"}, {transform: 'translateX('+move.l2C+')', height: minHeight, zIndex: "0", opacity: "0.6"}, ], anim);
+                                document.querySelector('div[data-side="right"]').animate([ {transform: 'translateX(0%)', zIndex: "0"}, {transform: 'translateX(-'+move.l2r+')', zIndex: "-100"}, ], anim);
+                                setTimeout(() => { setActiveTestimony(testimonies.indexOf(testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])); }, duration);
+                            }
+                            if (value === (testimonies[activeTestimony+1] ?? testimonies[0])) { 
+                                document.querySelector('div[data-side="right"]').animate([ {transform: 'translateX(0%)', height: minHeight, zIndex: "0", opacity: "0.6"}, {transform: 'translateX(-'+move.l2C+')', height: "100%", zIndex: "100", opacity: "1"}, ], anim);
+                                document.querySelector('div[data-side="center"]').animate([ {transform: 'translateX(0%)', height: "100%", zIndex: "100", opacity: "1"}, {transform: 'translateX(-'+move.l2C+')', height: minHeight, zIndex: "0", opacity: "0.6"}, ], anim);
+                                document.querySelector('div[data-side="left"]').animate([ {transform: 'translateX(0%)'}, {transform: 'translateX('+move.l2r+')'}, ], anim);
+                                setTimeout(() => { setActiveTestimony(testimonies.indexOf(testimonies[activeTestimony+1] ?? testimonies[0])); }, duration);    
+                            }
+                        }}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 37.236 31.2">
+                                <g id="Groupe_59" data-name="Groupe 59" transform="translate(-748.736 -3067.8)">
+                                    <path id="Tracé_71" data-name="Tracé 71" d="M15.152,0V6S8.82,6.344,9.29,16l5.927.065L15.152,31.2H.218S-3.111.6,15.152,0Z" transform="translate(770.756 3067.8)" fill="#06a13a"/>
+                                    <path id="Tracé_72" data-name="Tracé 72" d="M15.152,0V6S8.82,6.344,9.29,16l5.927.065L15.152,31.2H.218S-3.111.6,15.152,0Z" transform="translate(748.756 3067.8)" fill="#06a13a"/>
+                                </g>
+                            </svg>
+
+                            <p className="overflow-hidden px-8 sm:px-0" style={{textWrap: "balance"}}>{testimonies[i].text}</p>
+
+                            <div className="grid grid-rows-2 items-center text-start gap-x-3 h-fit" style={{gridTemplateColumns: "auto minmax(0, 1fr)"}}>
+                                <div className="w-12 h-fit aspect-square rounded-full row-span-2 bg-black"></div>
+                                <b className="">Nom</b>
+                                <span className="">Entreprise</span>
+                            </div>
+                        </div>
+                    }} />
+                    <button className="absolute right-0 bg-zinc-800 text-4xl p-4 z-[200] -mx-6 opacity-90" onClick={(e) => {
+                        const minHeight = (4.5/6*100) + "%"
+
+                        const duration = 750;
+                        const anim = {
+                            duration: duration,
+                            iterations: 1,
+                            easing: "cubic-bezier(0.68, -0.55, 0.27, 1.55)",
+                        };
+                        
+                        let move = {
+                            l2C : document.querySelector('div[data-side="center"]').getBoundingClientRect().x - document.querySelector('div[data-side="left"]').getBoundingClientRect().x,
+                            l2r : document.querySelector('div[data-side="right"]').getBoundingClientRect().x - document.querySelector('div[data-side="left"]').getBoundingClientRect().x,
+                        };
+                        move = {
+                            l2C : move.l2C+"px",
+                            l2r : move.l2r+"px",
+                        };
+                        e.target.disabled = true;
+
+                        document.querySelector('div[data-side="left"]').animate([ {transform: 'translateX(0%)', height: minHeight, zIndex: "0", opacity: "0.6"}, {transform: 'translateX('+move.l2C+')', height: "100%", zIndex: "100", opacity: "1"}, ], anim);
+                        document.querySelector('div[data-side="center"]').animate([ {transform: 'translateX(0%)', height: "100%", zIndex: "100", opacity: "1"}, {transform: 'translateX('+move.l2C+')', height: minHeight, zIndex: "0", opacity: "0.6"}, ], anim);
+                        document.querySelector('div[data-side="right"]').animate([ {transform: 'translateX(0%)', zIndex: "0"}, {transform: 'translateX(-'+move.l2r+')', zIndex: "-100"}, ], anim);
+                        setTimeout(() => { setActiveTestimony(testimonies.indexOf(testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])); e.target.disabled = false; }, duration);
+                    }}> {">"} </button>
+                    <button className="absolute left-0 bg-zinc-800 text-4xl p-4 z-[200] -mx-6 opacity-90" onClick={(e) => {
+                        const minHeight = (4.5/6*100) + "%"
+
+                        const duration = 750;
+                        const anim = {
+                            duration: duration,
+                            iterations: 1,
+                            easing: "cubic-bezier(0.68, -0.55, 0.27, 1.55)",
+                        };
+                        
+                        let move = {
+                            l2C : document.querySelector('div[data-side="center"]').getBoundingClientRect().x - document.querySelector('div[data-side="left"]').getBoundingClientRect().x,
+                            l2r : document.querySelector('div[data-side="right"]').getBoundingClientRect().x - document.querySelector('div[data-side="left"]').getBoundingClientRect().x,
+                        };
+                        move = {
+                            l2C : move.l2C+"px",
+                            l2r : move.l2r+"px",
+                        };
+                        e.target.disabled = true;
+
+                        document.querySelector('div[data-side="right"]').animate([ {transform: 'translateX(0%)', height: minHeight, zIndex: "0", opacity: "0.6"}, {transform: 'translateX(-'+move.l2C+')', height: "100%", zIndex: "100", opacity: "1"}, ], anim);
+                        document.querySelector('div[data-side="center"]').animate([ {transform: 'translateX(0%)', height: "100%", zIndex: "100", opacity: "1"}, {transform: 'translateX(-'+move.l2C+')', height: minHeight, zIndex: "0", opacity: "0.6"}, ], anim);
+                        document.querySelector('div[data-side="left"]').animate([ {transform: 'translateX(0%)'}, {transform: 'translateX('+move.l2r+')'}, ], anim);
+                        setTimeout(() => { setActiveTestimony(testimonies.indexOf(testimonies[activeTestimony+1] ?? testimonies[0])); e.target.disabled = false; }, duration); 
+                    }}> {"<"} </button>
+                </div>
+            </div>
         </div>
 
         <div className="w-full flex flex-col gap-6 items-center text-base md:text-xl text-gray-400 max-w-[1340px] text-center px-12">
-            <div className='flex flex-col gap-8 snap-always snap-center toFade [&>p]:text-left' style={{color: "#737070"}}>
+            <div className='flex flex-col gap-8 snap-always snap-center toFade [&>p]:text-left' style={{color: "#737070",}}>
                 <h1 className="text-4xl text-[#0061ad]">Nos valeurs</h1>
                 <p>Nous abordons le travail d’équipe au sens large : Une collaboration avec une entreprise signifie une entente totale, transparente et proactive. Nos outils sont les vôtres et vice versa. Notre image est celle d’une entreprise dynamique, entreprenante et surtout, très fiable.</p>
                 <p>L’humain étant au cœur de notre société et ayant pour objectif d’être les plus fiables pour nos clients, nos collaborateurs répondent à des critères stricts et pointus.</p>
@@ -642,8 +834,8 @@ const APropos = ({color}) => {
         </div>
 
         <div className="w-full flex flex-col gap-6 items-center text-base md:text-xl text-gray-400 max-w-[1340px] text-center px-12">
-            <div className='flex flex-col gap-8 snap-always snap-center toFade [&>p]:text-left' style={{color: "#737070"}}>
-                <div className="grid grid-cols-4 justify-center gap-16">
+            <div className='flex flex-col gap-8 snap-always snap-center toFade [&>p]:text-left' style={{color: "#737070", wordBreak: "break-all"}}>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center gap-16">
                     <For obj={values} render={(value, i) => {
                         return <div key={i} className="grid grid-cols-1 grid-rows-3">
                             <img src={value.img} />
