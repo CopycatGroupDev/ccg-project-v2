@@ -39,7 +39,7 @@ export const Page = ({header, title, Body}) => {
 
     return <>
         {<style>{`body{background:rgba(0,0,0,0.025);--thickness: 6px; --page-color: ${header.color};} .colorPage{background-color: var(--page-color);}`}</style>}
-        {/* <Header {...header} /> */}
+        <Header {...header} />
         {Body && <Body color={header.color} />}
         <Footer refF={footer} />
         {scroll > 100 && <button className="fixed z-[999] shadow-md shadow-black/30 bottom-0 right-0 rounded-md py-3 px-4 bg-[#0061ad] hover:bg-white text-white hover:text-[#0061ad] m-6 flex items-center gap-2 justify-center" onClick={() => scrollTo(0,0)} style={{bottom: bottomBtnScrTop}}>
@@ -584,12 +584,7 @@ const APropos = ({color}) => {
         height: "100%"
     }
 
-    const sideTsLeft = useRef(null);
-    const sideTsRight = useRef(null);
-    const centerTsRef = useRef(null);
-
     return (<>
-    {/*
         <div className="w-full flex flex-col gap-8 items-center text-base md:text-xl text-gray-400 max-w-[1340px] text-center px-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-min gap-y-2 gap-x-8 text-left [&_span]:text-[#0061ad]" style={{color: "#737070"}}>
                 <div className="flex gap-8 lg:col-start-1 lg:row-start-1" style={{height: "100px", color: "#0061ad"}}>
@@ -664,7 +659,7 @@ const APropos = ({color}) => {
                 </div>)
             }} />
         </div>
-    */}
+
         <div className="w-full flex flex-col gap-6 items-center text-sm sm:text-base text-gray-400 max-w-[1340px] text-center px-12">
             <div className='flex flex-col gap-8 snap-always snap-center toFade [&>p]:text-left w-full justify-center' style={{color: "#737070"}}>
                 <h1 className="text-4xl text-[#0061ad]">Ils nous font confiance</h1>
