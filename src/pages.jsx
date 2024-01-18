@@ -1,11 +1,14 @@
 /* eslint-disable react/no-children-prop */
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
-import { Header, Footer, CCGCarousel as Carousel, Timeline, Nav, NavMobile } from "./comps";
+import { Header, Footer, CCGCarousel as Carousel, Timeline, Nav, NavMobile, Testimonies, Tabs } from "./comps";
 import { useEffect, useState, useRef } from "react";
 import { For } from "./functions";
-import { Svg, icons } from "./utilities";
+import { Svg, Icons } from "./utilities";
 import { archi } from "./archi";
+
+const Container = ({ modifier="w-full flex flex-col gap-6 items-center text-base md:text-xl text-gray-400 max-w-[1340px] text-center px-12", style, children }) => <div className={modifier} style={style}>{children}</div>
+const Title = ({children, color="black", modifier}) => <h1 className={`text-4xl text-center text-${color} text-[${color}] ${modifier}`} style={{color: color}}>{children}</h1>
 
 export const Page = ({header, title, Body}) => {
     const footer = useRef(null);
@@ -55,9 +58,9 @@ export const Page = ({header, title, Body}) => {
 
 const Home = () => {
     return (<>
-        <div className="w-full flex flex-col gap-6 items-center text-base md:text-xl text-gray-400 max-w-[1340px] text-center px-12">
+        <Container>
             <div className='flex flex-col gap-6 snap-always snap-center toFade'>
-                <h1 className="text-4xl text-black">Nos services</h1>
+                <Title color={"black"}>Nos services</Title>
                 <p>Avec des valeurs hautes en couleurs, COPYCAT GROUP est une entreprise française née de l’ambition de remettre le service et la simplicité au coeur des solutions documentaires, digitales et bureautiques.</p>
                 <p>La simplicité par un contact unique pour traiter et vous accompagner sur tous vos besoins d’IMPRESSIONS, de GRAPHISMES, de FOURNITURES, de BUREAUTIQUES et de SOLUTIONS DIGITALES.</p>
                 <p>Le service, car nous croyons au fond qu’il n’y a pas de solutions pertinentes sans accompagnement, conseils et approche humaine tout au long de la vie de votre projet.</p>
@@ -105,25 +108,25 @@ const Home = () => {
                     <button className='text-white bg-[#0061ad] px-4 py-2 md:px-7 md:py-3.5 rounded-full'>Demander une expertise</button>
                 </div>
             </div>
-        </div>
-        <div className="bg-[#efefef] flex items-center max-sm:h-screen w-full justify-center snap-always snap-center toFade">
+        </Container>
+        <Container modifier="bg-[#efefef] flex items-center max-sm:h-screen w-full justify-center snap-always snap-center toFade">
             <div className='max-w-[1340px] flex flex-col lg:flex-row w-full [&>div]:w-full px-5 py-10 gap-8'>
                 <div className='flex justify-center'>
                     <img src="/pdg.svg" className="w-[65%]" />
                 </div>
                 <div className='flex flex-col justify-center items-center gap-4 text-xl text-gray-400 text-center'>
-                    <h1 className='text-4xl text-black'>Erwan HECAEN</h1>
+                    <Title color={"black"}>Erwan HECAEN</Title>
                     <p>Fondateur et Expert Solutions Documentaires</p>
                     <hr className='border-[#0061ad] !border-gray-400 w-full' />
                     <p>+33 (0) 6 15 94 55 46</p>
                     <p>e.hecaen@copycatgroup.fr</p>
                 </div>
             </div>
-        </div>
-        <div className="flex w-full justify-center text-center md:text-left text-base md:text-xl text-gray-400">
+        </Container>
+        <Container modifier="flex w-full justify-center text-center md:text-left text-base md:text-xl text-gray-400">
             <div className='max-w-[1340px] flex flex-col lg:flex-row w-full [&>div]:w-full px-12 gap-8 items-center'>
                 <div className='flex flex-col gap-6 toFade snap-always snap-center toFade'>
-                    <h1 className='text-4xl text-blue-800'>Ils nous font confiance !</h1>
+                    <Title color={"#1e40af"}>Ils nous font confiance !</Title>
                     <p>Faites comme nos clients, faites-nous confiance pour notre accompagnement et la réalisation de vos projets documentaires ! Adressez-vous à notre guichet unique pour traiter vos besoins d’IMPRESSIONS, de GRAPHISMES, de FOURNITURES, de BUREAUTIQUES et de SOLUTIONS DIGITALES.</p>
                 </div>
                 <div className='flex border shadow rounded-xl p-4 aspect-square lg:aspect-video snap-always snap-center toFade bg-white'>
@@ -138,12 +141,12 @@ const Home = () => {
                     ]} className="[&_button]:bg-[#0061ad] [&_button]:rounded-full px-16 py-12" />
                 </div>
             </div>
-        </div>
-        <div className="flex w-full justify-center text-center md:text-left text-base md:text-xl text-gray-400">
+        </Container>
+        <Container modifier="flex w-full justify-center text-center md:text-left text-base md:text-xl text-gray-400">
             <div className='max-w-[1340px] flex flex-col lg:flex-row w-full [&>div]:w-full px-12 gap-8 items-center'>
                 <div className='flex flex-col gap-6 snap-always snap-center toFade'>
                     <div className="grid grid-cols-2 [&_label]:grid [&_label>input]:w-full [&_label>input]:rounded-lg gap-4" style={{"textWrap": "nowrap"}}>
-                        <h1 className="text-4xl text-black col-span-2">Faites vous rappeler !</h1>
+                        <Title color={"#1e40af"} modifier={"col-span-2"}>Faites vous rappeler !</Title>
                         <form className="contents">
                             {[
                                 {className: null, input : <input type="text" placeholder='Nom' />},
@@ -161,7 +164,7 @@ const Home = () => {
                     <iframe className='w-full' height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=copycat%20sevre&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe>
                 </div>
             </div>
-        </div>
+        </Container>
     </>)
 }
 
@@ -187,7 +190,7 @@ const Shop = ({color}) => {
             {image: "https://copycatgroup.fr/images/div1.png", id: "div", text: <>{`Loisirs, gastronomie, restauration, hygiène..`}</>, button: "Je suis intéressé",},
         ]} />
 
-        <div className='grid grid-cols-1 gap-4 text-center'>
+        <Container modifier='grid grid-cols-1 gap-4 text-center'>
             <span className='text-4xl snap-center'>{`Vous avez d'autres besoins ?`}</span>
             <div className='flex max-md:flex-col justify-center gap-4 max-md:text-xl text-2xl [&>*]:w-full w-full max-w-[1024px] px-4' name='ee' style={{wordBreak: "break-word"}}>
                 <For obj={[
@@ -200,7 +203,7 @@ const Shop = ({color}) => {
                     </div>
                 } />
             </div>
-        </div>
+        </Container>
     </>)
 }
 
@@ -212,10 +215,10 @@ const Print = ({color}) => {
             {image: "https://copycatgroup.fr/images/sup1.png", id: "sup", text: <>{`Roll'up, drapeaux, vitrophanie...`}</>, button: "Je suis intéressé",},
         ]} />
         <iframe src="https://e.issuu.com/embed.html?d=catalogue_produits_en_marque_blanche&u=e3m4" className='w-full aspect-[4/3] max-w-[1024px] max-md:h-screen snap-center'></iframe>
-        <div className='grid grid-cols-1 text-4xl gap-4 text-center'>
+        <Container modifier='grid grid-cols-1 text-4xl gap-4 text-center'>
             <span>Une partie de nos impressions en ligne sur :</span>
             <Link to={'http://www.copycatprint.fr/accueil/'} style={{color: color}}>www.copycatprint.fr</Link>
-        </div>
+        </Container>
     </>)
 }
 
@@ -307,17 +310,17 @@ const Boutiques = {
         }, []);
 
         return (<>
-            <div className="w-full flex flex-col gap-6 items-center text-base md:text-xl text-gray-400 max-w-[1340px] text-center px-12">
+            <Container>
                 <div className='flex flex-col gap-6 snap-always snap-center toFade'>
-                    <h1 className="text-4xl text-black">La boutique à Sèvres</h1>
+                    <Title color={"black"}>La boutique à Sèvres</Title>
                     <p>Découvrez Copycat Sèvres, votre boutique de référence pour les fournitures de bureau et les services d'impression. Située au cœur de Sèvres, notre équipe dévouée vous propose une large sélection de produits de qualité et des services personnalisés pour répondre à tous vos besoins professionnels. Faites confiance à notre expertise et à notre engagement envers la satisfaction client pour une expérience d'achat agréable et des solutions documentaires sur mesure.</p>
                 </div>
-            </div>
+            </Container>
 
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-16 text-center max-w-[1340px] px-12'>
+            <Container modifier='grid grid-cols-1 lg:grid-cols-2 gap-16 text-center max-w-[1340px] px-12'>
                 <img src="image boutique.png" />
                 <div className="grid grid-cols-1 grid-rows-min gap-4 snap-center">
-                    <h1 className="text-4xl text-black">Horaires d'ouverture</h1>
+                    <Title color={"black"}>Horaires d'ouverture</Title>
                     <div className="gap-4 grid p-4 grid-cols-2 grid-flow-row auto-rows-min">
                         <For obj={horaires} render={(value, key) => {
                             let row = horaires.filter(jour => jour.col === value.col).indexOf(value)+1;
@@ -345,10 +348,10 @@ const Boutiques = {
                         </div>} />
                     </div>
                 </div>
-            </div>
+            </Container>
 
-            <div className='flex flex-col gap-6 snap-always snap-center toFade p-12 text-center'>
-                <h1 className="text-4xl text-black">Nos services au sein de la boutique</h1>
+            <Container modifier='flex flex-col gap-6 snap-always snap-center toFade p-12 text-center'>
+                <Title color={"black"}>Nos services au sein de la boutique</Title>
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                     <For obj={services} render={(value, key) => <div key={key} className="text-center text-2xl grid grid-cols-1 gap-4 justify-items-center">
                         <img src={"icone "+value.mainImg+".png"} className="rounded-full" />
@@ -358,34 +361,34 @@ const Boutiques = {
                         <div className="text-[#0061ad]">{value.text}</div>
                     </div>} />
                 </div>
-            </div>
+            </Container>
 
-            <div className='flex flex-col gap-6 snap-always snap-center items-center toFade px-12'>
-                <h1 className="text-4xl text-black">Nos réalisations</h1>
+            <Container modifier='flex flex-col gap-6 snap-always snap-center items-center toFade px-12'>
+                <Title color={"black"}>Nos réalisations</Title>
                 <div className="flex flex-wrap gap-4 justify-center">
                     <For obj={realisations} render={(value, key) => <button key={key} className={"text-xl py-4 px-8 bg-gray-200 rounded-full hover:bg-gray-300"} style={value.name === currentTabRealisation ? {background: color, color: "white"} : {}} onClick={() => setCurrentTabRealisation(value.name)}>{value.text}</button> } />
                 </div>
                 <div className="flex flex-wrap gap-2 justify-center">
                     <For obj={realisations.find(realisation => realisation.name === currentTabRealisation)?.imgs} render={(value, key) => <img key={key} src={realisations.find(realisation => realisation.name === currentTabRealisation)?.root+value+".png"} className="h-64" /> } />
                 </div>
-            </div>
+            </Container>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 text-white snap-always snap-center" style={{background: color}}>
+            <Container modifier="grid grid-cols-1 lg:grid-cols-2 text-white snap-always snap-center" style={{background: color}}>
                 <div className="p-12">
                     <p className="text-4xl pb-4">Pour en découvrir plus : Rejoignez-nous sur Instagram !</p>
                     <button className="border border-white rounded-xl p-2 text-2xl">@copycatsevres</button>
                 </div>
                 <img src="Bannière insta.png" className={"h-full"} />
-            </div>
+            </Container>
 
-            <div className="w-full flex flex-col gap-6 items-center text-base md:text-xl text-gray-400 max-w-[1340px] text-center px-12">
+            <Container>
                 <div className='flex flex-col gap-6 snap-always snap-center toFade w-full'>
-                    <h1 className="text-4xl text-black" style={{textWrap: "balance"}}>Contactez nous</h1>
+                    <Title color={"black"} style={{textWrap: "balance"}}>Contactez nous</Title>
                     <div className="flex w-full justify-center text-center md:text-left text-base md:text-xl text-gray-400">
                         <div className='max-w-[1340px] flex flex-col lg:flex-row w-full [&>div]:w-full gap-8 items-center'>
                             <div className='flex flex-col gap-6 snap-always snap-center toFade'>
                                 <div className="grid grid-cols-2 [&_label]:grid [&_label>input]:w-full [&_label>input]:rounded-lg gap-4" style={{"textWrap": "nowrap"}}>
-                                    <h1 className="text-4xl text-black col-span-2" style={{textWrap: "balance"}}>Faites vous rappeler !</h1>
+                                    <Title color={"blue-800"} modifier={"col-span-2"} style={{textWrap: "balance"}}>Faites vous rappeler !</Title>
                                     <form className="contents">
                                         {[
                                             {className: null, input : <input type="text" placeholder='Nom' />},
@@ -405,7 +408,7 @@ const Boutiques = {
                         </div>
                     </div>
                 </div>
-            </div>
+            </Container>
         </>)
     },
 
@@ -448,17 +451,17 @@ const Boutiques = {
         }, []);
 
         return (<>
-            <div className="w-full flex flex-col gap-6 items-center text-base md:text-xl text-gray-400 max-w-[1340px] text-center px-12">
+            <Container>
                 <div className='flex flex-col gap-6 snap-always snap-center toFade'>
-                    <h1 className="text-4xl text-black">La boutique à Boulogne</h1>
+                    <Title color={"black"}>La boutique à Boulogne</Title>
                     <p>Découvrez Copycat DPS Boulogne, votre choix idéal pour les fournitures de bureau et les services d'impression.De l'impression à la réparation d'ordinateurs, notre équipe dévouée vous offre des produits de qualité et des services personnalisés pour répondre à vos besoins professionnels. Faites-nous confiance pour une expérience d'achat agréable et des solutions documentaires adaptées</p>
                 </div>
-            </div>
+            </Container>
 
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-16 text-center max-w-[1340px] px-12'>
+            <Container modifier='grid grid-cols-1 lg:grid-cols-2 gap-16 text-center max-w-[1340px] px-12'>
                 <img src="image boutique.png" />
                 <div className="grid grid-cols-1 grid-rows-min gap-4 snap-center">
-                    <h1 className="text-4xl text-black">Horaires d'ouverture</h1>
+                    <Title color={"black"}>Horaires d'ouverture</Title>
                     <div className="gap-4 grid p-4 grid-cols-2 grid-flow-row auto-rows-min">
                         <For obj={horaires} render={(value, key) => {
                             let row = horaires.filter(jour => jour.col === value.col).indexOf(value)+1;
@@ -486,10 +489,10 @@ const Boutiques = {
                         </div>} />
                     </div>
                 </div>
-            </div>
+            </Container>
 
-            <div className='flex flex-col gap-6 snap-always snap-center toFade p-12 text-center'>
-                <h1 className="text-4xl text-black">Nos services au sein de la boutique</h1>
+            <Container modifier='grid grid-cols-1 lg:grid-cols-2 gap-16 text-center max-w-[1340px] px-12'>
+                <Title color={"black"}>Nos services au sein de la boutique</Title>
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
                     <For obj={services} render={(value, key) => <div key={key} className="text-center text-2xl grid grid-cols-1 gap-4 justify-items-center">
                         <div className="grid grid-cols-1 h-fit gap-4">
@@ -502,17 +505,17 @@ const Boutiques = {
                         <div className="text-[#0061ad]">{value.text}</div>
                     </div>} />
                 </div>
-            </div>
+            </Container>
 
-            <div className='flex flex-col gap-6 snap-always snap-center items-center toFade px-12'>
-                <h1 className="text-4xl text-black">Nos réalisations</h1>
+            <Container modifier='grid grid-cols-1 lg:grid-cols-2 gap-16 text-center max-w-[1340px] px-12'>
+                <Title color={"black"}>Nos réalisations</Title>
                 <div className="flex flex-wrap gap-4 justify-center">
                     <For obj={realisations} render={(value, key) => <button key={key} className={"text-xl py-4 px-8 bg-gray-200 rounded-full hover:bg-gray-300"} style={value.name === currentTabRealisation ? {background: color, color: "white"} : {}} onClick={() => setCurrentTabRealisation(value.name)}>{value.text}</button> } />
                 </div>
                 <div className="flex flex-wrap gap-2 justify-center">
                     <For obj={realisations.find(realisation => realisation.name === currentTabRealisation)?.imgs} render={(value, key) => <img key={key} src={realisations.find(realisation => realisation.name === currentTabRealisation)?.root+value+".png"} className="h-64" /> } />
                 </div>
-            </div>
+            </Container>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 text-white snap-always snap-center" style={{background: color}}>
                 <div className="p-12">
@@ -522,14 +525,14 @@ const Boutiques = {
                 <img src="Bannière insta.png" className={"h-full"} />
             </div>
 
-            <div className="w-full flex flex-col gap-6 items-center text-base md:text-xl text-gray-400 max-w-[1340px] text-center px-12">
+            <Container>
                 <div className='flex flex-col gap-6 snap-always snap-center toFade w-full'>
-                    <h1 className="text-4xl text-black" style={{textWrap: "balance"}}>Contactez nous</h1>
+                    <Title color={"black"} style={{textWrap: "balance"}}>Contactez nous</Title>
                     <div className="flex w-full justify-center text-center md:text-left text-base md:text-xl text-gray-400">
                         <div className='max-w-[1340px] flex flex-col lg:flex-row w-full [&>div]:w-full gap-8 items-center'>
                             <div className='flex flex-col gap-6 snap-always snap-center toFade'>
                                 <div className="grid grid-cols-2 [&_label]:grid [&_label>input]:w-full [&_label>input]:rounded-lg gap-4" style={{"textWrap": "nowrap"}}>
-                                    <h1 className="text-4xl text-black col-span-2" style={{textWrap: "balance"}}>Faites vous rappeler !</h1>
+                                    <Title color={"blue-800"} modifier={"col-span-2"} style={{textWrap: "balance"}}>Faites vous rappeler !</Title>
                                     <form className="contents">
                                         {[
                                             {className: null, input : <input type="text" placeholder='Nom' />},
@@ -549,15 +552,12 @@ const Boutiques = {
                         </div>
                     </div>
                 </div>
-            </div>
+            </Container>
         </>)
     }
 }
 
 const APropos = ({color}) => {
-    const [activeTab, setActiveTab] = useState(0);
-    const [activeTestimony, setActiveTestimony] = useState(0);
-
     let tabs = [ "solutions", "shop", "print", "labs", ];
     let values = [
         {img:null, color:"#f39113", title: "Bonne humeur", text: "Une équipe passionnée à l'écoute de vos besoins"},
@@ -570,27 +570,16 @@ const APropos = ({color}) => {
         {text: <>{`2. Nous travaillons avec CopycatGroup depuis plusieurs années sur plusieurs entreprises du groupe.`}<br />{`Au-delà de nos exigences de performance de service et de compétitivité des prix, parfaitement répondu par CCG, nous avons été toujours agréablement surpris par la disponibilité des équipes et leur grande capacité à gérer des projets non standards.`}<br />{`Je ne peux que me réjouir de les savoir notre fournisseur.`}</>},
         {text: <>{`3. Nous travaillons avec CopycatGroup depuis plusieurs années sur plusieurs entreprises du groupe.`}<br />{`Au-delà de nos exigences de performance de service et de compétitivité des prix, parfaitement répondu par CCG,`}<br />{`Je ne peux que me réjouir de les savoir notre fournisseur.`}</>},
         {text: <>{`4. Nous travaillons avec CopycatGroup depuis plusieurs années sur plusieurs entreprises du groupe.`}<br />{`Au-delà de nos exigences de performance de service et de compétitivité des prix, parfaitement répondu par CCG, nous avons été toujours agréablement surpris par la disponibilité des équipes et leur grande capacité à gérer des projets non standards.`}<br />{`Je ne peux que me réjouir de les savoir notre fournisseur.`}</>},
+        {text: <>{`5. Nous travaillons avec CopycatGroup depuis plusieurs années sur plusieurs entreprises du groupe.`}<br />{`Au-delà de nos exigences de performance de service et de compétitivité des prix, parfaitement répondu par CCG, nous avons été toujours agréablement surpris par la disponibilité des équipes et leur grande capacité à gérer des projets non standards.`}<br />{`Je ne peux que me réjouir de les savoir notre fournisseur.`}</>},
     ];
-    
-    var card = {
-        boxShadow: "0 0 #0000, 0 0 #0000, 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
-        padding: "1.5rem",
-        backgroundColor: "rgb(255 255 255 / 1)",
-        gap: "1rem",
-        gridTemplateColumns: "repeat(1, minmax(0, 1fr))",
-        width: "24rem",
-        display: "grid",
-        overflow: "hidden",
-        height: "100%"
-    }
 
     return (<>
-        <div className="w-full flex flex-col gap-8 items-center text-base md:text-xl text-gray-400 max-w-[1340px] text-center px-12">
+        <Container>
             <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-min gap-y-2 gap-x-8 text-left [&_span]:text-[#0061ad]" style={{color: "#737070"}}>
                 <div className="flex gap-8 lg:col-start-1 lg:row-start-1" style={{height: "100px", color: "#0061ad"}}>
                     <div className={"grid grid-cols-1 grid-rows-3"} style={{textWrap: "nowrap"}}>
                         <div></div>
-                        <h1 className="text-4xl">Edito CopycatGroup</h1>
+                        <Title color="#0061ad">Edito CopycatGroup</Title>
                         <div className="flex items-end">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22.909" height="17.523" viewBox="0 0 22.909 17.523">
                                 <g id="Groupe_68" data-name="Groupe 68" transform="translate(0)">
@@ -616,209 +605,44 @@ const APropos = ({color}) => {
 
                 <hr className="my-4 block lg:hidden" />
 
-                <div className="flex gap-8  lg:col-start-2 lg:row-start-1" style={{height: "100px", color: "#0061ad"}}>
+                <div className="flex gap-8 lg:col-start-2 lg:row-start-1" style={{height: "100px", color: "#0061ad"}}>
                     <img src="/pdg.svg" className="h-full aspect-square w-fit" />
-                    <div className={"grid grid-cols-1 grid-rows-3"} style={{textWrap: "nowrap"}}>
+                    <div className={"grid grid-cols-1 grid-rows-3 text-wrap items-center"}>
                         <div></div>
-                        <h1 className="text-4xl">Erwan HECAEN</h1>
-                        <div></div>
+                        <Title modifier={"!text-wrap !text-left"} color="#0061ad">Erwan HECAEN</Title>
+                        <div className="flex items-end">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22.909" height="17.523" viewBox="0 0 22.909 17.523">
+                                <g id="Groupe_68" data-name="Groupe 68" transform="translate(0)">
+                                    <path id="Tracé_73" data-name="Tracé 73" d="M3.552,8.928a4.926,4.926,0,0,1,5.071.9,4.447,4.447,0,0,1,.267,6.344,4.608,4.608,0,0,1-6.528.144C-.308,13.732-.451,10.57.637,7.306,1.807,3.857,4.394,1.619,7.781.1c.39.554.739,1.068,1.17,1.7C6.18,3.405,4.065,5.5,3.552,8.928Z" transform="translate(0 -0.079)"/>
+                                    <path id="Tracé_74" data-name="Tracé 74" d="M70.375,0,71.5,1.724c-2.833,1.6-4.865,3.736-5.42,7.062.554-.082,1.068-.205,1.6-.246a4.489,4.489,0,0,1,2.669,8.376,4.734,4.734,0,0,1-5.789-1.047c-2.238-2.443-2.607-6.487-.924-9.793A13.543,13.543,0,0,1,70.375,0Z" transform="translate(-49.743)"/>
+                                </g>
+                            </svg>
+                        </div>
                     </div>
                 </div>
 
-                <div className="flex flex-col justify-between gap-8  lg:col-start-2 lg:row-start-2" style={{}}>
+                <div className="flex flex-col justify-between gap-8 lg:col-start-2 lg:row-start-2" style={{}}>
                     <p>Chez <span>COPYCAT GROUP</span> nous avons à coeur de vous proposer les solutions les plus adaptées à votre fonctionnement.</p>
                     <p>Pour chaque service, nous mettons à votre disposition un interlocuteur privilégié et spécialisé.</p>
                     <p><span>NOS OUTILS PRINCIPAUX</span> : l'observation, l'écoute et l'attention à votre domaine et vos métiers.</p>
                     <p>Tous les secteurs imposent contraintes et besoins, vous accompagner pour les déterminer est notre première mission.</p>
+                    <div className="flex justify-end -mt-6"><svg id="Groupe_69" data-name="Groupe 69" xmlns="http://www.w3.org/2000/svg" width="22.909" height="17.523" viewBox="0 0 22.909 17.523"><path id="Tracé_73" data-name="Tracé 73" d="M6.54,8.775a4.926,4.926,0,0,1-5.071-.9A4.447,4.447,0,0,1,1.2,1.528,4.608,4.608,0,0,1,7.73,1.385C10.4,3.971,10.543,7.133,9.455,10.4,8.285,13.846,5.7,16.084,2.311,17.6c-.39-.554-.739-1.068-1.17-1.7C3.912,14.3,6.026,12.2,6.54,8.775Z" transform="translate(12.818 -0.1)"></path><path id="Tracé_74" data-name="Tracé 74" d="M64.87,17.484l-1.129-1.724c2.833-1.6,4.866-3.736,5.42-7.062-.554.082-1.068.205-1.6.246A4.489,4.489,0,0,1,64.891.568,4.734,4.734,0,0,1,70.68,1.615c2.238,2.443,2.607,6.487.924,9.793A13.543,13.543,0,0,1,64.87,17.484Z" transform="translate(-62.593 0.04)"></path></svg></div>
                 </div>
             </div>
-        </div>
+        </Container>
 
-        <div className="w-full flex flex-col gap-6 items-center text-base md:text-xl text-gray-400 max-w-[1340px] text-center px-12">
-            <div className="bg-[#F2F2F2] w-full p-1 gap-1 flex max-lg:flex-col">
-                <For obj={tabs} render={(value, i) => {
-                    return <button key={i} className="w-full flex rounded-lg p-2 items-center" style={{color: archi.find(arc => "/"+value === arc.path).element.props.header.color, background: i === activeTab && "white"}} onClick={() => setActiveTab(i)}>
-                        <img src={value.replace(value[0], value[0].toUpperCase())+".svg"} className="h-[50px] aspect-square w-fit rounded-full" />
-                        <div className="w-full">{archi.find(arc => "/"+value === arc.path).title}</div>
-                    </button>
-                }} />
-            </div>
-            <For obj={tabs} render={(value, i) => {
-                return (i === activeTab && <div key={i} className="grid grid-cols-1 lg:grid-cols-2 w-full gap-8">
-                    <div className="aspect-[625/418] bg-black"></div>
-                    <div className="flex flex-col justify-center gap-4">
-                        <button className="w-full flex rounded-lg p-2 items-center gap-4" style={{color: archi.find(arc => "/"+value === arc.path).element.props.header.color}} onClick={() => setActiveTab(i)}>
-                            <img src={value.replace(value[0], value[0].toUpperCase())+".svg"} className="h-[50px] aspect-square w-fit rounded-full" />
-                            <div className="">{archi.find(arc => "/"+value === arc.path).title}</div>
-                        </button>
-                        <p className="text-left">Nous mettons à votre disposition notre savoir et notre regard expert pour vous aider à voir plus loin qu'une marque de renom. En effet. nous vous aidons à trouver les services qui répondent le plus à vos attentes. Pour cela. nous nous appuyons sur nos partenaires méticuleusement sélectionnés.</p>
-                        <div className="flex flex-wrap text-sm gap-2 uppercase">
-                            <For obj={archi.find(arc => "/"+value === arc.path).dropdown} render={(tag, i) => <span key={i} className="px-16 py-2 border rounded-full" style={{color: archi.find(arc => "/"+value === arc.path).element.props.header.color, borderColor: archi.find(arc => "/"+value === arc.path).element.props.header.color}}>{tag.title}</span>} />
-                        </div>
-                    </div>
-                </div>)
-            }} />
-        </div>
+        <Tabs tabs={tabs} />
 
-        <div className="w-full flex flex-col gap-6 items-center text-sm sm:text-base text-gray-400 max-w-[1340px] text-center px-12">
+        <Container>
             <div className='flex flex-col gap-8 snap-always snap-center toFade [&>p]:text-left w-full justify-center' style={{color: "#737070"}}>
-                <h1 className="text-4xl text-[#0061ad]">Ils nous font confiance</h1>
-                <div className="flex w-full justify-center items-center relative gap-8 h-fit" style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(2, minmax(0,1fr))",
-                    gridTemplateRows: "repeat(1, minmax(0,1fr))",
-                    maxWidth: "800px",
-                    position: "relative",
-                    margin: "0 auto",
-                }}>
-                    <For obj={testimonies} render={(value, i) => {
-                        const minHeight = (4.5/6*100) + "%"
-                        return <div key={i} data-side={[
-                            (value === (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])) && "left",
-                            (value === testimonies[activeTestimony])  && "center",
-                            (value === (testimonies[activeTestimony+1] ?? testimonies[0]))  && "right"
-                        ].filter(Boolean)} style={{
-                            ...card,
-                            alignContent: "space-between",
-                            position: [
-                                (value === (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])) && "static",
-                                (value === testimonies[activeTestimony]) && "absolute",
-                                (value === (testimonies[activeTestimony+1] ?? testimonies[0])) && "static",
-                                (value !== (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])) && (value !== testimonies[activeTestimony]) && (value !== (testimonies[activeTestimony+1] ?? testimonies[0])) && "fixed"
-                            ].filter(Boolean)[0],
-                            display: [
-                                (value === (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])) && "grid",
-                                (value === testimonies[activeTestimony]) && "grid",
-                                (value === (testimonies[activeTestimony+1] ?? testimonies[0])) && "grid",
-                                (value !== (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])) && (value !== testimonies[activeTestimony]) && (value !== (testimonies[activeTestimony+1] ?? testimonies[0])) && "none"
-                            ].filter(Boolean)[0],
-                            zIndex: i === activeTestimony && 100,
-                            gridColumnStart : [
-                                (value === (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])) && "1",
-                                (value === testimonies[activeTestimony]) && "0",
-                                (value === (testimonies[activeTestimony+1] ?? testimonies[0])) && "2",
-                                (value !== (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])) && (value !== testimonies[activeTestimony]) && (value !== (testimonies[activeTestimony+1] ?? testimonies[0])) && "0"
-                            ].filter(Boolean)[0],
-                            gridRowStart : 1,
-                            opacity: [
-                                (value === (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])) && "0.4",
-                                (value === testimonies[activeTestimony]) && "1",
-                                (value === (testimonies[activeTestimony+1] ?? testimonies[0])) && "0.4",
-                                (value !== (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])) && (value !== testimonies[activeTestimony]) && (value !== (testimonies[activeTestimony+1] ?? testimonies[0])) && "0"
-                            ].filter(Boolean)[0],
-
-                            [value === (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1]) && 'gridColumnStart'] : "1",
-                            [value === (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1]) && 'margin'] : "0 0%",
-                            [value === (testimonies[activeTestimony+1] ?? testimonies[0]) && 'gridColumnStart'] : "3",
-                            [value === (testimonies[activeTestimony+1] ?? testimonies[0]) && 'margin'] : "0 0%",
-                            [value === testimonies[activeTestimony] && 'gridColumnStart'] : "2",
-
-                            height: (value === (testimonies[activeTestimony])) ? "100%" : minHeight,
-                            textOverflow: "ellipsis",
-                            whiteSpace: "nowrap",
-                        }} onClick={() => {
-                            const duration = 750;
-                            const anim = {
-                                duration: duration,
-                                iterations: 1,
-                                easing: "cubic-bezier(0.68, -0.55, 0.27, 1.55)",
-                            };
-                            
-                            let move = {
-                                l2C : document.querySelector('div[data-side="center"]').getBoundingClientRect().x - document.querySelector('div[data-side="left"]').getBoundingClientRect().x,
-                                l2r : document.querySelector('div[data-side="right"]').getBoundingClientRect().x - document.querySelector('div[data-side="left"]').getBoundingClientRect().x,
-                            };
-                            move = {
-                                l2C : move.l2C+"px",
-                                l2r : move.l2r+"px",
-                            };
-
-                            if (value === (testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])) {
-                                document.querySelector('div[data-side="left"]').animate([ {transform: 'translateX(0%)', height: minHeight, zIndex: "0", opacity: "0.6"}, {transform: 'translateX('+move.l2C+')', height: "100%", zIndex: "100", opacity: "1"}, ], anim);
-                                document.querySelector('div[data-side="center"]').animate([ {transform: 'translateX(0%)', height: "100%", zIndex: "100", opacity: "1"}, {transform: 'translateX('+move.l2C+')', height: minHeight, zIndex: "0", opacity: "0.6"}, ], anim);
-                                document.querySelector('div[data-side="right"]').animate([ {transform: 'translateX(0%)', zIndex: "0"}, {transform: 'translateX(-'+move.l2r+')', zIndex: "-100"}, ], anim);
-                                setTimeout(() => { setActiveTestimony(testimonies.indexOf(testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])); }, duration);
-                            }
-                            if (value === (testimonies[activeTestimony+1] ?? testimonies[0])) { 
-                                document.querySelector('div[data-side="right"]').animate([ {transform: 'translateX(0%)', height: minHeight, zIndex: "0", opacity: "0.6"}, {transform: 'translateX(-'+move.l2C+')', height: "100%", zIndex: "100", opacity: "1"}, ], anim);
-                                document.querySelector('div[data-side="center"]').animate([ {transform: 'translateX(0%)', height: "100%", zIndex: "100", opacity: "1"}, {transform: 'translateX(-'+move.l2C+')', height: minHeight, zIndex: "0", opacity: "0.6"}, ], anim);
-                                document.querySelector('div[data-side="left"]').animate([ {transform: 'translateX(0%)'}, {transform: 'translateX('+move.l2r+')'}, ], anim);
-                                setTimeout(() => { setActiveTestimony(testimonies.indexOf(testimonies[activeTestimony+1] ?? testimonies[0])); }, duration);    
-                            }
-                        }}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 37.236 31.2">
-                                <g id="Groupe_59" data-name="Groupe 59" transform="translate(-748.736 -3067.8)">
-                                    <path id="Tracé_71" data-name="Tracé 71" d="M15.152,0V6S8.82,6.344,9.29,16l5.927.065L15.152,31.2H.218S-3.111.6,15.152,0Z" transform="translate(770.756 3067.8)" fill="#06a13a"/>
-                                    <path id="Tracé_72" data-name="Tracé 72" d="M15.152,0V6S8.82,6.344,9.29,16l5.927.065L15.152,31.2H.218S-3.111.6,15.152,0Z" transform="translate(748.756 3067.8)" fill="#06a13a"/>
-                                </g>
-                            </svg>
-
-                            <p className="overflow-hidden px-8 sm:px-0" style={{textWrap: "balance"}}>{testimonies[i].text}</p>
-
-                            <div className="grid grid-rows-2 items-center text-start gap-x-3 h-fit" style={{gridTemplateColumns: "auto minmax(0, 1fr)"}}>
-                                <div className="w-12 h-fit aspect-square rounded-full row-span-2 bg-black"></div>
-                                <b className="">Nom</b>
-                                <span className="">Entreprise</span>
-                            </div>
-                        </div>
-                    }} />
-                    <button className="absolute right-0 bg-zinc-800 text-4xl p-4 z-[200] -mx-6 opacity-90" onClick={(e) => {
-                        const minHeight = (4.5/6*100) + "%"
-
-                        const duration = 750;
-                        const anim = {
-                            duration: duration,
-                            iterations: 1,
-                            easing: "cubic-bezier(0.68, -0.55, 0.27, 1.55)",
-                        };
-                        
-                        let move = {
-                            l2C : document.querySelector('div[data-side="center"]').getBoundingClientRect().x - document.querySelector('div[data-side="left"]').getBoundingClientRect().x,
-                            l2r : document.querySelector('div[data-side="right"]').getBoundingClientRect().x - document.querySelector('div[data-side="left"]').getBoundingClientRect().x,
-                        };
-                        move = {
-                            l2C : move.l2C+"px",
-                            l2r : move.l2r+"px",
-                        };
-                        e.target.disabled = true;
-
-                        document.querySelector('div[data-side="left"]').animate([ {transform: 'translateX(0%)', height: minHeight, zIndex: "0", opacity: "0.6"}, {transform: 'translateX('+move.l2C+')', height: "100%", zIndex: "100", opacity: "1"}, ], anim);
-                        document.querySelector('div[data-side="center"]').animate([ {transform: 'translateX(0%)', height: "100%", zIndex: "100", opacity: "1"}, {transform: 'translateX('+move.l2C+')', height: minHeight, zIndex: "0", opacity: "0.6"}, ], anim);
-                        document.querySelector('div[data-side="right"]').animate([ {transform: 'translateX(0%)', zIndex: "0"}, {transform: 'translateX(-'+move.l2r+')', zIndex: "-100"}, ], anim);
-                        setTimeout(() => { setActiveTestimony(testimonies.indexOf(testimonies[activeTestimony-1] ?? testimonies[testimonies.length-1])); e.target.disabled = false; }, duration);
-                    }}> {">"} </button>
-                    <button className="absolute left-0 bg-zinc-800 text-4xl p-4 z-[200] -mx-6 opacity-90" onClick={(e) => {
-                        const minHeight = (4.5/6*100) + "%"
-
-                        const duration = 750;
-                        const anim = {
-                            duration: duration,
-                            iterations: 1,
-                            easing: "cubic-bezier(0.68, -0.55, 0.27, 1.55)",
-                        };
-                        
-                        let move = {
-                            l2C : document.querySelector('div[data-side="center"]').getBoundingClientRect().x - document.querySelector('div[data-side="left"]').getBoundingClientRect().x,
-                            l2r : document.querySelector('div[data-side="right"]').getBoundingClientRect().x - document.querySelector('div[data-side="left"]').getBoundingClientRect().x,
-                        };
-                        move = {
-                            l2C : move.l2C+"px",
-                            l2r : move.l2r+"px",
-                        };
-                        e.target.disabled = true;
-
-                        document.querySelector('div[data-side="right"]').animate([ {transform: 'translateX(0%)', height: minHeight, zIndex: "0", opacity: "0.6"}, {transform: 'translateX(-'+move.l2C+')', height: "100%", zIndex: "100", opacity: "1"}, ], anim);
-                        document.querySelector('div[data-side="center"]').animate([ {transform: 'translateX(0%)', height: "100%", zIndex: "100", opacity: "1"}, {transform: 'translateX(-'+move.l2C+')', height: minHeight, zIndex: "0", opacity: "0.6"}, ], anim);
-                        document.querySelector('div[data-side="left"]').animate([ {transform: 'translateX(0%)'}, {transform: 'translateX('+move.l2r+')'}, ], anim);
-                        setTimeout(() => { setActiveTestimony(testimonies.indexOf(testimonies[activeTestimony+1] ?? testimonies[0])); e.target.disabled = false; }, duration); 
-                    }}> {"<"} </button>
-                </div>
+                <Title color="#0061ad">Ils nous font confiance</Title>
+                <Testimonies testimonies={testimonies} />
             </div>
-        </div>
+        </Container>
 
-        <div className="w-full flex flex-col gap-6 items-center text-base md:text-xl text-gray-400 max-w-[1340px] text-center px-12">
+        <Container>
             <div className='flex flex-col gap-8 snap-always snap-center toFade [&>p]:text-left' style={{color: "#737070",}}>
-                <h1 className="text-4xl text-[#0061ad]">Nos valeurs</h1>
+                <Title color="#0061ad">Nos valeurs</Title>
                 <p>Nous abordons le travail d’équipe au sens large : Une collaboration avec une entreprise signifie une entente totale, transparente et proactive. Nos outils sont les vôtres et vice versa. Notre image est celle d’une entreprise dynamique, entreprenante et surtout, très fiable.</p>
                 <p>L’humain étant au cœur de notre société et ayant pour objectif d’être les plus fiables pour nos clients, nos collaborateurs répondent à des critères stricts et pointus.</p>
                 <p>Nous collaborons avec des personnes mais avant tout des personnalités : Amoureux du travail d’équipe, spontané, force de propositions, réactif, autonome et à l’esprit créatif. Chacun de nos échanges doit être agréable et productif.</p>
@@ -826,9 +650,9 @@ const APropos = ({color}) => {
                 <p>Pour nous, chaque métier, chaque compétence sont importants. Le clivage et la préférence pour tel ou tel rôle n’a pas sa place dans nos projets. Nous valorisons au maximum chaque acteur de nos équipes. La productivité passe par la reconnaissance et l’encouragement.</p>
                 <p>Évidemment, nos collaborateurs ne sont pas cantonnés dans un seul et même modèle, la liberté reste un outil de travail essentiel à ceux qui nous aident et vous aident à trouver vos solutions. Pour être sûrs d’assurer une collaboration sur le plus long terme possible, nous laissons nos collaborateurs agir tels des « électrons libres » si cela permet d’offrir une meilleure productivité.</p>
             </div>
-        </div>
+        </Container>
 
-        <div className="w-full flex flex-col gap-6 items-center text-base md:text-xl text-gray-400 max-w-[1340px] text-center px-12">
+        <Container>
             <div className='flex flex-col gap-8 snap-always snap-center toFade [&>p]:text-left' style={{color: "#737070", wordBreak: "break-all"}}>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center gap-16">
                     <For obj={values} render={(value, i) => {
@@ -840,19 +664,84 @@ const APropos = ({color}) => {
                     }} />
                 </div>
             </div>
-        </div>
+        </Container>
 
-        <div className="w-full flex flex-col gap-6 items-center text-base md:text-xl text-gray-400 max-w-[1340px] text-center px-12">
+        <Container>
             <div className='flex flex-col gap-8 snap-always snap-center toFade [&>p]:text-left' style={{color: "#737070"}}>
-                <h1 className="text-4xl text-[#0061ad]">Retrouvez nous sur les réseaux sociaux</h1>
+                <Title color="#0061ad">Retrouvez nous sur les réseaux sociaux</Title>
                 <div className="flex justify-center gap-16">
-                    <Link to={"https://www.facebook.com/copycat.groupe/"} style={{display: "contents"}}><icons.Facebook size={32} /></Link>
-                    <Link to={"https://www.instagram.com/copycat_group/"} style={{display: "contents"}}><icons.Instagram size={32} /></Link>
-                    <Link to={"https://fr.linkedin.com/company/copycat-group"} style={{display: "contents"}}><icons.Linkedin size={32} /></Link>
+                    <Link to={"https://www.facebook.com/copycat.groupe/"} style={{display: "contents"}}><Icons icon={"Facebook"} size={32} /></Link>
+                    <Link to={"https://www.instagram.com/copycat_group/"} style={{display: "contents"}}><Icons icon={"Instagram"} size={32} /></Link>
+                    <Link to={"https://fr.linkedin.com/company/copycat-group"} style={{display: "contents"}}><Icons icon={"Linkedin"} size={32} /></Link>
                 </div>
             </div>
-        </div>
+        </Container>
     </>)
 }
 
-export default {Home, Solutions, Shop, Print, Labs, Boutiques, APropos}
+const RSE = ({color}) => {
+    const [imgPanda, setImgPanda] = useState(null);
+    fetch('/imgPanda.txt').then(r => r.text()).then(r => setImgPanda(r));
+
+    return (<>
+        <Container>
+            <Title>{"Notre Engagement RSE :"}<br />{"Construire un Avenir Responsable"}</Title>
+            <hr className="w-full border border-[#0061ad]" />
+            <p>{`La RSE, où Responsabilité Sociale des entreprises, consiste pour les entreprises à prendre en compte les aspects sociaux, environnementaux et économiques dans leurs actions, au-delà de la recherche de profits. Cela implique d'agir de manière responsable envers la société et l'environnement, en favorisant des conditions de travail équitables, le respect des droits de l'homme et des pratiques durables.`}</p>
+            <hr className="w-full border border-[#0061ad]" />
+        </Container>
+
+        <Container>
+            <div className="w-full h-fit grid grid-cols-3 p-8 gap-16">
+                <For obj={[
+                    {title: `Environnemental`,text: `Nous mettons l'accent sur la protection de l'environnement en adoptant des pratiques durables et respectueuses.`,icon: `Environment`, viewBox:"0 0 67.602 68"},
+                    {title: `Social`,text: `Nous nous engageons à avoir un impact positif sur la société en maintenant des relations éthiques et en soutenant des initiatives sociales.`,icon: `Social`, viewBox: "0 0 100.97 66.875"},
+                    {title: `Sociétal`,text: `Nous valorisons l'épanouissement de notre équipe en favorisant un environnement de travail inclusif et équitable.`,icon: `Society`, viewBox: "0 0 97.561 68"},
+                ]} render={({title, text, icon, viewBox="0 0 63.229 88.556"}, i) => <div key={i} className="items-center flex-col flex gap-8">
+                    <Icons icon={icon} size={90} viewBox={viewBox} />
+                    <Title modifier={"text-xl uppercase"} color="#0061ad">{title}</Title>
+                    <p className="text-center">{text}</p>
+                </div>} />
+            </div>
+        </Container>
+
+        
+
+        <Container>
+            <div className="w-full h-fit bg-[#0061ad] flex max-lg:flex-col">
+                <div className="text-white gap-8 justify-center flex flex-col p-16" style={{ minWidth: (100*752/1683)+"%" }}>
+                    <Title color="white"> 1% Pour Les Animaux </Title>
+                    <p>CopyCat Group s’engage dans le cadre d’un partenariat avec 1% pour les animaux. </p>
+                    <p>Nous reversons 1% de notre chiffre d’affaires afin de protéger les animaux et la biodiversité.</p>
+                </div>
+                <div style={{aspectRatio: "931 / 581.88", height: "100%"}}>
+                    <img src={"/img/page rse/panda-roux-1pourcent-pour-les-animaux.jpg"} alt="" />
+                </div>
+            </div>
+        </Container>
+
+        <Container>
+            <Title>{"Nos actions"}</Title>
+            <div className="flex flex-col lg:grid lg:grid-cols-3 gap-4 w-full [&>:nth-last-child(-n+1)]:col-span-3">
+                <For obj={[
+                    {title: `Recyclage des cartouches d'encre`,text: `Nous offrons à nos clients une boîte de tri spécial pour collecter les cartouches usagées. Avec les Ecobox Xerox, nous réduisons l'impact environnemental en triant également nos propres consommables.`,icon: `InkRecycle`,},
+                    {title: `Tri des piles`,text: `Nous nous soucions de l’environn-
+                    ement et de la sécurité de nos clients. C’est pourquoi nous mettons à leur disposition une boîte de tri pour les piles usagées, afin qu’elles puissent être recyclées ou éliminées de manière appropriée.`,icon: `BatteryRecycle`,},
+                    {title: `Tri des déchets papier`,text: `Nous accordons une grande impor-
+                    tance au tri responsable des déchets papier. En séparant les documents recyclables des autres déchets, nous contribuons à la réduction de notre empreinte carbone et à la préservation des ressources forestières. `,icon: `PaperRecycle`, viewBox: "0 0 88.323 88.603"},
+                    {title: `salariés, Partenaires et fournisseurs`,text: `Chez Copycat Group, nous sommes engagés dans une démarche responsable et durable. C’est pourquoi nous fournissons à nos salariés, fournisseurs et prestataires une charte RSE à laquelle ils doivent se conformer, afin de garantir le respect de l’environnement, des droits humains et des normes éthiques.`,icon: `Partners`, viewBox:"0 0 101.916 72.223"},
+                ]} render={({title, text, icon, viewBox="0 0 63.229 88.556"}, i) => <div key={i} className="bg-blue-200 text-left text-wrap">
+                    <div className="bg-white p-4 rounded-bl-2xl ml-5 mb-2 mt-0 mr-0" style={{float: "right"}}>
+                        <Icons icon={icon} size={90} viewBox={viewBox} />
+                    </div>
+                    <Title modifier={"text-xl uppercase !text-left p-8 pb-1 break-all"} color="#0061ad">{title}</Title>
+                    <p className="p-8 pt-1">{text}</p>
+                </div>} />
+            </div>
+        </Container>
+
+        <button className="bg-[#0061ad] py-4 px-6 rounded-full text-white">Télécharger la charte RSE Copycat Group</button>
+    </>)
+}
+
+export default {Home, Solutions, Shop, Print, Labs, Boutiques, APropos, RSE}

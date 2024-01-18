@@ -122,15 +122,35 @@ export const archi = [
 		}}  />, 
 		dropdown: [
 			{path : "/about", title : "A propos", icon: 'icone a  propos.png'},
-			{path : "/contact", title : "Contact", icon: 'icone formulaire.png', disabled: true},
-			{path : "/rse", title : "Politique RSE", icon: 'icone RSE.png', disabled: true},
+			{path : "/contact", title : "Contact", icon: 'icone formulaire.png', /* disabled: true */},
+			{path : "/rse", title : "Politique RSE", icon: 'icone RSE.png'},
 		] 
 	},
 	{ 
 		nav: false, 
-		path: "/about", 
-		title: "A propos", 
-		element: <Page title={"A propos"} /> 
+		path: "/rse", 
+		title: "Politique RSE", 
+		element: <Page title={"Politique RSE"} Body={Body.RSE} header={{ 
+			cover:"-rse", 
+			logo: null, 
+			textLine:[""], 
+			color:'#ed01b5',
+			fullText: false,
+			kurz: true,
+		}} /> 
+	},
+	{ 
+		nav: false, 
+		path: "/contact", 
+		title: "Contact", 
+		element: <Page title={"Contact"} Body={Body.Contact} header={{ 
+			cover:"-rse", 
+			logo: null, 
+			textLine:["ok"], 
+			color:'#ed01b5',
+			fullText: false,
+			mid: true,
+		}} /> 
 	},
 	{ 
 		nav: false, 
