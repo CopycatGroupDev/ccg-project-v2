@@ -745,7 +745,6 @@ const Contact = ({color}) => {
     return (<>
         <Container>
             <div className="grid grid-cols-2 [&_label]:grid [&_label>input]:w-full  gap-4 w-full text-start" style={{"textWrap": "nowrap"}}>
-                <Title color={"#1e40af"} modifier={"col-span-2"}>Faites vous rappeler !</Title>
                 <form className="contents">
                     {[
                         [null, "Nom", (props) => <input type="text" {...props} />],
