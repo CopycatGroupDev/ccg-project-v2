@@ -8,6 +8,10 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Icons } from './utilities';
 
+export const Container = ({ modifier="w-full flex flex-col gap-6 items-center text-base md:text-xl text-gray-400 max-w-[1340px] text-center px-12", style, children }) => <div className={modifier} style={style}>{children}</div>
+
+export const Title = ({children, color="black", modifier}) => <h1 className={`text-4xl text-center text-${color} text-[${color}] ${modifier}`} style={{color: color}}>{children}</h1>
+
 export const Header = ({cover, logo, textLine, color, textBtn, fullText = false, kurz = false, mid = false, title}) => {
     const [navOpened, setNavOpened] = useState(false);
 
@@ -201,6 +205,24 @@ export const Dropdown = ({obj, color, callback, className, close, closeBtn}) => 
 }
 
 export const Nav = ({setNavOpened, navOpened}) => {
+    const logo = useRef(null);
+    const items = useRef(null);
+    const [logoTouches, setLogoTouches] = useState(false);
+
+    useEffect(() => {
+        const checkLogoTouches = () => {
+            let points = [logo.current?.getBoundingClientRect().x, logo.current?.getBoundingClientRect().width + logo.current?.getBoundingClientRect().x];
+            let itemsLeft = items.current?.getBoundingClientRect().x;
+            let logoTouches_ = points[0] < itemsLeft && itemsLeft < points[1];
+            setLogoTouches(logoTouches_); 
+        }
+        window.addEventListener('resize', checkLogoTouches);
+
+        return () => {
+            //
+        };
+    }, []);
+
     const [dropdown, setDropdown] = useState(null);
     const colors = archi.filter(route => route.nav).map(route => route.element.props.header.color);
 
@@ -213,11 +235,11 @@ export const Nav = ({setNavOpened, navOpened}) => {
     });
 
     return (<div className='flex flex-col justify-start items-center' id="nav">
-        <div className='flex justify-between lg:justify-center relative max-w-[1500px] w-full max-lg:items-center max-lg:gap-2 items-start lg:max-xl:flex-col lg:max-xl:items-center'>
+        <div className='flex justify-between lg:justify-right lg:justify-center relative max-w-[1500px] w-full max-lg:items-center max-lg:gap-2 items-start lg:max-xl:flex-col lg:max-xl:items-center'>
             <Link to="/" className='contents'>
-                <img src="/logo.png" alt="" className="w-[20vh] max-h-[120px] aspect-[163/120] object-contain h-fit left-0 lg:mx-18 xl:absolute" />
+                <img src="/logo.png" alt="" className="w-[20vh] max-h-[120px] aspect-[163/120] object-contain h-fit left-0 lg:mx-18 xl:absolute" style={{[logoTouches && "opacity"]: 0}} ref={logo} />
             </Link>
-            <div className='justify-center items-center hidden lg:flex gap-[.5vw] md:[&_li]:cursor-pointer [&>a]:text-[#0061ad] items-start [&_li]:p-2 z-50 px-2 py-4'>
+            <div className='justify-center items-center hidden lg:flex gap-[.5vw] md:[&_li]:cursor-pointer [&>a]:text-[#0061ad] items-start [&_li]:p-2 z-50 px-2 py-4' ref={items}>
                 <For obj={archi.filter(route => route.nav)} render={(route, i) => <div key={i} className='text-[#0061ad]' style={dropdown === route.path ? pillStyleHover(i) : pillStyle} onMouseOver={() => { setDropdown(route.path); }} onMouseLeave={() => { setDropdown(null); }}>
                     <Link to={route.path} className={'p-2'}>{route.title}</Link>
                     {dropdown === route.path && <Dropdown obj={route.dropdown} color={colors[i]} className={"absolute"} />}

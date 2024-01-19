@@ -1,18 +1,15 @@
 /* eslint-disable react/no-children-prop */
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
-import { Header, Footer, CCGCarousel as Carousel, Timeline, Nav, NavMobile, Testimonies, Tabs } from "./comps";
+import { Header, Footer, CCGCarousel as Carousel, Timeline, Nav, NavMobile, Testimonies, Tabs, Container, Title } from "./comps";
 import { useEffect, useState, useRef } from "react";
 import { For } from "./functions";
 import { Svg, Icons } from "./utilities";
 import { archi } from "./archi";
 
-const Container = ({ modifier="w-full flex flex-col gap-6 items-center text-base md:text-xl text-gray-400 max-w-[1340px] text-center px-12", style, children }) => <div className={modifier} style={style}>{children}</div>
-const Title = ({children, color="black", modifier}) => <h1 className={`text-4xl text-center text-${color} text-[${color}] ${modifier}`} style={{color: color}}>{children}</h1>
-
 export const Page = ({header, title, Body}) => {
     const footer = useRef(null);
-    const body = document.querySelector('body').getBoundingClientRect();
+    const body = document.querySelector('body')?.getBoundingClientRect();
 
     document.querySelector('title').innerHTML = title;
     const [scroll, setScroll] = useState(window.scrollY);
@@ -387,7 +384,7 @@ const Boutiques = {
                     <div className="flex w-full justify-center text-center md:text-left text-base md:text-xl text-gray-400">
                         <div className='max-w-[1340px] flex flex-col lg:flex-row w-full [&>div]:w-full gap-8 items-center'>
                             <div className='flex flex-col gap-6 snap-always snap-center toFade'>
-                                <div className="grid grid-cols-2 [&_label]:grid [&_label>input]:w-full [&_label>input]:rounded-lg gap-4" style={{"textWrap": "nowrap"}}>
+                                <div className="grid grid-cols-2 [&_label]:grid [&_label>input]:w-full [&_label>input]:border-gray-300 gap-4" style={{"textWrap": "nowrap"}}>
                                     <Title color={"blue-800"} modifier={"col-span-2"} style={{textWrap: "balance"}}>Faites vous rappeler !</Title>
                                     <form className="contents">
                                         {[
@@ -537,7 +534,7 @@ const Boutiques = {
                     <div className="flex w-full justify-center text-center md:text-left text-base md:text-xl text-gray-400">
                         <div className='max-w-[1340px] flex flex-col lg:flex-row w-full [&>div]:w-full gap-8 items-center'>
                             <div className='flex flex-col gap-6 snap-always snap-center toFade'>
-                                <div className="grid grid-cols-2 [&_label]:grid [&_label>input]:w-full [&_label>input]:rounded-lg gap-4" style={{"textWrap": "nowrap"}}>
+                                <div className="grid grid-cols-2 [&_label]:grid [&_label>input]:w-full [&_label>input]:border-gray-300 gap-4" style={{"textWrap": "nowrap"}}>
                                     <Title color={"blue-800"} modifier={"col-span-2"} style={{textWrap: "balance"}}>Faites vous rappeler !</Title>
                                     <form className="contents">
                                         {[
@@ -659,7 +656,7 @@ const APropos = ({color}) => {
         </Container>
 
         <Container>
-            <div className='flex flex-col gap-8 snap-always snap-center toFade [&>p]:text-left' style={{color: "#737070", wordBreak: "break-all"}}>
+            <div className='flex flex-col gap-8 snap-always snap-center toFade [&>p]:text-left' style={{color: "#737070"}}>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center gap-16">
                     <For obj={values} render={(value, i) => {
                         return <div key={i} className="grid grid-cols-1 grid-rows-3">
