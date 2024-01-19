@@ -3,15 +3,15 @@ import { Navigate, Routes, Route, /* Link */ } from "react-router-dom";
 import Body, { Page } from "./pages";
 //import { For } from "./functions";
 
-import bannerAccueil from "../public/banner-bg.png";
-import bannerSolutions from "../public/banner-bg-sol.png";
-import bannerBoutique from "../public/banner-bg-boutique.png";
-import bannerContact from "../public/banner-bg-contact.png";
-import bannerLabs from "../public/banner-bg-labs.png";
-import bannerPrint from "../public/banner-bg-print.png";
-import bannerRSE from "../public/banner-bg-rse.png";
-import bannerShop from "../public/banner-bg-shop.png";
-import bannerCCG from "../public/banner-bg-ccg.png";
+import bannerAccueil from "./assets/banner-bg.png";
+import bannerSolutions from "./assets/banner-bg-sol.png";
+import bannerBoutique from "./assets/banner-bg-boutique.png";
+import bannerContact from "./assets/banner-bg-contact.png";
+import bannerLabs from "./assets/banner-bg-labs.png";
+import bannerPrint from "./assets/banner-bg-print.png";
+import bannerRSE from "./assets/banner-bg-rse.png";
+import bannerShop from "./assets/banner-bg-shop.png";
+import bannerCCG from "./assets/banner-bg-ccg.png";
 
 export const archi = [
 	{ 

@@ -254,7 +254,7 @@ const Boutiques = {
         return <>
             {navOpened && <NavMobile setNavOpened={setNavOpened} navOpened={navOpened} />}
             <div id='header' className={`w-full h-screen relative flex snap-always snap-center`}>
-                <img src={"/banner-bg-ccg.png"} className='w-full h-full object-cover'/>
+                <img src={"/src/assets/banner-bg-ccg.png"} className='w-full h-full object-cover'/>
                 <div className="absolute w-full h-full flex flex-col [&>*]:h-full gap-4 p-8 lg:p-4">
                     <Nav setNavOpened={setNavOpened} navOpened={navOpened} />
                     <div className="flex justify-center gap-16">
