@@ -432,7 +432,7 @@ const Boutiques = {
         ]
 
         let services = [
-            {title: "SOLUTIONS", path: "/solutions", mainImg: "solutions", imgs: ["","",""], text: "Bureautique, Téléphonie Digital, Informatique"},
+            {title: "SOLUTIONS", path: "/solutions", mainImg: "solutions", imgs: ["icone bur1","icone tel1","icone inf1", "icone dig1"], text: "Bureautique, Téléphonie Digital, Informatique"},
             {title: "PRINT", path: "/print", mainImg: "print", imgs: ["Objets personnalisés","Signalétique-PLV","Imprimerie"], text: "Reprographie, Photocopie, Impression numérique, Support PLV, Objets personnalisés"},
             {title: "SHOP", path: "/shop", mainImg: "shop", imgs: ["Informatique", "Divers", "Bureautique", "IT-Multimédia",], text: "Informatique, IT / Multimédia, Bureautique, Divers"},
             {title: "LABS", path: "/labs", mainImg: "labs", imgs: ["Création graphique", "Développement web"], text: "Développement web, Graphisme"},
@@ -491,23 +491,29 @@ const Boutiques = {
                 </div>
             </Container>
 
-            <Container modifier='grid grid-cols-1 lg:grid-cols-2 gap-16 text-center max-w-[1340px] px-12'>
+            <Container>
                 <Title color={"black"}>Nos services au sein de la boutique</Title>
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
-                    <For obj={services} render={(value, key) => <div key={key} className="text-center text-2xl grid grid-cols-1 gap-4 justify-items-center">
-                        <div className="grid grid-cols-1 h-fit gap-4">
-                            <img src={"icone "+value.mainImg+".png"} className="rounded-full" />
-                            <b style={{color: archi.find(arc => arc.path === value.path).element.props.header.color}}>{value.title}</b>
-                        </div>
-                        <div>
-                            <For obj={value.imgs} render={(img, key) => <img key={key} src={img+".png"} className="inline-block h-20" /> } />
-                        </div>
-                        <div className="text-[#0061ad]">{value.text}</div>
-                    </div>} />
+                    <For obj={services} render={({mainImg, imgs, path, text, title}, key) => {
+                        function capitalizeFirstLetter(string) {
+                            return string.charAt(0).toUpperCase() + string.slice(1);
+                        }
+
+                        return (<div key={key} className="text-center text-2xl grid grid-cols-1 gap-4 justify-items-center">
+                            <div className="grid grid-cols-1 h-fit gap-4">
+                                <img src={capitalizeFirstLetter(mainImg)+".svg"} className="rounded-full aspect-square w-fit h-[210px]" />
+                                <b style={{color: archi.find(arc => arc.path === path).element.props.header.color}}>{title}</b>
+                            </div>
+                            <div>
+                                <For obj={imgs} render={(img, key) => <img key={key} src={img+".png"} className="inline-block h-20" style={{mixBlendMode: "color"}} /> } />
+                            </div>
+                            <div className="text-[#0061ad]">{text}</div>
+                        </div>)
+                    }} />
                 </div>
             </Container>
 
-            <Container modifier='grid grid-cols-1 lg:grid-cols-2 gap-16 text-center max-w-[1340px] px-12'>
+            <Container>
                 <Title color={"black"}>Nos réalisations</Title>
                 <div className="flex flex-wrap gap-4 justify-center">
                     <For obj={realisations} render={(value, key) => <button key={key} className={"text-xl py-4 px-8 bg-gray-200 rounded-full hover:bg-gray-300"} style={value.name === currentTabRealisation ? {background: color, color: "white"} : {}} onClick={() => setCurrentTabRealisation(value.name)}>{value.text}</button> } />
