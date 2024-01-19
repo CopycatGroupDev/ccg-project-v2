@@ -1,7 +1,7 @@
 /* eslint-disable react/no-children-prop */
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
-import { Header, Footer, CCGCarousel as Carousel, Timeline, Nav, NavMobile, Testimonies, Tabs, Container, Title } from "./comps";
+import { Header, Footer, CCGCarousel as Carousel, Timeline, Nav, NavMobile, Testimonies, Tabs, Container, Title, SolutionsList } from "./comps";
 import { useEffect, useState, useRef } from "react";
 import { For } from "./functions";
 import { Svg, Icons } from "./utilities";
@@ -24,8 +24,8 @@ export const Page = ({header, title, Body}) => {
         //return () => clearInterval(int);
 
         const up = () => {
-            let body = document.querySelector('body').getBoundingClientRect();
-            let footerRect = footer.current.getBoundingClientRect();
+            let body = document.querySelector('body')?.getBoundingClientRect();
+            let footerRect = footer.current?.getBoundingClientRect();
             let footerBottom = (footerRect.bottom < body.height) ? "ot" : (body.height > footerRect.y) ? body.height - footerRect.y : 0;
             setBottomBtnScrTop(footerBottom);
         }
@@ -38,7 +38,7 @@ export const Page = ({header, title, Body}) => {
     }, []);
 
     return <>
-        {<style>{`body{background:rgba(0,0,0,0.025);--thickness: 6px; --page-color: ${header.color};} .colorPage{background-color: var(--page-color);}`}</style>}
+        {<style>{`body{background:rgba(0,0,0,0.025);--thickness: 3px; --page-color: ${header.color};} .colorPage{background-color: var(--page-color);}`}</style>}
         <Header {...header} />
         {Body && <Body color={header.color} />}
         <Footer refF={footer} />
@@ -174,6 +174,15 @@ const Solutions = ({color}) => {
             {image: "https://copycatgroup.fr/images/dig1.png", id: "dig", text: <>{`Archivage, dématérialisation des factures, note de frais...`}</>, button: "Je suis intéressé",},
             {image: "https://copycatgroup.fr/images/inf1.png", id: "inf", text: <>{`Vente, maintenance, infogérance`}</>, button: "Je suis intéressé",},
         ]} />
+
+        <Title>Accompagnement sur nos solutions</Title>
+
+        <SolutionsList solutions={[
+            {title: "Financement", content: `Disposez immédiatement de votre matériel ou de votre solution hébergée. Préservez votre trésorerie. Nous gérons toutes les formalités administratives en partenariat avec des organismes de financement bancaires spécialisés (Aucune démarche auprès de votre banque). Remplacer votre matériel ou solution avant la fin du contrat (possibilité de rachat des contrats concurrents) si vos besoins évoluent. Les loyers sont entièrement déductibles du résultat. Le financement locatif permet d’améliorer la structure du bilan (pas d’immobilisation).`, img: "Image financement .png"},
+            {title: "Maintenance et support", content: `Moins d’actions mais plus de productivité, des techniques de résolution en constantes évolution, une fiabilité de moins en moins contestable. Peut on faire totalement confiance à nos solutions ? Nous restons convaincus que oui. Toutefois, rien n’étant infaillible, nous restons vigilants et disponibles pour vous offrir une garantie maximale. Nos contrats de maintenance ou de support vous apportent tout le confort nécessaire au bon fonctionnement de vos solutions. De plus, l’intervention sur site ou à distance est également compris.`, img: "Maintenance et support .png"},
+            {title: "Déploiement", content: `Nous vous accompagnons à chaque étape du déploiement et notre prestation inclue : L’assistance aux démarches de résiliations de vos contrats avec votre ancien prestataire. La préparation et le paramétrage de votre nouvelle acquisition. Nous proposons la livraison, le paramétrage et l’installation de vos solutions (réseau, politique d’impression), la formation de vos collaborateurs et ce, sur l’ensemble du territoire national.`, img: "Deploiement .png"},
+            {title: "Suivi et Accompagnement", content: `Nous vous proposons une routine de visite dans laquelle nous allons suivre les coûts liés à votre contrat, le taux de disponibilité de vos solutions et surtout votre satisfaction. Selon vos besoins nous pourrons faire évoluer votre contrat et vos options. Notre expertise et nos apports s’adapteront en permanence à vos demandes.`, img: "Suivi et accompagnement .png"},
+        ]} />
     </>)
 }
 
@@ -252,7 +261,7 @@ const Boutiques = {
             {navOpened && <NavMobile setNavOpened={setNavOpened} navOpened={navOpened} />}
             <div id='header' className={`w-full h-screen relative flex snap-always snap-center`}>
                 <img src={"/src/assets/banner-bg-ccg.png"} className='w-full h-full object-cover'/>
-                <div className="absolute w-full h-full flex flex-col [&>*]:h-full gap-4 p-8 lg:p-4">
+                <div className="absolute w-full h-full flex flex-col [&>*]:h-full gap-4 p-8 lg:p-4 text-xl xl:text-2xl">
                     <Nav setNavOpened={setNavOpened} navOpened={navOpened} />
                     <div className="flex justify-center gap-16">
                         <For obj={boutiques} render={(value, key) => {
