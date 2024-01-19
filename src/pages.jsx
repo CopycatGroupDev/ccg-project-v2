@@ -145,7 +145,7 @@ const Home = () => {
         <Container modifier="flex w-full justify-center text-center md:text-left text-base md:text-xl text-gray-400">
             <div className='max-w-[1340px] flex flex-col lg:flex-row w-full [&>div]:w-full px-12 gap-8 items-center'>
                 <div className='flex flex-col gap-6 snap-always snap-center toFade'>
-                    <div className="grid grid-cols-2 [&_label]:grid [&_label>input]:w-full [&_label>input]:rounded-lg gap-4" style={{"textWrap": "nowrap"}}>
+                    <div className="grid grid-cols-2 [&_label]:grid [&_label>input]:w-full [&_label>input]:border-gray-300 gap-4" style={{"textWrap": "nowrap"}}>
                         <Title color={"#1e40af"} modifier={"col-span-2"}>Faites vous rappeler !</Title>
                         <form className="contents">
                             {[
