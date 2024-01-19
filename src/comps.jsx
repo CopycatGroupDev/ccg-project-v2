@@ -13,7 +13,7 @@ export const Header = ({cover, logo, textLine, color, textBtn, fullText = false,
 
     return <>
         {navOpened && <NavMobile setNavOpened={setNavOpened} navOpened={navOpened} />}
-        <div id='header' className={`w-full max-sm:h-screen lg:h-screen relative flex snap-always snap-center bg-[${color}]`} style={{[kurz && 'height']: '400px', [mid && 'height']: '720px'}}>
+        <div id='header' className={`w-full h-screen relative flex snap-always snap-center bg-[${color}]`} style={{[kurz && 'height']: '400px', [mid && 'height']: '720px'}}>
             <img src={cover} className='w-full h-full object-cover' />
             <div className="absolute w-full h-full flex flex-col [&>*]:h-full gap-4 p-8 lg:p-4">
                 <Nav setNavOpened={setNavOpened} navOpened={navOpened} />
