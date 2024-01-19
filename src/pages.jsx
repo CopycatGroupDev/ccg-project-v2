@@ -680,9 +680,6 @@ const APropos = ({color}) => {
 }
 
 const RSE = ({color}) => {
-    const [imgPanda, setImgPanda] = useState(null);
-    fetch('/imgPanda.txt').then(r => r.text()).then(r => setImgPanda(r));
-
     return (<>
         <Container>
             <Title>{"Notre Engagement RSE :"}<br />{"Construire un Avenir Responsable"}</Title>
@@ -744,4 +741,39 @@ const RSE = ({color}) => {
     </>)
 }
 
-export default {Home, Solutions, Shop, Print, Labs, Boutiques, APropos, RSE}
+const Contact = ({color}) => {
+    return (<>
+        <Container>
+            <div className="grid grid-cols-2 [&_label]:grid [&_label>input]:w-full  gap-4 w-full text-start" style={{"textWrap": "nowrap"}}>
+                <Title color={"#1e40af"} modifier={"col-span-2"}>Faites vous rappeler !</Title>
+                <form className="contents">
+                    {[
+                        [null, "Nom", (props) => <input type="text" {...props} />],
+                        [null, "Prénom", (props) => <input type="text" {...props} />],
+                        ["col-span-2", "Votre email", (props) => <input type="text" {...props} />],
+                        ["col-span-2", "Numéro de téléphone", (props) => <input type="text" {...props} />],
+                        ["col-span-2", "Société", (props) => <input type="text" {...props} />],
+                        ["col-span-2", "Comment avez-vous connu les services Copycat Group ?", (props) => <select {...props}>
+                            <option value=""></option>
+                            <option value=""></option>
+                            <option value=""></option>
+                        </select>],
+                        ["col-span-2", "Ville", (props) => <input type="text" {...props} />],
+                        ["col-span-2", "Code postal", (props) => <input type="text" {...props} />],
+                        ["col-span-2", "Sujet", (props) => <input type="text" {...props} />],
+                        ["col-span-2", "Votre message", (props) => <textarea {...props} />],
+                    ].map(([modifier, placeholder, Input, name], id) => (
+                        <label className={modifier} key={id}>
+                            {placeholder} {Input({ placeholder, name: placeholder.toLowerCase().replace(' ', ''), className: "border-gray-300" })}
+                        </label>
+                    ))}
+                    <label className="col-span-2">
+                    <button className='p-4 bg-[#0061ad] rounded-full text-white mt-2 mx-auto min-w-[50%]'>Envoyer</button>
+                    </label>
+                </form>
+            </div>
+        </Container>
+    </>)
+}
+
+export default {Home, Solutions, Shop, Print, Labs, Boutiques, APropos, RSE, Contact}

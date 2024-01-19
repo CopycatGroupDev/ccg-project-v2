@@ -144,12 +144,13 @@ export const archi = [
 		path: "/contact", 
 		title: "Contact", 
 		element: <Page title={"Contact"} Body={Body.Contact} header={{ 
-			cover:"-rse", 
+			cover:"-contact", 
 			logo: null, 
-			textLine:["ok"], 
+			textLine:["Chez Copycat Group, votre opinion compte. Nous sommes ravis de vous entendre et sommes là pour répondre à toutes vos questions, suggestions ou demandes. Remplissez simplement le formulaire ci-dessous et notre équipe se fera un plaisir de vous assister dans les meilleurs délais."], 
 			color:'#ed01b5',
-			fullText: false,
+			fullText: true,
 			mid: true,
+			title: "Formulaire de contact",
 		}} /> 
 	},
 	{ 
