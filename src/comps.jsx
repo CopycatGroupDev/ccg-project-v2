@@ -15,14 +15,14 @@ export const Header = ({cover, logo, textLine, color, textBtn, fullText = false,
         {navOpened && <NavMobile setNavOpened={setNavOpened} navOpened={navOpened} />}
         <div id='header' className={`w-full h-screen relative flex snap-always snap-center bg-[${color}]`} style={{[kurz && 'height']: '400px', [mid && 'height']: '720px'}}>
             <img src={cover} className='w-full h-full object-cover' />
-            <div className="absolute w-full h-full flex flex-col [&>*]:h-full gap-4 p-8 lg:p-4">
+            <div className="absolute w-full h-full flex flex-col [&>*]:h-full gap-4 p-8 lg:p-4 text-xl xl:text-2xl">
                 <Nav setNavOpened={setNavOpened} navOpened={navOpened} />
                 {!kurz && <>
                     {!fullText ? <>
                         <div className='w-full flex justify-center header_Plate'>
-                            <img src={logo} className={'w-[35vh] lg:w-[350px] aspect-square h-fit rounded-full md:mt-16 object-contain'} style={{opacity: (logo) ? "1" : "0"}}/>
+                            <img src={logo} className={'w-[35vh] xl:w-[350px] aspect-square h-fit rounded-full md:mt-16 object-contain'} style={{opacity: (logo) ? "1" : "0"}}/>
                         </div>
-                        <div className='w-full text-white text-center flex flex-col justify-center text-base md:text-2xl lg:text-3xl gap-[1.5vh] lg:gap-[18px] items-center header_Plate'>
+                        <div className='w-full text-white text-center flex flex-col justify-center text-base md:text-2xl lg:text-2xl xl:text-3xl gap-[1.5vh] xl:gap-[18px] items-center header_Plate'>
                             <h2 className='max-w-[1000px]'>{textLine[0]}</h2>
                             <h2 className=''>{textLine[1]}</h2>
                             {textBtn && <button className={`md:text-2xl bg-white px-4 py-2 md:px-7 md:py-3.5 rounded-full`}style={{color: `${color}`}}>{textBtn}</button>}
@@ -36,7 +36,7 @@ export const Header = ({cover, logo, textLine, color, textBtn, fullText = false,
                 </>}
             </div>
         </div>
-        {(textLine[2] && !fullText) && <div className={`-mt-12 text-white w-full flex justify-center p-16 pt-8 text-base md:text-2xl lg:text-3xl text-center snap-end`} style={{background: `${color}`}}>
+        {(textLine[2] && !fullText) && <div className={`-mt-12 text-white w-full flex justify-center p-16 pt-8 text-base md:text-2xl lg:text-2xl xl:text-3xl text-center snap-end`} style={{background: `${color}`}}>
             {`${textLine[2]}`}
         </div>}
     </>
@@ -217,7 +217,7 @@ export const Nav = ({setNavOpened, navOpened}) => {
             <Link to="/" className='contents'>
                 <img src="/logo.png" alt="" className="w-[20vh] max-h-[120px] aspect-[163/120] object-contain h-fit left-0 lg:mx-18 xl:absolute" />
             </Link>
-            <div className='justify-center items-center text-xl xl:text-2xl hidden lg:flex gap-[.5vw] md:[&_li]:cursor-pointer [&>a]:text-[#0061ad] items-start [&_li]:p-2 z-50 px-2 py-4'>
+            <div className='justify-center items-center hidden lg:flex gap-[.5vw] md:[&_li]:cursor-pointer [&>a]:text-[#0061ad] items-start [&_li]:p-2 z-50 px-2 py-4'>
                 <For obj={archi.filter(route => route.nav)} render={(route, i) => <div key={i} className='text-[#0061ad]' style={dropdown === route.path ? pillStyleHover(i) : pillStyle} onMouseOver={() => { setDropdown(route.path); }} onMouseLeave={() => { setDropdown(null); }}>
                     <Link to={route.path} className={'p-2'}>{route.title}</Link>
                     {dropdown === route.path && <Dropdown obj={route.dropdown} color={colors[i]} className={"absolute"} />}
