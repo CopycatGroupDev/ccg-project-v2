@@ -5,6 +5,7 @@ import Body, { Page } from "./pages";
 import bannerAccueil from "./assets/banner-bg.png";
 import bannerSolutions from "./assets/banner-bg-sol.png";
 import bannerBoutique from "./assets/banner-bg-boutique.png";
+import bannerBoulogne from "./assets/banner-bg-boulogne.svg";
 import bannerContact from "./assets/banner-bg-contact.png";
 import bannerLabs from "./assets/banner-bg-labs.png";
 import bannerPrint from "./assets/banner-bg-print.png";
@@ -190,7 +191,7 @@ archi.push({
 	path: "/boulogne", 
 	title: "Copycat DPS Boulogne", 
 	element: <Page title={"Copycat DPS Boulogne"} Body={Body.Boutiques.Boulogne} header={{ 
-		cover:bannerBoutique, 
+		cover:bannerBoulogne, 
 		logo: null, 
 		textLine:['Retrouvez notre boutique COPYCAT DPS pour l\'achat de vos fournitures informatique, un service de Photocopie - reprographie et impression numérique. ', <svg key={1} xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" className="h-8 lg:h-14"> <path fillRule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1" /> </svg>], 
 		color:'#f39113',

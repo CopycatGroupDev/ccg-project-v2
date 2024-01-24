@@ -8,6 +8,8 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Icons } from './utilities';
 
+const zoom = 0.9;
+
 export const Container = ({ modifier="w-full flex flex-col gap-6 items-center text-base md:text-xl text-gray-400 max-w-[1340px] text-center px-12", style, children }) => <div className={modifier} style={style}>{children}</div>
 
 export const Title = ({children, color="black", modifier}) => <h1 className={`text-4xl text-center text-${color} text-[${color}] ${modifier}`} style={{color: color}}>{children}</h1>
@@ -17,9 +19,9 @@ export const Header = ({cover, logo, textLine, color, textBtn, fullText = false,
 
     return <>
         {navOpened && <NavMobile setNavOpened={setNavOpened} navOpened={navOpened} />}
-        <div id='header' className={`w-full h-screen relative flex snap-always snap-center bg-[${color}]`} style={{[kurz && 'height']: '400px', [mid && 'height']: '720px'}}>
+        <div id='header' className={`w-full h-screen relative flex snap-always snap-center bg-[${color}]`} style={{[kurz && 'height']: '400px', [mid && 'height']: '720px', background: `linear-gradient(180deg, rgb(235 235 235) 50%, ${color} 50%)`}} >
             <img src={cover} className='w-full h-full object-cover' />
-            <div className="absolute w-full h-full flex flex-col [&>*]:h-full gap-4 p-8 lg:p-4 text-xl xl:text-2xl">
+            <div className="absolute w-full h-full flex flex-col [&>*]:h-full gap-4 p-8 lg:p-4 text-xl xl:text-2xl" style={{zoom: zoom}}>
                 <Nav setNavOpened={setNavOpened} navOpened={navOpened} />
                 {!kurz && <>
                     {!fullText ? <>
@@ -41,7 +43,7 @@ export const Header = ({cover, logo, textLine, color, textBtn, fullText = false,
             </div>
         </div>
         {(textLine[2] && !fullText) && <div className={`-mt-12 text-white w-full flex justify-center p-16 pt-8 text-base md:text-2xl lg:text-2xl xl:text-3xl text-center snap-end`} style={{background: `${color}`}}>
-            {`${textLine[2]}`}
+            <p style={{zoom: zoom}}>{`${textLine[2]}`}</p>
         </div>}
     </>
 }
