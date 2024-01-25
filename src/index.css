@@ -140,15 +140,19 @@ body {
 
 @media screen and (max-width: 600px) {
 	.timeline::after { left: 31px; }
-	.container { width: 100%; padding-left: 70px; padding-right: 25px; }
+	.container { width: 100%; padding-left: 70px; padding-right: 25px; margin-top: 0 !important; }
 	.container::before { left: 60px; border: medium solid white; border-width: 10px 10px 10px 0; border-color: transparent white transparent transparent; }
 	.left::after, .right::after { left: 20px; }
 	.right { left: 0%; }
-	.timeline .hr { right: 0 !important; }
+	.timeline .hr { right: 0 !important;  width: calc(100% + 0px);  }
 	.timeline .hr .inner .ligacao { left: 0; margin-left: calc(1px + (-1.5 * var(--thickness))); }
+	.timeline .left .hr { left: -70px !important; }
+	.timeline .right .hr { left: 70px; }
 }
 
-.timeline .hr{ height: var(--thickness); top: calc(50%); width: calc(100% + 70px); }
+.timeline .hr{ height: var(--thickness); top: calc(50%); width: calc(100% + 0px); }
+.timeline .left .hr { left: 70px; }
+.timeline .right .hr { left: -70px; }
 .timeline .hr .inner {height: 100%; width: 100%; align-items: center; display: flex;}
 .timeline .hr .inner .ligacao {height: calc(var(--thickness) * 4); aspect-ratio: 1; width: fit-content; position: absolute; border-radius: 999px;}
 .timeline .right .hr .inner .ligacao {margin-left: calc(1px + (-1.5 * var(--thickness))); left: 0;}
