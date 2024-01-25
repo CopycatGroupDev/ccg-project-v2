@@ -329,7 +329,8 @@ export const Testimonies = ({ testimonies }) => {
     gridTemplateRows: 'repeat(1, minmax(0,1fr))',
     maxWidth: '800px',
     position: 'relative',
-    margin: '0 auto'
+    margin: '0 auto',
+    height: '550px'
   }}>
         <For obj={testimonies} render={(value, i) => {
           const minHeight = (4.5 / 6 * 100) + '%'
@@ -368,12 +369,12 @@ export const Testimonies = ({ testimonies }) => {
               (value !== (testimonies[activeTestimony - 1] ?? testimonies[testimonies.length - 1])) && (value !== testimonies[activeTestimony]) && (value !== (testimonies[activeTestimony + 1] ?? testimonies[0])) && '0'
             ].filter(Boolean)[0],
             gridRowStart: 1,
-            filter: [
+            /*filter: [
               (value === (testimonies[activeTestimony - 1] ?? testimonies[testimonies.length - 1])) && 'blur(1.5px)',
               (value === testimonies[activeTestimony]) && 'blur(0px)',
               (value === (testimonies[activeTestimony + 1] ?? testimonies[0])) && 'blur(1.5px)',
               (value !== (testimonies[activeTestimony - 1] ?? testimonies[testimonies.length - 1])) && (value !== testimonies[activeTestimony]) && (value !== (testimonies[activeTestimony + 1] ?? testimonies[0])) && ''
-            ].filter(Boolean)[0],
+            ].filter(Boolean)[0],*/
             opacity: [
               (value === (testimonies[activeTestimony - 1] ?? testimonies[testimonies.length - 1])) && '0.8',
               (value === testimonies[activeTestimony]) && '1',

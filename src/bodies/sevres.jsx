@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import React, { Container, Title } from '../comps'
+import React, { useState, useEffect } from 'react'
+import { Container, Title } from '../comps'
 import { For } from '../functions'
 import { horaires, renseignements, services, realisations, contactForm } from '../arrays'
 

@@ -5,7 +5,7 @@ import React from 'react'
 
 const Labs = ({ color }) => {
   return (<>
-        <Timeline color={color} list={timelines.Labs} />
+      <Timeline color={color} list={timelines.Labs} />
     </>)
 }
 

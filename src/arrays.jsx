@@ -99,6 +99,14 @@ export const contactForm = {
     { className: null, input: <input type="text" placeholder='Entreprise' /> },
     { className: 'col-span-2', input: <input type="text" placeholder='Votre email' /> },
     { className: 'col-span-2', input: <input type="text" placeholder='Sujet' /> }
+  ],
+  Boulogne: [
+    { className: null, input: <input type="text" placeholder='Nom' /> },
+    { className: null, input: <input type="text" placeholder='Prénom' /> },
+    { className: null, input: <input type="text" placeholder='Numéro de téléphone' /> },
+    { className: null, input: <input type="text" placeholder='Entreprise' /> },
+    { className: 'col-span-2', input: <input type="text" placeholder='Votre email' /> },
+    { className: 'col-span-2', input: <input type="text" placeholder='Sujet' /> }
   ]
 }
 
@@ -111,11 +119,11 @@ export const aboutPageArrays = {
     { img: null, color: '#60C280', title: 'Bonne foi', text: 'Nous vous accompagnons avec intégrité et honnêteté' }
   ],
   testimonies: [
-    { text: <>{'1. Nous travaillons avec CopycatGroup depuis plusieurs années sur plusieurs entreprises du groupe.'}<br />{'Au-delà de nos exigences de performance de service et de compétitivité des prix, parfaitement répondu par CCG, nous avons été toujours agréablement surpris par la disponibilité des équipes et leur grande capacité à gérer des projets non standards.'}<br />{'Je ne peux que me réjouir de les savoir notre fournisseur.'}</> },
-    { text: <>{'2. Nous travaillons avec CopycatGroup depuis plusieurs années sur plusieurs entreprises du groupe.'}<br />{'Au-delà de nos exigences de performance de service et de compétitivité des prix, parfaitement répondu par CCG, nous avons été toujours agréablement surpris par la disponibilité des équipes et leur grande capacité à gérer des projets non standards.'}<br />{'Je ne peux que me réjouir de les savoir notre fournisseur.'}</> },
-    { text: <>{'3. Nous travaillons avec CopycatGroup depuis plusieurs années sur plusieurs entreprises du groupe.'}<br />{'Au-delà de nos exigences de performance de service et de compétitivité des prix, parfaitement répondu par CCG,'}<br />{'Je ne peux que me réjouir de les savoir notre fournisseur.'}</> },
-    { text: <>{'4. Nous travaillons avec CopycatGroup depuis plusieurs années sur plusieurs entreprises du groupe.'}<br />{'Au-delà de nos exigences de performance de service et de compétitivité des prix, parfaitement répondu par CCG, nous avons été toujours agréablement surpris par la disponibilité des équipes et leur grande capacité à gérer des projets non standards.'}<br />{'Je ne peux que me réjouir de les savoir notre fournisseur.'}</> },
-    { text: <>{'5. Nous travaillons avec CopycatGroup depuis plusieurs années sur plusieurs entreprises du groupe.'}<br />{'Au-delà de nos exigences de performance de service et de compétitivité des prix, parfaitement répondu par CCG, nous avons été toujours agréablement surpris par la disponibilité des équipes et leur grande capacité à gérer des projets non standards.'}<br />{'Je ne peux que me réjouir de les savoir notre fournisseur.'}</> }
+    { text: <>{'Nous travaillons avec CopycatGroup depuis plusieurs années sur plusieurs entreprises du groupe. Au-delà de nos exigences de performance de service et de compétitivité des prix, parfaitement répondu par CCG, nous avons été toujours agréablement surpris par la disponibilité des équipes et leur grande capacité à gérer des projets non standards. Je ne peux que me réjouir de les savoir notre fournisseur.'}</> },
+    { text: <>{`J'ai bien reçu les brochures. Elles sont très bien. Je vous remercie pour vos conseils et votre réactivité.
+    La quantité est supérieure à celle que j'avais commandée 😉
+    Merci beaucoup`}</> },
+    { text: <>{'Je suis ravi de travailler avec Copycat Group'}<br />{'-Leur disponibilité est très appréciable.'}<br />{'-Le service est rapide et très sérieux.'}<br />{'-Jamais de fausses promesses'}<br />{'Et pour finir, la livraison se fait la plupart du temps en 24h ; tout ce qu’on aime.'}</> },
   ]
 }
 

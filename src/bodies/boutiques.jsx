@@ -3,7 +3,6 @@ import Boulogne from './boulogne'
 
 const Boutiques = {
   Sevres,
-
   Boulogne
 }
 

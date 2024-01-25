@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Title } from '../comps'
 import { For } from '../functions'
-import { horaires, renseignements, services, realisations } from '../arrays'
+import { horaires, renseignements, services, realisations, contactForm } from '../arrays'
 import { archi } from '../archi'
 
 const Boulogne = ({ color }) => {
@@ -21,7 +21,7 @@ const Boulogne = ({ color }) => {
         </Container>
 
         <Container modifier='grid grid-cols-1 lg:grid-cols-2 gap-16 text-center max-w-[1340px] px-12'>
-            <img src="image boutique.png" />
+            <img src="Photo la boutique a boulogne.jpg" className='h-full object-cover' />
             <div className="grid grid-cols-1 grid-rows-min gap-4 snap-center">
                 <Title color={'black'}>Horaires d'ouverture</Title>
                 <div className="gap-4 grid p-4 grid-cols-2 grid-flow-row auto-rows-min">
@@ -102,14 +102,7 @@ const Boulogne = ({ color }) => {
                             <div className="grid grid-cols-2 [&_label]:grid [&_label>input]:w-full [&_label>input]:border-gray-300 gap-4" style={{ textWrap: 'nowrap' }}>
                                 <Title color={'blue-800'} modifier={'col-span-2'} style={{ textWrap: 'balance' }}>Faites vous rappeler !</Title>
                                 <form className="contents">
-                                    {[
-                                      { className: null, input: <input type="text" placeholder='Nom' /> },
-                                      { className: null, input: <input type="text" placeholder='Prénom' /> },
-                                      { className: null, input: <input type="text" placeholder='Numéro de téléphone' /> },
-                                      { className: null, input: <input type="text" placeholder='Entreprise' /> },
-                                      { className: 'col-span-2', input: <input type="text" placeholder='Votre email' /> },
-                                      { className: 'col-span-2', input: <input type="text" placeholder='Sujet' /> }
-                                    ].map((field, id) => <label className={field.className} key={id}> {field.input.props.placeholder} {field.label} {field.input} </label>)}
+                                    {contactForm.Boulogne.map((field, id) => <label className={field.className} key={id}> {field.input.props.placeholder} {field.label} {field.input} </label>)}
                                     <button className='p-4 bg-[#0061ad] rounded-full text-white mt-2 col-span-2'>Envoyer</button>
                                 </form>
                             </div>
