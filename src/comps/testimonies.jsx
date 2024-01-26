@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react'
 import { For } from '../functions'
@@ -14,7 +15,8 @@ export const Testimonies = ({ testimonies }) => {
     width: '24rem',
     display: 'grid',
     overflow: 'hidden',
-    height: '100%'
+    height: '100%',
+    borderRadius: '1.5rem'
   }
 
   return <div className="flex w-full justify-center items-center relative gap-8 h-fit" style={{
@@ -124,9 +126,9 @@ export const Testimonies = ({ testimonies }) => {
                   <p className="overflow-hidden px-8 sm:px-0" style={{ textWrap: 'balance' }}>{testimonies[i].text}</p>
 
                   <div className="grid grid-rows-2 items-center text-start gap-x-3 h-fit" style={{ gridTemplateColumns: 'auto minmax(0, 1fr)' }}>
-                      <div className="w-12 h-fit aspect-square rounded-full row-span-2 bg-black"></div>
-                      <b className="">Nom</b>
-                      <span className="">Entreprise</span>
+                      <img src={value.img} className="w-12 h-fit aspect-square rounded-full row-span-2 bg-black" />
+                      <b className="">{value.name}</b>{/* 
+                      <span className="">Entreprise</span> */}
                   </div>
               </div>
           }} />

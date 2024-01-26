@@ -31,7 +31,7 @@ export const Page = ({ header, title, Body }) => {
     const up = () => {
       const body = document.querySelector('body')?.getBoundingClientRect()
       const footerRect = footer.current?.getBoundingClientRect()
-      const footerBottom = (footerRect?.bottom < body.height) ? 'ot' : (body.height > footerRect.y) ? body.height - footerRect.y : 0
+      const footerBottom = (footerRect?.bottom < body.height) ? 'ot' : (body.height > footerRect?.y) ? body.height - footerRect.y : 0
       setBottomBtnScrTop(footerBottom)
     }
 

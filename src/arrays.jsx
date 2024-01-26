@@ -3,7 +3,7 @@
 import React from 'react'
 import { Svg } from './comps'
 
-export const boutiques = [{path: '/sevres', name: 'Sèvres'}, {path: '/boulogne', name: 'Boulogne'}]
+export const boutiques = [{ path: '/sevres', name: 'Sèvres' }, { path: '/boulogne', name: 'Boulogne' }]
 
 export const horaires = {
   Sèvres: [
@@ -119,11 +119,19 @@ export const aboutPageArrays = {
     { img: null, color: '#60C280', title: 'Bonne foi', text: 'Nous vous accompagnons avec intégrité et honnêteté' }
   ],
   testimonies: [
-    { text: <>{'Nous travaillons avec CopycatGroup depuis plusieurs années sur plusieurs entreprises du groupe. Au-delà de nos exigences de performance de service et de compétitivité des prix, parfaitement répondu par CCG, nous avons été toujours agréablement surpris par la disponibilité des équipes et leur grande capacité à gérer des projets non standards. Je ne peux que me réjouir de les savoir notre fournisseur.'}</> },
-    { text: <>{`J'ai bien reçu les brochures. Elles sont très bien. Je vous remercie pour vos conseils et votre réactivité.
+    {
+      text: <>{'Nous travaillons avec CopycatGroup depuis plusieurs années sur plusieurs entreprises du groupe. Au-delà de nos exigences de performance de service et de compétitivité des prix, parfaitement répondu par CCG, nous avons été toujours agréablement surpris par la disponibilité des équipes et leur grande capacité à gérer des projets non standards. Je ne peux que me réjouir de les savoir notre fournisseur.'}</>,
+      img: 'as.jpg',
+      name: 'AS INTER'
+    },
+    {
+      text: <>{`J'ai bien reçu les brochures. Elles sont très bien. Je vous remercie pour vos conseils et votre réactivité.
     La quantité est supérieure à celle que j'avais commandée 😉
-    Merci beaucoup`}</> },
-    { text: <>{'Je suis ravi de travailler avec Copycat Group'}<br />{'-Leur disponibilité est très appréciable.'}<br />{'-Le service est rapide et très sérieux.'}<br />{'-Jamais de fausses promesses'}<br />{'Et pour finir, la livraison se fait la plupart du temps en 24h ; tout ce qu’on aime.'}</> },
+    Merci beaucoup`}</>,
+      img: 'Brinav.png',
+      name: 'Brinav'
+    },
+    { text: <>{'Je suis ravi de travailler avec Copycat Group'}<br />{'-Leur disponibilité est très appréciable.'}<br />{'-Le service est rapide et très sérieux.'}<br />{'-Jamais de fausses promesses'}<br />{'Et pour finir, la livraison se fait la plupart du temps en 24h ; tout ce qu’on aime.'}</>, img: 'a2s.jpg', name: 'A2C' }
   ]
 }
 
