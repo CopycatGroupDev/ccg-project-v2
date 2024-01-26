@@ -3,7 +3,7 @@
 import React from 'react'
 import { Svg } from './comps'
 
-export const boutiques = ['/sevres', '/boulogne']
+export const boutiques = [{path: '/sevres', name: 'Sèvres'}, {path: '/boulogne', name: 'Boulogne'}]
 
 export const horaires = {
   Sèvres: [
