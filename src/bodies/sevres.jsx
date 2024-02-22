@@ -92,7 +92,7 @@ const Sevres = ({ color }) => {
                             <div className="grid grid-cols-2 [&_label]:grid [&_label>input]:w-full [&_label>input]:border-gray-300 gap-4" style={{ textWrap: 'nowrap' }}>
                                 <Title color={'blue-800'} modifier={'col-span-2'} style={{ textWrap: 'balance' }}>Faites vous rappeler !</Title>
                                 <form className="contents">
-                                    {contactForm.Sèvres.map(({ className, input }, id) => <label className={className} key={id}> {input.props.placeholder} {input} </label>)}
+                                    {contactForm.Sèvres.map(({ className, Input }, id) => <label className={className} key={id}> {Input().props.placeholder} <Input /> </label>)}
                                     <button className='p-4 bg-[#0061ad] rounded-full text-white mt-2 col-span-2'>Envoyer</button>
                                 </form>
                             </div>

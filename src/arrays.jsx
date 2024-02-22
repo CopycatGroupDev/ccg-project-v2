@@ -2,6 +2,7 @@
 /* eslint-disable react/no-children-prop */
 import React from 'react'
 import { Svg } from './comps'
+import { motion } from 'framer-motion'
 
 export const boutiques = [{ path: '/sevres', name: 'Sèvres' }, { path: '/boulogne', name: 'Boulogne' }]
 
@@ -69,12 +70,12 @@ export const realisations = {
 
 export const contactForm = {
   Sèvres: [
-    { className: null, input: <input type="text" placeholder='Nom' /> },
-    { className: null, input: <input type="text" placeholder='Prénom' /> },
-    { className: null, input: <input type="text" placeholder='Numéro de téléphone' /> },
-    { className: null, input: <input type="text" placeholder='Entreprise' /> },
-    { className: 'col-span-2', input: <input type="text" placeholder='Votre email' /> },
-    { className: 'col-span-2', input: <input type="text" placeholder='Sujet' /> }
+    { className: null, Input: (props) => <input type="text" placeholder='Nom' /> },
+    { className: null, Input: (props) => <input type="text" placeholder='Prénom' /> },
+    { className: null, Input: (props) => <input type="text" placeholder='Numéro de téléphone' /> },
+    { className: null, Input: (props) => <input type="text" placeholder='Entreprise' /> },
+    { className: 'col-span-2', Input: (props) => <input type="text" placeholder='Votre email' /> },
+    { className: 'col-span-2', Input: (props) => <input type="text" placeholder='Sujet' /> }
   ],
   Contact: [
     [null, 'Nom', (props) => <input type="text" {...props} />],
@@ -83,9 +84,7 @@ export const contactForm = {
     ['col-span-2', 'Numéro de téléphone', (props) => <input type="text" {...props} />],
     ['col-span-2', 'Société', (props) => <input type="text" {...props} />],
     ['col-span-2', 'Comment avez-vous connu les services Copycat Group ?', (props) => <select {...props}>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
+            <option value="Reseaux">Par les reseaux sociaux </option><option value="Internet">Par internet </option><option value="Connaissance">Par une connaissance </option><option value="Imprimerie">Par notre imprimerie Copycat Sèvres </option><option value="Autres">Autres </option>
         </select>],
     ['col-span-2', 'Ville', (props) => <input type="text" {...props} />],
     ['col-span-2', 'Code postal', (props) => <input type="text" {...props} />],
@@ -93,20 +92,34 @@ export const contactForm = {
     ['col-span-2', 'Votre message', (props) => <textarea {...props} />]
   ],
   Home: [
-    { className: null, input: <input type="text" placeholder='Nom' /> },
-    { className: null, input: <input type="text" placeholder='Prénom' /> },
-    { className: null, input: <input type="text" placeholder='Numéro de téléphone' /> },
-    { className: null, input: <input type="text" placeholder='Entreprise' /> },
-    { className: 'col-span-2', input: <input type="text" placeholder='Votre email' /> },
-    { className: 'col-span-2', input: <input type="text" placeholder='Sujet' /> }
+    { className: null, Input: (props) => <input type="text" placeholder='Nom' {...props} /> },
+    { className: null, Input: (props) => <input type="text" placeholder='Prénom' {...props} /> },
+    { className: null, Input: (props) => <input type="text" placeholder='Numéro de téléphone' {...props} /> },
+    { className: null, Input: (props) => <input type="text" placeholder='Entreprise' {...props} /> },
+    { className: 'col-span-2', Input: (props) => <input type="text" placeholder='Votre email' {...props} /> },
+    { className: 'col-span-2', Input: (props) => <input type="text" placeholder='Sujet' {...props} /> }
   ],
   Boulogne: [
-    { className: null, input: <input type="text" placeholder='Nom' /> },
-    { className: null, input: <input type="text" placeholder='Prénom' /> },
-    { className: null, input: <input type="text" placeholder='Numéro de téléphone' /> },
-    { className: null, input: <input type="text" placeholder='Entreprise' /> },
-    { className: 'col-span-2', input: <input type="text" placeholder='Votre email' /> },
-    { className: 'col-span-2', input: <input type="text" placeholder='Sujet' /> }
+    { className: null, Input: (props) => <input type="text" placeholder='Nom' {...props} /> },
+    { className: null, Input: (props) => <input type="text" placeholder='Prénom' {...props} /> },
+    { className: null, Input: (props) => <input type="text" placeholder='Numéro de téléphone' {...props} /> },
+    { className: null, Input: (props) => <input type="text" placeholder='Entreprise' {...props} /> },
+    { className: 'col-span-2', Input: (props) => <input type="text" placeholder='Votre email' {...props} /> },
+    { className: 'col-span-2', Input: (props) => <input type="text" placeholder='Sujet' {...props} /> }
+  ],
+  Modal: ({ options, selected }) => [
+    { className: null, Input: (props) => <input type="text" placeholder='Nom' {...props} /> },
+    { className: null, Input: (props) => <input type="text" placeholder='Prénom' {...props} /> },
+    { className: null, Input: (props) => <input type="text" placeholder='Numéro de téléphone' {...props} /> },
+    { className: null, Input: (props) => <input type="text" placeholder='Entreprise' {...props} /> },
+    { className: 'col-span-2', Input: (props) => <input type="text" placeholder='Votre email' {...props} /> },
+    {
+      className: 'col-span-2',
+      Input: (props) => <select placeholder='Votre demande concernant ?' {...props} defaultValue={options[selected]}>
+        {options?.map((opt, i) => <option key={i} value={opt}>{opt}</option>)}
+      </select>
+    },
+    { className: 'col-span-2', Input: (props) => <textarea placeholder='Sujet' {...props} /> }
   ]
 }
 
@@ -146,51 +159,66 @@ const imgContainer = 'flex flex-wrap justify-center [&>img]:aspect-square [&>img
 export const timelines = {
   Solutions: [
     // {image: "", texte: "", button: "",},
-    { image: 'https://copycatgroup.fr/images/bur1.png', id: 'bur', text: <>{'Vente et location d\'imprimante'}<br />{'Petit et grand format, laser ou jet d\'encre...'}</>, button: 'Je suis intéressé' },
-    { image: 'https://copycatgroup.fr/images/tel1.png', id: 'tel', text: <>{'Téléphones fixes, mobiles, internet...'}</>, button: 'Je suis intéressé' },
-    { image: 'https://copycatgroup.fr/images/dig1.png', id: 'dig', text: <>{'Archivage, dématérialisation des factures, note de frais...'}</>, button: 'Je suis intéressé' },
-    { image: 'https://copycatgroup.fr/images/inf1.png', id: 'inf', text: <>{'Vente, maintenance, infogérance'}</>, button: 'Je suis intéressé' }
+    { title: 'Bureautique', image: 'https://copycatgroup.fr/images/bur1.png', id: 'bur', text: <>{'Vente et location d\'imprimante'}<br />{'Petit et grand format, laser ou jet d\'encre...'}</>, button: 'Je suis intéressé' },
+    { title: 'Téléphonie', image: 'https://copycatgroup.fr/images/tel1.png', id: 'tel', text: <>{'Téléphones fixes, mobiles, internet...'}</>, button: 'Je suis intéressé' },
+    { title: 'Digital', image: 'https://copycatgroup.fr/images/dig1.png', id: 'dig', text: <>{'Archivage, dématérialisation des factures, note de frais...'}</>, button: 'Je suis intéressé' },
+    { title: 'Informatique', image: 'https://copycatgroup.fr/images/inf1.png', id: 'inf', text: <>{'Vente, maintenance, infogérance'}</>, button: 'Je suis intéressé' }
   ],
   Shop: [
     // {image: "", texte: "", button: "",},
-    { image: 'https://copycatgroup.fr/images/pc1.png', id: 'inf', text: <>{'Ordinateur, clé USB, souris, clavier, câble HDMI...'}</>, button: 'Je suis intéressé' },
-    { image: 'https://copycatgroup.fr/images/mu1.png', id: 'mul', text: <>{'Vidéo projecteur, écran interactif, visioconférence'}</>, button: 'Je suis intéressé' },
-    { image: 'https://copycatgroup.fr/images/bu1.png', id: 'bur', text: <>{'Imprimante domestique, toner, agenda, papier, stylo...'}</>, button: 'Je suis intéressé' },
-    { image: 'https://copycatgroup.fr/images/div1.png', id: 'div', text: <>{'Loisirs, gastronomie, restauration, hygiène..'}</>, button: 'Je suis intéressé' }
+    { title: 'Informatique', image: 'https://copycatgroup.fr/images/pc1.png', id: 'inf', text: <>{'Ordinateur, clé USB, souris, clavier, câble HDMI...'}</>, button: 'Je suis intéressé' },
+    { title: 'IT/Multimédia', image: 'https://copycatgroup.fr/images/mu1.png', id: 'mul', text: <>{'Vidéo projecteur, écran interactif, visioconférence'}</>, button: 'Je suis intéressé' },
+    { title: 'Bureautique', image: 'https://copycatgroup.fr/images/bu1.png', id: 'bur', text: <>{'Imprimante domestique, toner, agenda, papier, stylo...'}</>, button: 'Je suis intéressé' },
+    { title: 'Divers', image: 'https://copycatgroup.fr/images/div1.png', id: 'div', text: <>{'Loisirs, gastronomie, restauration, hygiène..'}</>, button: 'Je suis intéressé' }
   ],
   Labs: [
     // {image: "", texte: "", button: "",},
     {
+      title: 'Développement web',
       image: 'https://copycatgroup.fr/images/dev1.png',
       text: <>
             {'Programmation, développement de site sur-mesure'}
             <div className={imgContainer}>
-                <img src="https://copycatgroup.fr/images/php.png"></img>
-                <img src="https://copycatgroup.fr/images/js.png"></img>
-                <img src="https://copycatgroup.fr/images/wp.jpg"></img>
-                <img src="https://copycatgroup.fr/images/git.svg"></img>
-                <img src="https://copycatgroup.fr/images/an.svg"></img>
+                {[
+                  'https://copycatgroup.fr/images/php.png',
+                  'https://copycatgroup.fr/images/js.png',
+                  'https://copycatgroup.fr/images/wp.jpg',
+                  'https://copycatgroup.fr/images/git.svg',
+                  'https://copycatgroup.fr/images/an.svg'
+                ].map((img, key) => <motion.img key={key} src={img} initial={{ opacity: 0, x: 100 }} transition={{ duration: 0.5, delay: key * 0.25 }} whileInView={{ opacity: 100, x: 0 }} viewport={{ once: true }} />)}
             </div>
         </>,
       button: 'Je suis intéressé',
       id: 'dev'
     },
     {
+      title: 'Graphisme',
       image: 'https://copycatgroup.fr/images/gra1.png',
       text: <>
             {'Identité visuelle, communication visuelle, logo...'}
             <div className={imgContainer}>
-                <img src="https://copycatgroup.fr/images/ps.png"/><img src="https://copycatgroup.fr/images/id.png"/><img src="https://copycatgroup.fr/images/ai.png"/><img src="https://copycatgroup.fr/images/xd.png"/>
+                {[
+                  'https://copycatgroup.fr/images/ps.png',
+                  'https://copycatgroup.fr/images/id.png',
+                  'https://copycatgroup.fr/images/ai.png',
+                  'https://copycatgroup.fr/images/xd.png'
+                ].map((img, key) => <motion.img key={key} src={img} initial={{ opacity: 0, x: 100 }} transition={{ duration: 0.5, delay: (key + 1) * 0.25 }} whileInView={{ opacity: 100, x: 0 }} viewport={{ once: true }} />)}
             </div>
         </>,
       button: 'Je suis intéressé',
       id: 'gra'
     },
     {
-      image: 'https://copycatgroup.fr/images/gra1.png',
+      title: 'Communication digitale',
+      image: '/comdig1.svg',
       text: <>
-            {'..'}
+            {'LinkedIn, Facebook, Instagram...'}
             <div className={imgContainer}>
+                {[
+                  '/linkedin.svg',
+                  '/facebook.svg',
+                  '/instagram.svg'
+                ].map((img, key) => <motion.img key={key} src={img} initial={{ opacity: 0, x: 100 }} transition={{ duration: 0.5, delay: (key + 1) * 0.25 }} whileInView={{ opacity: 100, x: 0 }} viewport={{ once: true }} />)}
                 {/* <img src="https://copycatgroup.fr/images/ps.png"/><img src="https://copycatgroup.fr/images/id.png"/><img src="https://copycatgroup.fr/images/ai.png"/><img src="https://copycatgroup.fr/images/xd.png"/> */}
             </div>
         </>,
@@ -199,9 +227,9 @@ export const timelines = {
     }
   ],
   Print: [
-    { image: 'https://copycatgroup.fr/images/rep1.png', id: 'rep', text: <>{'Reliure, plastification, flyer..'}</>, button: 'Je suis intéressé' },
-    { image: 'https://copycatgroup.fr/images/mug.png', id: 'mug', text: <>{'Mugs, vêtements, stylos, clés USB...'}</>, button: 'Je suis intéressé' },
-    { image: 'https://copycatgroup.fr/images/sup1.png', id: 'sup', text: <>{'Roll\'up, drapeaux, vitrophanie...'}</>, button: 'Je suis intéressé' }
+    { title: 'Reprographie / Imprimerie', image: 'https://copycatgroup.fr/images/rep1.png', id: 'rep', text: <>{'Reliure, plastification, flyer..'}</>, button: 'Je suis intéressé' },
+    { title: 'Objet personnalisé', image: 'https://copycatgroup.fr/images/mug.png', id: 'mug', text: <>{'Mugs, vêtements, stylos, clés USB...'}</>, button: 'Je suis intéressé' },
+    { title: 'Support PLV', image: 'https://copycatgroup.fr/images/sup1.png', id: 'sup', text: <>{'Roll\'up, drapeaux, vitrophanie...'}</>, button: 'Je suis intéressé' }
   ]
 }
 

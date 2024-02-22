@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { motion } from 'framer-motion'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { archi } from '../archi'
@@ -6,47 +7,48 @@ import { Nav, NavMobile } from './nav'
 import { For } from '../functions'
 import { boutiques, renseignements } from '../arrays'
 import { Icons } from './icons'
+import bannerCCG from '../assets/banner-bg-ccg.png'
 export const zoom = 0.9
 
 export const Container = ({ modifier = 'w-full flex flex-col gap-6 items-center text-base md:text-xl text-gray-400 max-w-[1340px] text-center px-12', style, children }) => <div className={modifier} style={style}>{children}</div>
 export const Title = ({ children, color = 'black', modifier }) => <h1 className={`text-4xl text-center text-${color} text-[${color}] ${modifier}`} style={{ color }}>{children}</h1>
 
-export const Header = ({ cover, logo, textLine, color, textBtn, fullText = false, kurz = false, mid = false, title, navTextColor }) => {
+export const Header = ({ cover, logo, textLine, color, textBtn, fullText = false, kurz = false, mid = false, title, navTextColor, btnProps = () => null, modal }) => {
   const [navOpened, setNavOpened] = useState(false)
   const nvOp = { navOpened, setNavOpened }
 
   return <>
-          {navOpened && <NavMobile {...nvOp} />}
-          <div id='header' className={`w-full h-screen relative flex snap-always snap-center bg-[${color}]`} style={{ [kurz && 'height']: '400px', [mid && 'height']: '720px', background: `linear-gradient(180deg, rgb(235 235 235) 50%, ${color} 50%)` }} >
-              <img src={cover} className='w-full h-full object-cover' />
-              <div className="absolute w-full h-full flex flex-col [&>*]:h-full gap-4 p-8 lg:p-4 text-xl xl:text-2xl" style={{ zoom }}>
-                  <Nav {...nvOp} textColor={navTextColor} />
-                  {!kurz && <>
-                      {!fullText
-                        ? <>
-                          <div className='w-full flex justify-center header_Plate'>
-                              <img src={logo} className={'w-[35vh] xl:w-[350px] aspect-square h-fit rounded-full md:mt-16 object-contain'} style={{ opacity: (logo) ? '1' : '0' }}/>
-                          </div>
-                          <div className='w-full text-white text-center flex flex-col justify-center text-base md:text-2xl lg:text-2xl xl:text-3xl gap-[1.5vh] xl:gap-[18px] items-center header_Plate'>
-                              <h2 className='max-w-[1000px]'>{textLine[0]}</h2>
-                              <h2 className=''>{textLine[1]}</h2>
-                              {textBtn && <button className={'md:text-2xl bg-white px-4 py-2 md:px-7 md:py-3.5 rounded-full'}style={{ color: `${color}` }}>{textBtn}</button>}
-                          </div>
-                      </>
-                        : <>
-                          <div className='lg:px-24 text-white flex flex-col justify-center gap-4 h-full [div:has(&)>#nav]:h-fit text-lg md:text-xl max-w-[800px] leading-loose'>
-                              <h2 className='text-4xl md:text-5xl my-2 md:my-8'>{title}</h2>
-                              <For obj={textLine} render={(value, i) => <p key={i}>{value}</p>} />
-                          </div>
-                      </>}
-                  </>}
-              </div>
-          </div>
-          {(textLine[2] && !fullText) &&
-          (<div className={'-mt-12 text-white w-full flex justify-center p-16 pt-0 text-base md:text-2xl lg:text-2xl xl:text-3xl text-center snap-end'} style={{ background: `${color}` }}>
-              <p style={{ zoom }}>{`${textLine[2]}`}</p>
-          </div>)}
-      </>
+        {navOpened && <NavMobile {...nvOp} />}
+        <div id='header' className={`w-full h-screen relative flex snap-always snap-center bg-[${color}]`} style={{ [kurz && 'height']: '400px', [mid && 'height']: '720px', background: `linear-gradient(180deg, rgb(235 235 235) 50%, ${color} 50%)` }} >
+            <img src={cover} className='w-full h-full object-cover' />
+            <div className="absolute w-full h-full flex flex-col gap-4 p-8 lg:p-4 text-xl xl:text-2xl" style={{ zoom }}>
+                <Nav {...nvOp} textColor={navTextColor} />
+                {!kurz && <motion.div className='flex flex-col [&>*]:h-full h-full gap-4 p-8' initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 100, scale: 1 }} transition={{ duration: 0.5 }} viewport={{ once: true }}>
+                    {!fullText
+                      ? <>
+                        <div className='w-full flex justify-center header_Plate'>
+                            <img src={logo} className={'w-[35vh] xl:w-[350px] aspect-square h-fit rounded-full md:mt-16 object-contain'} style={{ opacity: (logo) ? '1' : '0' }}/>
+                        </div>
+                        <div className='w-full text-white text-center flex flex-col justify-center text-base md:text-2xl lg:text-2xl xl:text-3xl gap-[1.5vh] xl:gap-[18px] items-center header_Plate'>
+                            <h2 className='max-w-[1000px]'>{textLine[0]}</h2>
+                            <h2 className=''>{textLine[1]}</h2>
+                            {textBtn && <Link className={'md:text-2xl bg-white px-4 py-2 md:px-7 md:py-3.5 rounded-full'} style={{ color: `${color}` }} {...btnProps({ modal })} >{textBtn}</Link>}
+                        </div>
+                    </>
+                      : <>
+                        <div className='lg:px-24 text-white flex flex-col justify-center gap-4 h-full [div:has(&)>#nav]:h-fit text-lg md:text-xl max-w-[800px] leading-loose'>
+                            <h2 className='text-4xl md:text-5xl my-2 md:my-8'>{title}</h2>
+                            <For obj={textLine} render={(value, i) => <p key={i}>{value}</p>} />
+                        </div>
+                    </>}
+                </motion.div>}
+            </div>
+        </div>
+        {(textLine[2] && !fullText) &&
+        (<div className={'-mt-12 text-white w-full flex justify-center p-16 pt-0 text-base md:text-2xl lg:text-2xl xl:text-3xl text-center snap-end'} style={{ background: `${color}` }}>
+            <p style={{ zoom }}>{`${textLine[2]}`}</p>
+        </div>)}
+    </>
 }
 
 export const Menu = ({ header, title }) => {
@@ -56,34 +58,36 @@ export const Menu = ({ header, title }) => {
   document.querySelector('title').innerHTML = title
 
   return <>
-          {navOpened && <NavMobile {...nvOp} />}
-          <div id='header' className={'w-full h-screen relative flex snap-always snap-center'}>
-              <img src={'/src/assets/banner-bg-ccg.png'} className='w-full h-full object-cover'/>
-              <div className="absolute w-full h-full flex flex-col [&>*]:h-full gap-4 p-8 lg:p-4 text-xl xl:text-2xl" style={{ zoom }}>
-                  <Nav {...nvOp} textColor={header.navTextColor} />
-                  <div className="flex justify-center gap-16 max-sm:grid max-sm:grid-cols-1 justify-items-center">
-                      <For obj={boutiques} render={({path, name}, key) => {
-                        const page = archi.find(ar => ar.path === path)
-                        const [address, number, email] = renseignements[name].map(r => r.text)
+        {navOpened && <NavMobile {...nvOp} />}
+        <div id='header' className={'w-full h-screen relative flex snap-always snap-center'}>
+            <img src={bannerCCG} className='w-full h-full object-cover'/>
+            <div className="absolute w-full h-full flex flex-col [&>*]:h-full gap-4 p-8 lg:p-4 text-xl xl:text-2xl" style={{ zoom }}>
+                <Nav {...nvOp} textColor={header.navTextColor} />
+                <div className="flex justify-center gap-16 max-sm:grid max-sm:grid-cols-1 justify-items-center">
+                    <For obj={boutiques} render={({ path, name }, key) => {
+                      const page = archi.find(ar => ar.path === path)
+                      const [address, number, email] = renseignements[name].map(r => r.text)
 
-                        return <Link key={key} to={path} className="bg-white h-fit shadow p-6 gap-2 rounded-xl w-[350px]">
-                            <div className="grid grid-cols-1 justify-items-center text-xl">
-                                <img src={'icone boutique.png'} className="" />
-                                <div className="" style={{ color: '#0061ad' }}>{page.title}</div>
-                            </div>
-                              <hr className='my-3 mx-8' />
-                              <ul className='text-base' style={{ color: '#999' }}>
+                      return <motion.div key={key} to={path} className="bg-white h-fit shadow p-6 gap-2 rounded-xl w-[350px]" initial={{ opacity: 0, scale: 0.5 }} transition={{ duration: 0.5 }} whileInView={{ opacity: 100, scale: 1 }} viewport={{ once: true }}>
+                            <Link to={path} style={{ display: 'contents' }}>
+                                <div className="grid grid-cols-1 justify-items-center text-xl">
+                                    <img src={'icone boutique.png'} className="" />
+                                    <div className="" style={{ color: '#0061ad' }}>{page.title}</div>
+                                </div>
+                                <hr className='my-3 mx-8' />
+                                <ul className='text-base' style={{ color: '#999' }}>
                                 <li><b style={{ color: '#0061ad' }}>Adresse:</b> {address}</li>
                                 <li><b style={{ color: '#0061ad' }}>Numéro:</b> {number}</li>
                                 <li><b style={{ color: '#0061ad' }}>Email:</b> {email}</li>
-                              </ul>
-                          </Link>
-                      } } />
-                  </div>
-                  <div></div>
-              </div>
-          </div>
-      </>
+                                </ul>
+                            </Link>
+                        </motion.div>
+                    } } />
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </>
 }
 
 export const Footer = ({ refF }) => {

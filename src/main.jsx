@@ -5,7 +5,7 @@ import { Map } from './archi'
 
 import './index.css'
 
-document.querySelector('#root').classList = 'flex flex-col items-center gap-12'
+document.querySelector('#root').classList = 'flex flex-col items-center gap-12 relative'
 document.querySelector('html').classList = 'scroll-smooth'
 
 export function App () {

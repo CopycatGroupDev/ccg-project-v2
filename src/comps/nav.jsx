@@ -35,7 +35,7 @@ export const Nav = ({ setNavOpened, navOpened, textColor }) => {
     // return () => clearInterval(int);
   })
 
-  return (<div className='flex flex-col justify-start items-center' id="nav">
+  return (<div className='flex flex-col h-1/3 justify-start items-center' id="nav">
           <div className='flex justify-between lg:justify-right lg:justify-center relative max-w-[1500px] w-full max-lg:items-center max-lg:gap-2 items-start lg:max-xl:flex-col lg:max-xl:items-center'>
               <Link to="/" className='contents'>
                   <img src="/logo.png" alt="" className="w-[20vh] max-h-[120px] aspect-[163/120] object-contain h-fit left-0 lg:mx-18 xl:absolute" style={{ [logoTouches && 'opacity']: 0 }} ref={logo} />
