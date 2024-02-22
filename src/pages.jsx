@@ -44,7 +44,7 @@ export const Page = ({ header, title, Body }) => {
   }, [])
 
   return <>
-        {<style>{`body{background:rgba(0,0,0,0.025);--thickness: 3px; --page-color: ${header.color}; overflow-x:hidden} .colorPage{background-color: var(--page-color);}`}</style>}
+        {<style>{`body{background:rgba(0,0,0,0.025);--thickness: 3px; --page-color: ${header.color}; overflow-x:hidden;} .colorPage{background-color: var(--page-color);}`}</style>}
         <Header {...header} modal={{ opener: setMO, select: setMS, default: setMD }} />
         {Body &&
           <Body modal={{ opener: setMO, select: setMS, default: setMD }} color={header.color} />

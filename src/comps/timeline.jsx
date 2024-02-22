@@ -36,7 +36,7 @@ export const Timeline = ({ color = '#000', list, modal }) => {
             let mt = -(timeline.current?.querySelector('#' + id)?.getBoundingClientRect().height / 2.25)
             if (isNaN(mt)) mt = 0
             return <div id={id} className={'max-sm:!top-0 container ' + (i % 2 === 0 ? 'left' : 'right')} key={i} style={{ marginTop: (i === 0 ? 0 : mt) }}>
-                  <div className="content grid grid-cols-1 grid-rows-[min-content] gap-8 text-2xl snap-start">
+                  <div className="content grid grid-cols-1 grid-rows-[min-content] gap-8 text-base md:text-2xl lg:text-2xl snap-start">
                       <div className='relative grid'>
                           <div className={'hr absolute w-full'}>
                               <div className='inner'>
