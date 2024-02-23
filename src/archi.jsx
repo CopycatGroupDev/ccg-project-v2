@@ -136,7 +136,7 @@ archi.push({
   dropdown: [
     { path: '/labs#dev', title: 'Développement Web', text: 'Développement de site sur-mesure, Programmation...', icon: 'Développement web.png' },
     { path: '/labs#gra', title: 'Graphisme', text: 'Identité visuelle, Communication visuelle, Logo...', icon: 'Création graphique.png' },
-    { path: '/labs#com', title: 'Communication digitale', text: '...', icon: 'Création graphique.png' }
+    { path: '/labs#com', title: 'Communication digitale', text: 'LinkedIn, Facebook, Instagram...', icon: 'Création graphique.png' }
   ]
 })
 

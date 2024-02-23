@@ -70,56 +70,56 @@ export const realisations = {
 
 export const contactForm = {
   Sèvres: [
-    { className: null, Input: (props) => <input type="text" placeholder='Nom' /> },
-    { className: null, Input: (props) => <input type="text" placeholder='Prénom' /> },
-    { className: null, Input: (props) => <input type="text" placeholder='Numéro de téléphone' /> },
-    { className: null, Input: (props) => <input type="text" placeholder='Entreprise' /> },
-    { className: 'col-span-2', Input: (props) => <input type="text" placeholder='Votre email' /> },
-    { className: 'col-span-2', Input: (props) => <input type="text" placeholder='Sujet' /> }
+    { className: null, Input: (props) => <input type="text" name="name" placeholder='Nom' {...props} /> },
+    { className: null, Input: (props) => <input type="text" name="firstname" placeholder='Prénom' {...props} /> },
+    { className: null, Input: (props) => <input type="text" name="number" placeholder='Numéro de téléphone' {...props} /> },
+    { className: null, Input: (props) => <input type="text" name="firm" placeholder='Entreprise' {...props} /> },
+    { className: 'col-span-2', Input: (props) => <input type="email" name="mail" placeholder='Votre email' {...props} /> },
+    { className: 'col-span-2', Input: (props) => <input type="text" name="message" placeholder='Sujet' {...props} /> }
   ],
   Contact: [
-    [null, 'Nom', (props) => <input type="text" {...props} />],
-    [null, 'Prénom', (props) => <input type="text" {...props} />],
-    ['col-span-2', 'Votre email', (props) => <input type="text" {...props} />],
-    ['col-span-2', 'Numéro de téléphone', (props) => <input type="text" {...props} />],
-    ['col-span-2', 'Société', (props) => <input type="text" {...props} />],
-    ['col-span-2', 'Comment avez-vous connu les services Copycat Group ?', (props) => <select {...props}>
+    [null, 'Nom', (props) => <input type="text" name="name" {...props} />],
+    [null, 'Prénom', (props) => <input type="text" name="name" {...props} />],
+    ['col-span-2', 'Votre email', (props) => <input type="text" name="name" {...props} />],
+    ['col-span-2', 'Numéro de téléphone', (props) => <input type="text" name="name" {...props} />],
+    ['col-span-2', 'Société', (props) => <input type="text" name="name" {...props} />],
+    ['col-span-2', 'Comment avez-vous connu les services Copycat Group ?', (props) => <select name="how" {...props}>
             <option value="Reseaux">Par les reseaux sociaux </option><option value="Internet">Par internet </option><option value="Connaissance">Par une connaissance </option><option value="Imprimerie">Par notre imprimerie Copycat Sèvres </option><option value="Autres">Autres </option>
         </select>],
-    ['col-span-2', 'Ville', (props) => <input type="text" {...props} />],
-    ['col-span-2', 'Code postal', (props) => <input type="text" {...props} />],
-    ['col-span-2', 'Sujet', (props) => <input type="text" {...props} />],
-    ['col-span-2', 'Votre message', (props) => <textarea {...props} />]
+    ['col-span-2', 'Ville', (props) => <input type="text" name="city" {...props} />],
+    ['col-span-2', 'Code postal', (props) => <input type="text" name="zip" {...props} />],
+    ['col-span-2', 'Sujet', (props) => <input type="text" name="object" {...props} />],
+    ['col-span-2', 'Votre message', (props) => <textarea name="message" {...props} />]
   ],
   Home: [
-    { className: null, Input: (props) => <input type="text" placeholder='Nom' {...props} /> },
-    { className: null, Input: (props) => <input type="text" placeholder='Prénom' {...props} /> },
-    { className: null, Input: (props) => <input type="text" placeholder='Numéro de téléphone' {...props} /> },
-    { className: null, Input: (props) => <input type="text" placeholder='Entreprise' {...props} /> },
-    { className: 'col-span-2', Input: (props) => <input type="text" placeholder='Votre email' {...props} /> },
-    { className: 'col-span-2', Input: (props) => <input type="text" placeholder='Sujet' {...props} /> }
+    { className: null, Input: (props) => <input type="text" name="name" placeholder='Nom' {...props} /> },
+    { className: null, Input: (props) => <input type="text" name="firstname" placeholder='Prénom' {...props} /> },
+    { className: null, Input: (props) => <input type="text" name="number" placeholder='Numéro de téléphone' {...props} /> },
+    { className: null, Input: (props) => <input type="text" name="firm" placeholder='Entreprise' {...props} /> },
+    { className: 'col-span-2', Input: (props) => <input type="email" name="mail" placeholder='Votre email' {...props} /> },
+    { className: 'col-span-2', Input: (props) => <input type="text" name="message" placeholder='Sujet' {...props} /> }
   ],
   Boulogne: [
-    { className: null, Input: (props) => <input type="text" placeholder='Nom' {...props} /> },
-    { className: null, Input: (props) => <input type="text" placeholder='Prénom' {...props} /> },
-    { className: null, Input: (props) => <input type="text" placeholder='Numéro de téléphone' {...props} /> },
-    { className: null, Input: (props) => <input type="text" placeholder='Entreprise' {...props} /> },
-    { className: 'col-span-2', Input: (props) => <input type="text" placeholder='Votre email' {...props} /> },
-    { className: 'col-span-2', Input: (props) => <input type="text" placeholder='Sujet' {...props} /> }
+    { className: null, Input: (props) => <input type="text" name="name" placeholder='Nom' {...props} /> },
+    { className: null, Input: (props) => <input type="text" name="firstname" placeholder='Prénom' {...props} /> },
+    { className: null, Input: (props) => <input type="tel" name="number" placeholder='Numéro de téléphone' {...props} /> },
+    { className: null, Input: (props) => <input type="text" name="firm" placeholder='Entreprise' {...props} /> },
+    { className: 'col-span-2', Input: (props) => <input type="email" name="mail" placeholder='Votre email' {...props} /> },
+    { className: 'col-span-2', Input: (props) => <textarea name="message" placeholder='Sujet' {...props} /> }
   ],
   Modal: ({ options, selected }) => [
-    { className: null, Input: (props) => <input type="text" placeholder='Nom' {...props} /> },
-    { className: null, Input: (props) => <input type="text" placeholder='Prénom' {...props} /> },
-    { className: null, Input: (props) => <input type="text" placeholder='Numéro de téléphone' {...props} /> },
-    { className: null, Input: (props) => <input type="text" placeholder='Entreprise' {...props} /> },
-    { className: 'col-span-2', Input: (props) => <input type="text" placeholder='Votre email' {...props} /> },
+    { className: null, Input: (props) => <input type="text" name="name" placeholder='Nom' {...props} /> },
+    { className: null, Input: (props) => <input type="text" name="firstname" placeholder='Prénom' {...props} /> },
+    { className: null, Input: (props) => <input type="tel" name="number" placeholder='Numéro de téléphone' {...props} /> },
+    { className: null, Input: (props) => <input type="text" name="firm" placeholder='Entreprise' {...props} /> },
+    { className: 'col-span-2', Input: (props) => <input type="email" name="mail" placeholder='Votre email' {...props} /> },
     {
       className: 'col-span-2',
-      Input: (props) => <select placeholder='Votre demande concernant ?' {...props} defaultValue={options[selected]}>
+      Input: (props) => <select name='category' placeholder='Votre demande concernant ?' {...props} defaultValue={options[selected]}>
         {options?.map((opt, i) => <option key={i} value={opt}>{opt}</option>)}
       </select>
     },
-    { className: 'col-span-2', Input: (props) => <textarea placeholder='Sujet' {...props} /> }
+    { className: 'col-span-2', Input: (props) => <textarea name="message" placeholder='Sujet' {...props} /> }
   ]
 }
 

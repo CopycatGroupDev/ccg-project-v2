@@ -92,7 +92,7 @@ export const Menu = ({ header, title }) => {
 
 export const Footer = ({ refF }) => {
   return (<div id='footer' ref={refF} className="bg-[#0061ad] w-full flex flex-col text-white">
-          <div className='gap-8 grid grid-cols-1 lg:grid-cols-4 snap-always snap-start p-8 [&_h2]:text-3xl [&_input]:rounded-lg [&>div]:grid [&>div]:grid-rows-[min-content] [&>div]:gap-4 snap-center max-sm:gap-[2.5vh] max-sm:h-screen'>
+          <div className='gap-8 grid grid-cols-1 lg:grid-cols-4 snap-always snap-start p-8 [&_h2]:text-3xl [&_input]:rounded-lg [&>div]:grid [&>div]:grid-rows-[min-content] [&>div]:gap-4 snap-center max-sm:gap-[2.5vh]'>
               <div>
                   <h2>Contactez nous</h2>
                   <ul>
