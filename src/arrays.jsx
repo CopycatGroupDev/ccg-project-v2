@@ -73,29 +73,38 @@ export const contactForm = {
     { className: null, Input: (props) => <input type="text" name="name" placeholder='Nom' {...props} /> },
     { className: null, Input: (props) => <input type="text" name="firstname" placeholder='Prénom' {...props} /> },
     { className: null, Input: (props) => <input type="text" name="number" placeholder='Numéro de téléphone' {...props} /> },
-    { className: null, Input: (props) => <input type="text" name="firm" placeholder='Entreprise' {...props} /> },
+    { className: null, Input: (props) => <input type="text" name="firm" placeholder='Société' {...props} /> },
     { className: 'col-span-2', Input: (props) => <input type="email" name="mail" placeholder='Votre email' {...props} /> },
     { className: 'col-span-2', Input: (props) => <input type="text" name="message" placeholder='Sujet' {...props} /> }
   ],
   Contact: [
-    [null, 'Nom', (props) => <input type="text" name="name" {...props} />],
-    [null, 'Prénom', (props) => <input type="text" name="name" {...props} />],
-    ['col-span-2', 'Votre email', (props) => <input type="text" name="name" {...props} />],
-    ['col-span-2', 'Numéro de téléphone', (props) => <input type="text" name="name" {...props} />],
-    ['col-span-2', 'Société', (props) => <input type="text" name="name" {...props} />],
-    ['col-span-2', 'Comment avez-vous connu les services Copycat Group ?', (props) => <select name="how" {...props}>
-            <option value="Reseaux">Par les reseaux sociaux </option><option value="Internet">Par internet </option><option value="Connaissance">Par une connaissance </option><option value="Imprimerie">Par notre imprimerie Copycat Sèvres </option><option value="Autres">Autres </option>
-        </select>],
-    ['col-span-2', 'Ville', (props) => <input type="text" name="city" {...props} />],
-    ['col-span-2', 'Code postal', (props) => <input type="text" name="zip" {...props} />],
-    ['col-span-2', 'Sujet', (props) => <input type="text" name="object" {...props} />],
-    ['col-span-2', 'Votre message', (props) => <textarea name="message" {...props} />]
+    { className: null, Input: (props) => <input type="text" name="name" placeholder='Nom' {...props} /> },
+    { className: null, Input: (props) => <input type="text" name="firstname" placeholder='Prénom' {...props} /> },
+    { className: 'col-span-2', Input: (props) => <input type="text" name="mail" placeholder='Votre email' {...props} /> },
+    { className: 'col-span-2', Input: (props) => <input type="text" name="number" placeholder='Numéro de téléphone' {...props} /> },
+    { className: 'col-span-2', Input: (props) => <input type="text" name="firm" placeholder='Société' {...props} /> },
+    {
+      className: 'col-span-2',
+      Input: (props) => <select name="how" defaultValue={""} placeholder={'Comment avez-vous connu les services Copycat Group ?'} {...props}>
+            <option value="" disabled={true}>Choisir</option>
+            <option value="Reseaux">Par les reseaux sociaux</option>
+            <option value="Internet">Par internet</option>
+            <option value="Connaissance">Par une connaissance</option>
+            <option value="Copycat Sèvres">Par notre boutique Copycat Sèvres</option>
+            <option value="Copycat DPS Boulogne">Par notre boutique Copycat DPS Boulogne</option>
+            <option value="Autres">Autres</option>
+        </select>
+    },
+    { className: 'col-span-2', Input: (props) => <input type="text" name="city" placeholder='Ville' {...props} /> },
+    { className: 'col-span-2', Input: (props) => <input type="text" name="zip" placeholder='Code postal' {...props} /> },
+    { className: 'col-span-2', Input: (props) => <input type="text" name="object" placeholder='Sujet' {...props} /> },
+    { className: 'col-span-2', Input: (props) => <textarea name="message" placeholder='Votre message' {...props} /> }
   ],
   Home: [
     { className: null, Input: (props) => <input type="text" name="name" placeholder='Nom' {...props} /> },
     { className: null, Input: (props) => <input type="text" name="firstname" placeholder='Prénom' {...props} /> },
     { className: null, Input: (props) => <input type="text" name="number" placeholder='Numéro de téléphone' {...props} /> },
-    { className: null, Input: (props) => <input type="text" name="firm" placeholder='Entreprise' {...props} /> },
+    { className: null, Input: (props) => <input type="text" name="firm" placeholder='Société' {...props} /> },
     { className: 'col-span-2', Input: (props) => <input type="email" name="mail" placeholder='Votre email' {...props} /> },
     { className: 'col-span-2', Input: (props) => <input type="text" name="message" placeholder='Sujet' {...props} /> }
   ],
@@ -103,7 +112,7 @@ export const contactForm = {
     { className: null, Input: (props) => <input type="text" name="name" placeholder='Nom' {...props} /> },
     { className: null, Input: (props) => <input type="text" name="firstname" placeholder='Prénom' {...props} /> },
     { className: null, Input: (props) => <input type="tel" name="number" placeholder='Numéro de téléphone' {...props} /> },
-    { className: null, Input: (props) => <input type="text" name="firm" placeholder='Entreprise' {...props} /> },
+    { className: null, Input: (props) => <input type="text" name="firm" placeholder='Société' {...props} /> },
     { className: 'col-span-2', Input: (props) => <input type="email" name="mail" placeholder='Votre email' {...props} /> },
     { className: 'col-span-2', Input: (props) => <textarea name="message" placeholder='Sujet' {...props} /> }
   ],
@@ -111,7 +120,7 @@ export const contactForm = {
     { className: null, Input: (props) => <input type="text" name="name" placeholder='Nom' {...props} /> },
     { className: null, Input: (props) => <input type="text" name="firstname" placeholder='Prénom' {...props} /> },
     { className: null, Input: (props) => <input type="tel" name="number" placeholder='Numéro de téléphone' {...props} /> },
-    { className: null, Input: (props) => <input type="text" name="firm" placeholder='Entreprise' {...props} /> },
+    { className: null, Input: (props) => <input type="text" name="firm" placeholder='Société' {...props} /> },
     { className: 'col-span-2', Input: (props) => <input type="email" name="mail" placeholder='Votre email' {...props} /> },
     {
       className: 'col-span-2',
@@ -133,7 +142,7 @@ export const aboutPageArrays = {
   ],
   testimonies: [
     {
-      text: <>{'Nous travaillons avec CopycatGroup depuis plusieurs années sur plusieurs entreprises du groupe. Au-delà de nos exigences de performance de service et de compétitivité des prix, parfaitement répondu par CCG, nous avons été toujours agréablement surpris par la disponibilité des équipes et leur grande capacité à gérer des projets non standards. Je ne peux que me réjouir de les savoir notre fournisseur.'}</>,
+      text: <>{'Nous travaillons avec CopycatGroup depuis plusieurs années sur plusieurs Sociétés du groupe. Au-delà de nos exigences de performance de service et de compétitivité des prix, parfaitement répondu par CCG, nous avons été toujours agréablement surpris par la disponibilité des équipes et leur grande capacité à gérer des projets non standards. Je ne peux que me réjouir de les savoir notre fournisseur.'}</>,
       img: 'as.jpg',
       name: 'AS INTER'
     },

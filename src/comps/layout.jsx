@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { archi } from '../archi'
 import { Nav, NavMobile } from './nav'
-import { For } from '../functions'
+import { For, hex2rgb } from '../functions'
 import { boutiques, renseignements } from '../arrays'
 import { Icons } from './icons'
 import bannerCCG from '../assets/banner-bg-ccg.png'
@@ -68,20 +68,23 @@ export const Menu = ({ header, title }) => {
                       const page = archi.find(ar => ar.path === path)
                       const [address, number, email] = renseignements[name].map(r => r.text)
 
-                      return <motion.div key={key} to={path} className="bg-white h-fit shadow p-6 gap-2 rounded-xl w-[350px]" initial={{ opacity: 0, scale: 0.5 }} transition={{ duration: 0.5 }} whileInView={{ opacity: 100, scale: 1 }} viewport={{ once: true }}>
-                            <Link to={path} style={{ display: 'contents' }}>
+                      const { r, g, b } = hex2rgb(archi.find(ar => ar.path === path).element.props.header.color)
+                      const color = `rgba(${r}, ${g}, ${b}, .8)`
+
+                      return <Link key={key} to={path} style={{ display: 'contents' }} >
+                            <motion.div to={path} className="h-fit shadow px-6 py-9 gap-2 rounded-xl w-[350px]" initial={{ opacity: 0, scale: 0.5, background: color, color: '#ffff' }} transition={{ duration: 0.25 }} whileInView={{ opacity: 100, scale: 1 }} viewport={{ once: true }} whileHover={{ background: '#ffff', color: '#999' }}>
                                 <div className="grid grid-cols-1 justify-items-center text-xl">
                                     <img src={'icone boutique.png'} className="" />
                                     <div className="" style={{ color: '#0061ad' }}>{page.title}</div>
                                 </div>
                                 <hr className='my-3 mx-8' />
-                                <ul className='text-base' style={{ color: '#999' }}>
+                                <ul className='text-base'>
                                 <li><b style={{ color: '#0061ad' }}>Adresse:</b> {address}</li>
                                 <li><b style={{ color: '#0061ad' }}>Numéro:</b> {number}</li>
                                 <li><b style={{ color: '#0061ad' }}>Email:</b> {email}</li>
                                 </ul>
-                            </Link>
-                        </motion.div>
+                            </motion.div>
+                        </Link>
                     } } />
                 </div>
                 <div></div>
@@ -118,7 +121,7 @@ export const Footer = ({ refF }) => {
                       <li><a href="http://www.copycatprint.fr/accueil/" target="_blank" rel="noreferrer">Copycat Print</a></li>
                       <li><a href="https://www.copycat.vous-livre.com/" target="_blank" rel="noreferrer">Copycat vous livre</a></li>
                       <li><a href="https://copycat-group.mydigitalcorner.fr/" target="_blank" rel="noreferrer">Copycat Group mydigitalcorner</a></li>
-                      <li><a href="https://www.exalink.fr/profil/copycat-group" target="_blank" rel="noreferrer">Exalink Copycat Group</a></li>
+                      {/* <li><a href="https://www.exalink.fr/profil/copycat-group" target="_blank" rel="noreferrer">Exalink Copycat Group</a></li> */}
                   </ul>
               </div>
               <div>

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { RSEActions } from '../arrays'
 import { Container, Title, Icons } from '../comps'
 import { For } from '../functions'
@@ -52,7 +53,7 @@ const Rse = () => {
             </div>
         </Container>
 
-        <button className="bg-[#0061ad] py-4 px-6 rounded-full text-white">Télécharger la charte RSE Copycat Group</button>
+        <Link to="/contact?subject=rse" className="bg-[#0061ad] py-4 px-6 rounded-full text-white">Demander la charte RSE Copycat Group</Link>
     </>)
 }
 
