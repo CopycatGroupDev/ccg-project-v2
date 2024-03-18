@@ -89,10 +89,12 @@ const APropos = ({ }) => {
             <div className='flex flex-col gap-8 snap-always snap-center toFade [&>p]:text-left' style={{ color: '#737070' }}>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center gap-16">
                     <For obj={values} render={(value, i) => {
-                      return <div key={i} className="grid grid-cols-1 grid-rows-3">
-                            <img src={value.img} />
-                            <div className="font-bold" style={{ color: value.color }}>{value.title}</div>
-                            <div>{value.text}</div>
+                      return <div key={i} className="grid grid-cols-1 grid-rows-2 justify-items-center gap-2">
+                            <img src={value.img} style={{ mixBlendMode: 'color' }} />
+                            <div className='flex flex-col gap-4'>
+                                <div className="font-bold" style={{ color: value.color }}>{value.title}</div>
+                                <div>{value.text}</div>
+                            </div>
                         </div>
                     }} />
                 </div>
@@ -103,9 +105,18 @@ const APropos = ({ }) => {
             <div className='flex flex-col gap-8 snap-always snap-center toFade [&>p]:text-left' style={{ color: '#737070' }}>
                 <Title color="#0061ad">Retrouvez nous sur les réseaux sociaux</Title>
                 <div className="flex justify-center gap-16">
-                    <Link to={'https://www.facebook.com/copycat.groupe/'} style={{ display: 'contents' }}><Icons icon={'Facebook'} size={32} /></Link>
-                    <Link to={'https://www.instagram.com/copycat_group/'} style={{ display: 'contents' }}><Icons icon={'Instagram'} size={32} /></Link>
-                    <Link to={'https://fr.linkedin.com/company/copycat-group'} style={{ display: 'contents' }}><Icons icon={'Linkedin'} size={32} /></Link>
+                    <Link to={'https://www.facebook.com/copycat.groupe/'} style={{ display: 'contents' }}>
+                        {/* <Icons icon={'Facebook'} size={32} /> */}
+                        <img src="/socialLogo1.PNG" style={{ mixBlendMode: 'color', objectFit: 'cover', aspectRatio: '1', width: 'fit-content', height: '96px' }} alt="" />
+                    </Link>
+                    <Link to={'https://www.instagram.com/copycat_group/'} style={{ display: 'contents' }}>
+                        {/* <Icons icon={'Instagram'} size={32} /> */}
+                        <img src="/socialLogo2.PNG" style={{ mixBlendMode: 'color', objectFit: 'cover', aspectRatio: '1', width: 'fit-content', height: '96px', padding: '12px' }} alt="" />
+                    </Link>
+                    <Link to={'https://fr.linkedin.com/company/copycat-group'} style={{ display: 'contents' }}>
+                        {/* <Icons icon={'Linkedin'} size={32} /> */}
+                        <img src="/socialLogo3.PNG" style={{ mixBlendMode: 'color', objectFit: 'cover', aspectRatio: '1', width: 'fit-content', height: '96px' }} alt="" />
+                    </Link>
                 </div>
             </div>
         </Container>

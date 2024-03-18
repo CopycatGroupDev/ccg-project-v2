@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Title } from '../comps'
-import { For } from '../functions'
+import { For, sendMessage } from '../functions'
 import { horaires, renseignements, services, realisations, contactForm } from '../arrays'
 
-const Sevres = ({ color }) => {
+const Sevres = ({ color, alertSetter, alert }) => {
   const [currentTabRealisation, setCurrentTabRealisation] = useState('tex')
 
   useEffect(() => {
@@ -91,7 +91,7 @@ const Sevres = ({ color }) => {
                         <div className='flex flex-col gap-6 snap-always snap-center toFade'>
                             <div className="grid grid-cols-2 [&_label]:grid [&_label>input]:w-full [&_label>input]:border-gray-300 gap-4" style={{ textWrap: 'nowrap' }}>
                                 <Title color={'blue-800'} modifier={'col-span-2'} style={{ textWrap: 'balance' }}>Faites vous rappeler !</Title>
-                                <form className="contents">
+                                <form className="contents" onSubmit={sendMessage(({ message }) => { alertSetter([...alert, { text: message, color: 'limegreen' }]) })}>
                                     {contactForm.Sèvres.map(({ className, Input }, id) => <label className={className} key={id}> {Input().props.placeholder} <Input /> </label>)}
                                     <button className='p-4 bg-[#0061ad] rounded-full text-white mt-2 col-span-2'>Envoyer</button>
                                 </form>

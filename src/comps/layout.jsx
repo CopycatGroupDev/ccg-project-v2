@@ -100,7 +100,7 @@ export const Footer = ({ refF }) => {
                   <h2>Contactez nous</h2>
                   <ul>
                       <li><a href="/contact">01 45 07 98 00</a></li>
-                      <li><a href="/contact">hello@copycatgroup.fr</a></li>
+                      <li><a href="/contact">sevres@copycatgroup.fr</a></li>
                       <li><a href="/contact">Trouver un Magasin :</a></li>
                       <li><a href="/contact">2 rue de ville d’Avray</a></li>
                       <li><a href="/contact">92310 SÈVRES</a></li>
@@ -120,7 +120,7 @@ export const Footer = ({ refF }) => {
                       <li><a href="https://copycat-shop.fr" target="_blank" rel="noreferrer">Copycat Shop</a></li>
                       <li><a href="http://www.copycatprint.fr/accueil/" target="_blank" rel="noreferrer">Copycat Print</a></li>
                       <li><a href="https://www.copycat.vous-livre.com/" target="_blank" rel="noreferrer">Copycat vous livre</a></li>
-                      <li><a href="https://copycat-group.mydigitalcorner.fr/" target="_blank" rel="noreferrer">Copycat Group mydigitalcorner</a></li>
+                      {/* <li><a href="https://copycat-group.mydigitalcorner.fr/" target="_blank" rel="noreferrer">Copycat Group mydigitalcorner</a></li> */}
                       {/* <li><a href="https://www.exalink.fr/profil/copycat-group" target="_blank" rel="noreferrer">Exalink Copycat Group</a></li> */}
                   </ul>
               </div>

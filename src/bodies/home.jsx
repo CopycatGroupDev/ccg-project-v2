@@ -31,7 +31,7 @@ const Home = () => {
                             <span>{title}</span>
                         </div>
                         <p className='text-gray-400'> {desc} </p>
-                        <Link to={link} target='_blank' className='text-white bg-[#0061ad] px-4 py-2 md:px-7 md:py-3.5 rounded-full' style={{ textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{ motto }</Link>
+                        <Link to={link} target='_blank' className='text-white bg-[#0061ad] px-4 py-2 md:px-7 md:py-3.5 rounded-full w-full flex align-center justify-center' style={{ textOverflow: 'ellipsis', whiteSpace: 'nowrap', fontSize: '17px' }}>{ motto }</Link>
                     </motion.div>
                 })}
             </div>

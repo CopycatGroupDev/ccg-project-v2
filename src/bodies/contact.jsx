@@ -16,6 +16,10 @@ const Contact = ({ alertSetter, alert }) => {
         <Container>
             <div className="grid grid-cols-2 [&_label]:grid [&_label>input]:w-full  gap-4 w-full text-start" style={{ textWrap: 'nowrap' }}>
                 <form className="contents" onSubmit={sendMessage(({ message }) => { alertSetter([...alert, { text: message, color: 'limegreen' }]) })}>
+                    <datalist id='subjectsArray'>
+                        <option>Demande du formulaire RSE</option>
+                        <option>Newsletter</option>
+                    </datalist>
                     {contactForm.Contact.map(({ className, Input }, id) => {
                         const { placeholder, name } = Input().props
 

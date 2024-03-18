@@ -31,7 +31,7 @@ export const renseignements = {
   Sèvres: [
     { Icon: ({ size }) => <Svg size={size} children={<path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />} />, text: "2 rue de Ville d'Avray, 92310 Sèvres" },
     { Icon: ({ size }) => <Svg size={size} children={<><path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" /> <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2" /></>} />, text: '01 45 07 98 00' },
-    { Icon: ({ size }) => <Svg size={size} children={<path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />} />, text: 'hello@copycatgroup.fr' }
+    { Icon: ({ size }) => <Svg size={size} children={<path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />} />, text: 'sevres@copycatgroup.fr' }
   ],
   Boulogne: [
     { Icon: ({ size }) => <Svg size={size} children={<path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />} />, text: '45 Route de la Reine, 92100 Boulogne - Billancourt' },
@@ -85,7 +85,7 @@ export const contactForm = {
     { className: 'col-span-2', Input: (props) => <input type="text" name="firm" placeholder='Société' {...props} /> },
     {
       className: 'col-span-2',
-      Input: (props) => <select name="how" defaultValue={""} placeholder={'Comment avez-vous connu les services Copycat Group ?'} {...props}>
+      Input: (props) => <select name="how" defaultValue={''} placeholder={'Comment avez-vous connu les services Copycat Group ?'} {...props}>
             <option value="" disabled={true}>Choisir</option>
             <option value="Reseaux">Par les reseaux sociaux</option>
             <option value="Internet">Par internet</option>
@@ -97,7 +97,7 @@ export const contactForm = {
     },
     { className: 'col-span-2', Input: (props) => <input type="text" name="city" placeholder='Ville' {...props} /> },
     { className: 'col-span-2', Input: (props) => <input type="text" name="zip" placeholder='Code postal' {...props} /> },
-    { className: 'col-span-2', Input: (props) => <input type="text" name="object" placeholder='Sujet' {...props} /> },
+    { className: 'col-span-2', Input: (props) => <input type="text" name="object" placeholder='Sujet' list='subjectsArray' {...props} /> },
     { className: 'col-span-2', Input: (props) => <textarea name="message" placeholder='Votre message' {...props} /> }
   ],
   Home: [
@@ -135,10 +135,10 @@ export const contactForm = {
 export const aboutPageArrays = {
   tabs: ['solutions', 'shop', 'print', 'labs'],
   values: [
-    { img: null, color: '#f39113', title: 'Bonne humeur', text: "Une équipe passionnée à l'écoute de vos besoins" },
-    { img: null, color: '#A271AD', title: 'Bonne volonté', text: 'Nous avançons avec entrain vers la réalisation de vos projets' },
-    { img: null, color: '#5892C4', title: 'Bon sens', text: 'Nous oeuvrons méthodiquement au traitement de vos documents' },
-    { img: null, color: '#60C280', title: 'Bonne foi', text: 'Nous vous accompagnons avec intégrité et honnêteté' }
+    { img: '/aboutIcon1.PNG', color: '#f39113', title: 'Bonne humeur', text: "Une équipe passionnée à l'écoute de vos besoins" },
+    { img: "/aboutIcon2.PNG", color: '#A271AD', title: 'Bonne volonté', text: 'Nous avançons avec entrain vers la réalisation de vos projets' },
+    { img: "/aboutIcon3.PNG", color: '#5892C4', title: 'Bon sens', text: 'Nous oeuvrons méthodiquement au traitement de vos documents' },
+    { img: "/aboutIcon4.PNG", color: '#60C280', title: 'Bonne foi', text: 'Nous vous accompagnons avec intégrité et honnêteté' }
   ],
   testimonies: [
     {

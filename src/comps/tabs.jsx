@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { archi } from '../archi'
 import { For } from '../functions'
+import { Link } from 'react-router-dom'
 
 export const Tabs = ({ tabs }) => {
   const [activeTab, setActiveTab] = useState(0)
@@ -25,7 +26,7 @@ export const Tabs = ({ tabs }) => {
                       </button>
                       <p className="text-left">Nous mettons à votre disposition notre savoir et notre regard expert pour vous aider à voir plus loin qu'une marque de renom. En effet. nous vous aidons à trouver les services qui répondent le plus à vos attentes. Pour cela. nous nous appuyons sur nos partenaires méticuleusement sélectionnés.</p>
                       <div className="flex flex-wrap text-sm gap-2 uppercase">
-                          <For obj={archi.find(arc => '/' + value === arc.path).dropdown} render={(tag, i) => <span key={i} className="px-16 py-2 border rounded-full" style={{ color: archi.find(arc => '/' + value === arc.path).element.props.header.color, borderColor: archi.find(arc => '/' + value === arc.path).element.props.header.color }}>{tag.title}</span>} />
+                          <For obj={archi.find(arc => '/' + value === arc.path).dropdown} render={(tag, i) => <Link to={tag.path} key={i} className="px-16 py-2 border rounded-full" style={{ color: archi.find(arc => '/' + value === arc.path).element.props.header.color, borderColor: archi.find(arc => '/' + value === arc.path).element.props.header.color }}> {tag.title}</Link>} />
                       </div>
                   </div>
               </div>)
