@@ -101,24 +101,28 @@ const APropos = ({ }) => {
             </div>
         </Container>
 
-        <Container>
-            <div className='flex flex-col gap-8 snap-always snap-center toFade [&>p]:text-left' style={{ color: '#737070' }}>
-                <Title color="#0061ad">Retrouvez nous sur les réseaux sociaux</Title>
+        <Container modifier='p-0 flex max-xl:flex-col w-full bg-[#0061ad]'>
+            <div className='w-full flex flex-col gap-8 snap-always snap-center toFade [&>p]:text-left text-white p-16'>
+                <Title color="#fff">Retrouvez nous sur les réseaux sociaux</Title>
                 <div className="flex justify-center gap-16">
-                    <Link to={'https://www.facebook.com/copycat.groupe/'} style={{ display: 'contents' }}>
+                    <Link to={'https://www.facebook.com/copycat.groupe/'} className='flex flex-col items-center gap-4'>
                         {/* <Icons icon={'Facebook'} size={32} /> */}
-                        <img src="/socialLogo1.PNG" style={{ mixBlendMode: 'color', objectFit: 'cover', aspectRatio: '1', width: 'fit-content', height: '96px' }} alt="" />
+                        <img src="/socialLogo1.PNG" style={{ objectFit: 'cover', aspectRatio: '1', width: 'fit-content', height: '96px' }} alt="" />
+                        <span className='py-2 px-4 border-2 border-white rounded-xl' style={{ whiteSpace: 'nowrap' }}>copycat_group {/* CopyCat Group CopyCat Group */}</span>
                     </Link>
-                    <Link to={'https://www.instagram.com/copycat_group/'} style={{ display: 'contents' }}>
+                    <Link to={'https://www.instagram.com/copycat_group/'} className='flex flex-col items-center gap-4'>
                         {/* <Icons icon={'Instagram'} size={32} /> */}
-                        <img src="/socialLogo2.PNG" style={{ mixBlendMode: 'color', objectFit: 'cover', aspectRatio: '1', width: 'fit-content', height: '96px', padding: '12px' }} alt="" />
+                        <img src="/socialLogo2.PNG" style={{ filter: 'invert(1)', objectFit: 'cover', aspectRatio: '1', width: 'fit-content', height: '96px' }} alt="" />
+                        <span className='py-2 px-4 border-2 border-white rounded-xl' style={{ whiteSpace: 'nowrap' }}>CopyCat Group</span>
                     </Link>
-                    <Link to={'https://fr.linkedin.com/company/copycat-group'} style={{ display: 'contents' }}>
+                    <Link to={'https://fr.linkedin.com/company/copycat-group'} className='flex flex-col items-center gap-4'>
                         {/* <Icons icon={'Linkedin'} size={32} /> */}
-                        <img src="/socialLogo3.PNG" style={{ mixBlendMode: 'color', objectFit: 'cover', aspectRatio: '1', width: 'fit-content', height: '96px' }} alt="" />
+                        <img src="/socialLogo3.PNG" style={{ filter: 'invert(1)', objectFit: 'cover', aspectRatio: '1', width: 'fit-content', height: '96px' }} alt="" />
+                        <span className='py-2 px-4 border-2 border-white rounded-xl' style={{ whiteSpace: 'nowrap' }}>CopyCat Group</span>
                     </Link>
                 </div>
             </div>
+            <img src="/Capture.PNG" style={{ aspectRatio: '1136 / 377.406', height: 'fit-content', width: '100%' }} />
         </Container>
     </>)
 }
