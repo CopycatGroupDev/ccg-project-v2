@@ -115,14 +115,14 @@ export const Footer = ({ refF }) => {
                   </ul>
               </div>
               <div>
-                  <h2>Nos autres services</h2>
+                  {/* <h2>Nos autres services</h2>
                   <ul>
                       <li><a href="https://copycat-shop.fr" target="_blank" rel="noreferrer">Copycat Shop</a></li>
                       <li><a href="http://www.copycatprint.fr/accueil/" target="_blank" rel="noreferrer">Copycat Print</a></li>
                       <li><a href="https://www.copycat.vous-livre.com/" target="_blank" rel="noreferrer">Copycat vous livre</a></li>
-                      {/* <li><a href="https://copycat-group.mydigitalcorner.fr/" target="_blank" rel="noreferrer">Copycat Group mydigitalcorner</a></li> */}
-                      {/* <li><a href="https://www.exalink.fr/profil/copycat-group" target="_blank" rel="noreferrer">Exalink Copycat Group</a></li> */}
-                  </ul>
+                      {/* <li><a href="https://copycat-group.mydigitalcorner.fr/" target="_blank" rel="noreferrer">Copycat Group mydigitalcorner</a></li>}
+                      {/* <li><a href="https://www.exalink.fr/profil/copycat-group" target="_blank" rel="noreferrer">Exalink Copycat Group</a></li>}
+                  </ul> */}
               </div>
               <div>
                   <form className='contents'>

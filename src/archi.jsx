@@ -16,6 +16,7 @@ import bannerShop from './assets/banner-bg-shop.png'
 import bannerCCG from './assets/banner-bg-ccg.png'
 
 import logoSèvres from './assets/copycat-sevres-logo.png'
+import logoBoulogne from './assets/Boulogne.svg';
 import { Menu } from './comps'
 import { timelines } from './arrays'
 
@@ -40,7 +41,7 @@ export const headerProps = {
   RSE: { cover: bannerRSE, logo: null, textLine: [''], color: '#0061ad', fullText: false, kurz: true },
   Contact: { cover: bannerContact, logo: null, textLine: ['Chez Copycat Group, votre opinion compte. Nous sommes ravis de vous entendre et sommes là pour répondre à toutes vos questions, suggestions ou demandes. Remplissez simplement le formulaire ci-dessous et notre équipe se fera un plaisir de vous assister dans les meilleurs délais.'], color: '#0061ad', fullText: true, mid: true, title: 'Formulaire de contact', navTextColor: 'white' },
   Sevres: { cover: bannerBoutique, logo: logoSèvres, textLine: ['Retrouvez notre boutique COPYCAT Sèvres avec un service de photocopie, reprographie et impression numérique', <svg key={1} xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" className="h-8 lg:h-14"> <path fillRule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1" /> </svg>], color: '#ed01b5' },
-  Boulogne: { cover: bannerBoulogne, logo: logoSèvres, textLine: ['Retrouvez notre boutique COPYCAT DPS pour l\'achat de vos fournitures informatique, un service de Photocopie - reprographie et impression numérique. ', <svg key={1} xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" className="h-8 lg:h-14"> <path fillRule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1" /> </svg>], color: '#f39113' },
+  Boulogne: { cover: bannerBoulogne, logo: logoBoulogne, textLine: ['Retrouvez notre boutique COPYCAT DPS pour l\'achat de vos fournitures informatique, un service de Photocopie - reprographie et impression numérique. ', <svg key={1} xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" className="h-8 lg:h-14"> <path fillRule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1" /> </svg>], color: '#f39113' },
   Mentions: { cover: bannerCCG, logo: null, textLine: [<> </>], color: '#0061ad', fullText: true, title: 'Mentions légales', navTextColor: 'white' },
   Confi: { cover: bannerCCG, logo: null, textLine: [<> </>], color: '#0061ad', fullText: true, title: 'Politique de confidentialité', navTextColor: 'white' }
 }
