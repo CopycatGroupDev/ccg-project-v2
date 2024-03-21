@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react-refresh/only-export-components */
 import { Navigate, Routes, Route /* Link */ } from 'react-router-dom'
-import Body, { Page } from './pages'
+import Page, * as Body from './pages'
 import React from 'react'
 
 import bannerAccueil from './assets/banner-bg.png'

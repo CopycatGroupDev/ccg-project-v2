@@ -1,6 +1,6 @@
 /* eslint-disable react/no-children-prop */
 import { CCGCarousel } from './comps/carousel'
-import Contact from './bodies/contact'
+import { Contact } from './bodies/contact'
 import { Dropdown } from './comps/dropdown'
 import { Svg, Icons } from './comps/icons'
 import { Container, Header, Footer, Title, Menu } from './comps/layout'

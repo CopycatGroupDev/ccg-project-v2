@@ -4,7 +4,7 @@ import { timelines } from '../arrays'
 import React from 'react'
 import { motion } from 'framer-motion'
 
-const Print = ({ color, modal }) => {
+export const Print = ({ color, modal }) => {
   return (<>
         <Timeline color={color} list={timelines.Print} modal={modal} />
         <motion.iframe src="https://e.issuu.com/embed.html?d=catalogue_produits_en_marque_blanche&u=e3m4" className='w-full aspect-[4/3] max-w-[1024px] max-md:h-screen snap-center' initial={{ scale: 0.75 }} transition={{ duration: 0.5 }} whileInView={{ scale: 1 }} viewport={{ once: true }} />
@@ -15,4 +15,3 @@ const Print = ({ color, modal }) => {
     </>)
 }
 
-export default Print

@@ -1,21 +1,21 @@
 /* eslint-disable react/prop-types */
 import { Header, Footer } from './comps'
 import React, { useEffect, useState, useRef } from 'react'
-import Home from './bodies/home'
-import Solutions from './bodies/solutions'
-import Shop from './bodies/shop'
-import Print from './bodies/print'
-import Labs from './bodies/labs'
-import Boutiques from './bodies/boutiques'
-import APropos from './bodies/apropos'
-import Rse from './bodies/rse'
-import Contact from './bodies/contact'
 import Modal from './comps/modal'
 import { motion } from 'framer-motion'
-import { Confi } from './bodies/confi'
-import { Mentions } from './bodies/mentions'
+export { Home } from './bodies/home'
+export { Solutions } from './bodies/solutions'
+export { Shop } from './bodies/shop'
+export { Print } from './bodies/print'
+export { Labs } from './bodies/labs'
+export { Boutiques } from './bodies/boutiques'
+export { APropos } from './bodies/apropos'
+export { Rse } from './bodies/rse'
+export { Contact } from './bodies/contact'
+export { Confi } from './bodies/confi'
+export { Mentions } from './bodies/mentions'
 
-export const Page = ({ header, title, Body }) => {
+export default function Page ({ header, title, Body }) {
   const footer = useRef(null)
   const body = document.querySelector('body')?.getBoundingClientRect()
   const [[modalOpened, setMO], [modalSelect, setMS], [modalDefault, setMD]] = [useState(false), useState([]), useState(0)]
@@ -66,5 +66,3 @@ export const Page = ({ header, title, Body }) => {
     </>
   )
 }
-
-export default { Home, Solutions, Shop, Print, Labs, Boutiques, APropos, Rse, Contact, Mentions, Confi }

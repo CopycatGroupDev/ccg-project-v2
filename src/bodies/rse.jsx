@@ -4,7 +4,7 @@ import { Container, Title, Icons } from '../comps'
 import { For } from '../functions'
 import React from 'react'
 
-const Rse = () => {
+export const Rse = () => {
   return (<>
         <Container>
             <Title>{'Notre Engagement RSE :'}<br />{'Construire un Avenir Responsable'}</Title>
@@ -57,4 +57,3 @@ const Rse = () => {
     </>)
 }
 
-export default Rse

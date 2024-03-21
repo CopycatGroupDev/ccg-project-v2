@@ -1,9 +1,7 @@
 import Sevres from './sevres'
 import Boulogne from './boulogne'
 
-const Boutiques = {
+export const Boutiques = {
   Sevres,
   Boulogne
 }
-
-export default Boutiques

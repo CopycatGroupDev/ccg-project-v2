@@ -4,7 +4,7 @@ import { Timeline, Container } from '../comps'
 import { For } from '../functions'
 import React from 'react'
 
-const Shop = ({ color, modal }) => {
+export const Shop = ({ color, modal }) => {
   return (<>
         <Timeline color={color} list={timelines.Shop} modal={modal} />
 
@@ -26,4 +26,3 @@ const Shop = ({ color, modal }) => {
     </>)
 }
 
-export default Shop

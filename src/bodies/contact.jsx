@@ -5,7 +5,7 @@ import { sendMessage } from '../functions'
 import { useSearchParams } from 'react-router-dom'
 import { headerProps } from '../archi'
 
-const Contact = ({ alertSetter, alert }) => {
+export const Contact = ({ alertSetter, alert }) => {
   const [searchParams] = useSearchParams()
   const subjectDefaultValue = searchParams.get('subject')
   const defaultValues = {
@@ -39,5 +39,3 @@ const Contact = ({ alertSetter, alert }) => {
         </Container>
     </>)
 }
-
-export default Contact

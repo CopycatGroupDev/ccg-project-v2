@@ -4,7 +4,8 @@ import React from 'react'
 import { Svg } from './comps'
 import { motion } from 'framer-motion'
 
-export const boutiques = [{ path: '/sevres', name: 'Sèvres' }, { path: '/boulogne', name: 'Boulogne' }]
+export const boutiques = [{ path: '/sevres', name: 'Sèvres', filter: 'invert(18%) sepia(82%) saturate(3358%) hue-rotate(193deg) brightness(93%) contrast(102%)' }, { path: '/boulogne', name: 'Boulogne', filter: 'invert(57%) sepia(77%) saturate(944%) hue-rotate(352deg) brightness(98%) contrast(95%)' }]
+export const bureau = [{ name: 'Sèvres' }, { path: '/boulogne', name: 'Boulogne' }]
 
 export const horaires = {
   Sèvres: [
@@ -133,12 +134,17 @@ export const contactForm = {
 }
 
 export const aboutPageArrays = {
-  tabs: ['solutions', 'shop', 'print', 'labs'],
+  tabs: [
+    { value: 'solutions', text: 'De la conception de votre infrastructure à la sécurité des données, nous proposons des solutions sur mesure pour stimuler votre productivité. Avec des services de qualité supérieure tels que la téléphonie, la gestion électronique de documents et la maintenance informatique.' },
+    { value: 'shop', text: 'Nous offrons une vaste sélection de produits de qualité, allant de la papeterie, aux accessoires de bureau pratiques et aux solutions de rangement efficaces. Parcourez notre catalogue en ligne sur copycat.vous-livre.com et trouvez tout ce dont vous avez besoin pour un bureau bien organisé et fonctionnel.' },
+    { value: 'print', text: 'Que vous ayez besoin de cartes de visite, de flyers, de brochures ou de supports publicitaires personnalisés, COPYCAT PRINT est là pour vous fournir des impressions de qualité supérieure. Simplifiez le processus d\'impression en ligne en visitant copycatprint.fr.' },
+    { value: 'labs', text: 'Notre équipe de professionnels qualifiés est dédiée à transformer vos idées en réalité en concevant des sites web attrayants, conviviaux et parfaitement adaptés à vos besoins. En plus de cela, COPYCAT LABS propose également un service de graphisme pour créer des supports de communication percutants qui feront briller votre entreprise.' }
+  ],
   values: [
     { img: '/aboutIcon1.PNG', color: '#f39113', title: 'Bonne humeur', text: "Une équipe passionnée à l'écoute de vos besoins" },
-    { img: "/aboutIcon2.PNG", color: '#A271AD', title: 'Bonne volonté', text: 'Nous avançons avec entrain vers la réalisation de vos projets' },
-    { img: "/aboutIcon3.PNG", color: '#5892C4', title: 'Bon sens', text: 'Nous oeuvrons méthodiquement au traitement de vos documents' },
-    { img: "/aboutIcon4.PNG", color: '#60C280', title: 'Bonne foi', text: 'Nous vous accompagnons avec intégrité et honnêteté' }
+    { img: '/aboutIcon2.PNG', color: '#A271AD', title: 'Bonne volonté', text: 'Nous avançons avec entrain vers la réalisation de vos projets' },
+    { img: '/aboutIcon3.PNG', color: '#5892C4', title: 'Bon sens', text: 'Nous oeuvrons méthodiquement au traitement de vos documents' },
+    { img: '/aboutIcon4.PNG', color: '#60C280', title: 'Bonne foi', text: 'Nous vous accompagnons avec intégrité et honnêteté' }
   ],
   testimonies: [
     {

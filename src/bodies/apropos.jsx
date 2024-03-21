@@ -4,7 +4,7 @@ import { For } from '../functions'
 import { aboutPageArrays } from '../arrays'
 import React from 'react'
 
-const APropos = ({ }) => {
+export const APropos = ({ }) => {
   const { tabs, values, testimonies } = aboutPageArrays
   return (<>
         <Container>
@@ -126,4 +126,3 @@ const APropos = ({ }) => {
         </Container>
     </>)
 }
-export default APropos

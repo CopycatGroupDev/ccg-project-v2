@@ -4,7 +4,7 @@ import { Container, Title, CCGCarousel as Carousel } from '../comps'
 import React, { useRef } from 'react'
 import { Link } from 'react-router-dom'
 
-const Home = () => {
+export function Home () {
   const cont1 = useRef(null)
   return (<>
         {/* <div style={{ position: 'fixed', zIndex: 999 }}>{
@@ -31,7 +31,7 @@ const Home = () => {
                             <span>{title}</span>
                         </div>
                         <p className='text-gray-400'> {desc} </p>
-                        <Link to={link} target='_blank' className='text-white bg-[#0061ad] px-4 py-2 md:px-7 md:py-3.5 rounded-full w-full flex align-center justify-center' style={{ textOverflow: 'ellipsis', whiteSpace: 'nowrap', fontSize: '17px' }}>{ motto }</Link>
+                        <Link to={link} target='_blank' className='text-white bg-[#0061ad] px-5 py-2 rounded-full w-fit flex align-center justify-center' style={{ textOverflow: 'ellipsis', whiteSpace: 'nowrap', fontSize: '17px' }}>{ motto }</Link>
                     </motion.div>
                 })}
             </div>
@@ -53,7 +53,7 @@ const Home = () => {
         <Container modifier="flex w-full justify-center text-center md:text-left text-base md:text-xl text-gray-400">
             <div className='max-w-[1340px] flex flex-col lg:flex-row w-full [&>div]:w-full px-12 gap-8 items-center'>
                 <motion.div className='flex flex-col gap-6 toFade snap-always snap-center toFade' initial={{ opacity: 0, y: 200 }} transition={{ duration: 0.5 }} whileInView={{ opacity: 100, y: 0 }} viewport={{ once: true }}>
-                    <Title color={'#1e40af'}>Ils nous font confiance !</Title>
+                    <Title color={'#1e40af'} modifier={'!text-left'}>Ils nous font confiance !</Title>
                     <p>Faites comme nos clients, faites-nous confiance pour notre accompagnement et la réalisation de vos projets documentaires ! Adressez-vous à notre guichet unique pour traiter vos besoins d’IMPRESSIONS, de GRAPHISMES, de FOURNITURES, de BUREAUTIQUES et de SOLUTIONS DIGITALES.</p>
                 </motion.div>
                 <motion.div className='flex border shadow rounded-xl p-4 aspect-square lg:aspect-video snap-always snap-center toFade bg-white' initial={{ opacity: 0, y: 200 }} transition={{ duration: 0.5, delay: 0.25 }} whileInView={{ opacity: 100, y: 0 }} viewport={{ once: true }}>
@@ -65,7 +65,7 @@ const Home = () => {
             <div className='max-w-[1340px] flex flex-col lg:flex-row w-full [&>div]:w-full px-12 gap-8 items-center'>
                 <motion.div className='flex flex-col gap-6 snap-always snap-center toFade' initial={{ opacity: 0, y: 200 }} transition={{ duration: 0.5, delay: 0.5 }} whileInView={{ opacity: 100, y: 0 }} viewport={{ once: true }}>
                     <div className="grid grid-cols-2 [&_label]:grid [&_label>input]:w-full [&_label>input]:border-gray-300 gap-4" style={{ textWrap: 'nowrap' }}>
-                        <Title color={'#1e40af'} modifier={'col-span-2'}>Faites vous rappeler !</Title>
+                        <Title color={'#1e40af'} modifier={'col-span-2 !text-left'}>Faites vous rappeler !</Title>
                         <form className="contents">
                             {contactForm.Home.map(({ className, Input, label }, id) => <label className={className} key={id}> {Input().props.placeholder} {label} <Input required /> </label>)}
                             <button className='p-4 bg-[#0061ad] rounded-full text-white mt-2 col-span-2 w-1/2' style={{ justifySelf: 'center' }}>Envoyer</button>
@@ -80,4 +80,3 @@ const Home = () => {
     </>)
 }
 
-export default Home
