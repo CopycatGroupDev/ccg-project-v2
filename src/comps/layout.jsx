@@ -11,15 +11,15 @@ import bannerCCG from '../assets/banner-bg-ccg.png'
 export const zoom = 0.9
 
 export const Container = ({ modifier = 'w-full flex flex-col gap-6 items-center text-base md:text-xl text-gray-400 max-w-[1340px] text-center px-12', style, children }) => <div className={modifier} style={style}>{children}</div>
-export const Title = ({ children, color = 'black', modifier }) => <h1 className={`text-4xl text-center text-${color} text-[${color}] ${modifier}`} style={{ color }}>{children}</h1>
+export const Title = ({ children, color = 'black', modifier }) => <h1 className={`text-4xl text-center text-${color} text-[${color}] ${modifier}`} style={{ color, fontFamily: 'Arial' }}>{children}</h1>
 
-export const Header = ({ cover, logo, textLine, color, textBtn, fullText = false, kurz = false, mid = false, title, navTextColor, btnProps = () => null, modal }) => {
+export const Header = ({ cover, logo, textLine, color, textBtn, fullText = false, kurz = false, mid = false, auto = false, title, navTextColor, btnProps = () => null, modal }) => {
   const [navOpened, setNavOpened] = useState(false)
   const nvOp = { navOpened, setNavOpened }
 
   return <>
         {navOpened && <NavMobile {...nvOp} />}
-        <div id='header' className={`w-full h-screen relative flex snap-always snap-center bg-[${color}]`} style={{ [kurz && 'height']: '400px', [mid && 'height']: '720px', background: `linear-gradient(180deg, rgb(235 235 235) 50%, ${color} 50%)` }} >
+        <div id='header' className={`w-full h-screen relative flex snap-always snap-center bg-[${color}]`} style={{ [auto && 'height']: 'auto', [kurz && 'height']: '400px', [mid && 'height']: '720px', background: `linear-gradient(180deg, rgb(235 235 235) 50%, ${color} 50%)` }} >
             <img src={cover} className='w-full h-full object-cover' />
             <div className="absolute w-full h-full flex flex-col gap-4 p-8 lg:p-4 text-xl xl:text-2xl" style={{ zoom }}>
                 <Nav {...nvOp} textColor={navTextColor} />
@@ -60,12 +60,12 @@ export const Menu = ({ header, title }) => {
   return <>
         {navOpened && <NavMobile {...nvOp} />}
         <div id='header' className={'w-full h-screen relative flex snap-always snap-center'}>
-            <img src={bannerCCG} className='w-full h-full object-cover'/>
+            <img src={header.cover} className='w-full h-full object-cover'/>
             <div className="absolute w-full h-full flex flex-col [&>*]:h-full gap-4 p-8 lg:p-4 text-xl xl:text-2xl" style={{ zoom }}>
                 <Nav {...nvOp} textColor={header.navTextColor} />
                 <div className='flex flex-col gap-8'>
                     <div className="flex justify-center gap-x-16 gap-y-8 max-sm:grid max-sm:grid-cols-1 justify-items-center">
-                        <For obj={boutiques} render={({ path, name, filter }, key) => {
+                        <For obj={boutiques} render={({ path, name, filter, image }, key) => {
                           const page = archi.find(ar => ar.path === path)
                           const [address, number, email] = renseignements[name].map(r => r.text)
 
@@ -75,7 +75,7 @@ export const Menu = ({ header, title }) => {
                           return <Link key={key} to={path} style={{ display: 'contents' }} >
                                 <motion.div to={path} className="h-fit shadow px-6 py-9 gap-2 rounded-xl w-[350px]" initial={{ opacity: 0, scale: 0.5, background: '#fff', color: '#999' }} transition={{ duration: 0.25 }} whileInView={{ opacity: 100, scale: 1 }} viewport={{ once: true }} whileHover={{ background: '#ffff', color: '#999' }}>
                                     <div className="grid grid-cols-1 justify-items-center text-xl">
-                                        <img src={'boutiqueIconWhite.png'} style={{ filter }} />
+                                        <img src={image} style={{ filter }} />
                                         <div className="" style={{ color }}>{page.title}</div>
                                     </div>
                                     <hr className='my-3 mx-8' />

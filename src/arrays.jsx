@@ -4,7 +4,7 @@ import React from 'react'
 import { Svg } from './comps'
 import { motion } from 'framer-motion'
 
-export const boutiques = [{ path: '/sevres', name: 'Sèvres', filter: 'invert(18%) sepia(82%) saturate(3358%) hue-rotate(193deg) brightness(93%) contrast(102%)' }, { path: '/boulogne', name: 'Boulogne', filter: 'invert(57%) sepia(77%) saturate(944%) hue-rotate(352deg) brightness(98%) contrast(95%)' }]
+export const boutiques = [{ path: '/sevres', name: 'Sèvres', image: 'icone boutique.png' }, { path: '/boulogne', name: 'Boulogne', filter: 'invert(57%) sepia(77%) saturate(944%) hue-rotate(352deg) brightness(98%) contrast(95%)', image: 'boutiqueIconWhite.png' }]
 export const bureau = [{ name: 'Sèvres' }, { path: '/boulogne', name: 'Boulogne' }]
 
 export const horaires = {
@@ -142,7 +142,7 @@ export const aboutPageArrays = {
   ],
   values: [
     { img: '/aboutIcon1.PNG', color: '#f39113', title: 'Bonne humeur', text: "Une équipe passionnée à l'écoute de vos besoins" },
-    { img: '/aboutIcon2.PNG', color: '#A271AD', title: 'Bonne volonté', text: 'Nous avançons avec entrain vers la réalisation de vos projets' },
+    { img: '/aboutIcon2.PNG', color: '#a87cb3', title: 'Bonne volonté', text: 'Nous avançons avec entrain vers la réalisation de vos projets' },
     { img: '/aboutIcon3.PNG', color: '#5892C4', title: 'Bon sens', text: 'Nous oeuvrons méthodiquement au traitement de vos documents' },
     { img: '/aboutIcon4.PNG', color: '#60C280', title: 'Bonne foi', text: 'Nous vous accompagnons avec intégrité et honnêteté' }
   ],
